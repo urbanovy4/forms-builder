@@ -1,0 +1,24 @@
+<form class="form-wrapper" [formGroup]="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label> E-mail
+    </mat-label>
+    <input matInput required name="email" formControlName="email">
+    <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+      <span *ngIf="form.get('email').errors['required']">This field is required.</span>
+      <span *ngIf="form.get('email').errors['email']">This field is invalid.</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label> Password
+    </mat-label>
+    <input matInput type="text" name="password" formControlName="password">
+    <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+      <span *ngIf="form.get('password').errors['required']">This field is required.</span>
+      <span
+        *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+              Password must be longer than {{form.get('password').errors['minlength']['requiredLength']}} characters.
+              Now is {{form.get('password').errors['minlength']['actualLength']}}
+        </span>
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -1,0 +1,9 @@
+<div class="container">
+  <form class="form" (ngSubmit)="onSubmit()">
+    <mat-toolbar>
+      <span>Log in</span>
+    </mat-toolbar>
+    <app-login-layout [parentForm]="loginForm"></app-login-layout>
+    <button [disabled]="loginForm.invalid" class="btn" mat-raised-button color="primary" type="submit">Log In</button>
+  </form>
+</div>

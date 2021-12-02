@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Forms Builder</span>
+  <span class="example-spacer"></span>
+  <div class="btn-group" *ngIf="!isAuthenticated else authenticated">
+    <button mat-icon-button routerLink="/login">
+      Log In
+    </button>
+    <button mat-icon-button routerLink="/register">
+      Sign Up
+    </button>
+  </div>
+  <ng-template #authenticated>
+    <div class="btn-group">
+      <button mat-icon-button (click)="signOut.emit()">Sign Out</button>
+    </div>
+  </ng-template>
+</mat-toolbar>

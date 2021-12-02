@@ -1,0 +1,13 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 2rem;
+}
+
+.btn-group {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
