@@ -30,7 +30,7 @@ import {RegisterLayoutComponent} from './components/auth/register/register-layou
 import {AuthEffects} from "./store/effects/auth.effects";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {FormBuilderComponent} from './components/form-builder/form-builder.component';
-import {FieldsListComponent} from './components/form-builder/fields-list/fields-list.component';
+import {FieldsTemplateComponent} from './components/form-builder/fields-template/fields-template.component';
 import {StylesListComponent} from './components/form-builder/styles-list/styles-list.component';
 import {FormEditAreaComponent} from './components/form-builder/form-edit-area/form-edit-area.component';
 import {TokenInterceptor} from "./shared/services/token.interceptor";
@@ -40,6 +40,7 @@ import {FormEditEffect} from "./store/effects/form-edit.effect";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {PortalModule} from "@angular/cdk/portal";
+import { FormEditAreaLayoutComponent } from './components/form-builder/form-edit-area/form-edit-area-layout/form-edit-area-layout.component';
 
 @NgModule({
   declarations: [
@@ -52,9 +53,10 @@ import {PortalModule} from "@angular/cdk/portal";
     LoginLayoutComponent,
     RegisterLayoutComponent,
     FormBuilderComponent,
-    FieldsListComponent,
+    FieldsTemplateComponent,
     StylesListComponent,
     FormEditAreaComponent,
+    FormEditAreaLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,7 @@ import {PortalModule} from "@angular/cdk/portal";
     RouterModule,
     MatIconModule,
     AppRoutingModule,
+    PortalModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
@@ -85,8 +88,7 @@ import {PortalModule} from "@angular/cdk/portal";
     MatSnackBarModule,
     MatListModule,
     MatCheckboxModule,
-    MatSelectModule,
-    PortalModule
+    MatSelectModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.apiUrl},

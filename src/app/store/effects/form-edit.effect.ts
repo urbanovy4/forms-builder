@@ -1,9 +1,10 @@
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import * as FormEditActions from '../actions/form-edit.action';
+import * as FormEditActions from '../actions/form-builder.actions';
 import {catchError, map, switchMap, tap} from "rxjs/operators";
 import {FormBuilderService} from "../../shared/services/form-builder.service";
 import {of} from "rxjs";
 import {Injectable} from "@angular/core";
+import {addFieldSuccess} from "../actions/form-builder.actions";
 
 @Injectable()
 export class FormEditEffect {
@@ -31,18 +32,33 @@ export class FormEditEffect {
   );
 
   getDefaultFieldsSuccess$ = createEffect(() => this.actions
-    .pipe(
-      ofType(FormEditActions.getDefaultFieldsSuccess),
-      tap(() => {
-      })
-    ),
+      .pipe(
+        ofType(FormEditActions.getDefaultFieldsSuccess),
+        tap(() => {
+        })
+      ),
     {dispatch: false}
   )
 
   addField$ = createEffect(() => this.actions
-      .pipe(
-        ofType(FormEditActions.addField)
-      ),
+    .pipe(
+      ofType(FormEditActions.addField),
+      map(({field}) => {
+        return FormEditActions.addFieldSuccess({field});
+      }),
+      catchError(error => {
+        return of(FormEditActions.addFieldFailure({error}))
+      })
+    ),
+  );
+
+  addFieldSuccess$ = createEffect(() => this.actions
+    .pipe(
+      ofType(FormEditActions.addFieldSuccess),
+      tap(({field}) => {
+        this.formBuildService.addField(field)
+      })
+    ),
     {dispatch: false}
   );
 

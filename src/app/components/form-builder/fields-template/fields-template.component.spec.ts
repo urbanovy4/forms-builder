@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldsListComponent } from './fields-list.component';
+import { FieldsTemplateComponent } from './fields-template.component';
 
 describe('FieldsListComponent', () => {
-  let component: FieldsListComponent;
-  let fixture: ComponentFixture<FieldsListComponent>;
+  let component: FieldsTemplateComponent;
+  let fixture: ComponentFixture<FieldsTemplateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldsListComponent ]
+      declarations: [ FieldsTemplateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FieldsListComponent);
+    fixture = TestBed.createComponent(FieldsTemplateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,7 +13,7 @@ export class StylesListComponent implements AfterViewInit {
   @Input('selectedField')
   set selectField(field: IFormField) {
     this.selectedField = field;
-    console.log(this.selectedField)
+    // console.log(this.selectedField)
   }
 
   selectedPortal: Portal<any>;

@@ -1,6 +1,9 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {IFormField} from "../../../shared/models/model";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {formBuilderSelector} from "../../../store/reducers/form-builder.reducer";
 
 @Component({
   selector: 'app-form-edit-area',
@@ -9,11 +12,15 @@ import {IFormField} from "../../../shared/models/model";
 })
 export class FormEditAreaComponent {
 
-  formFieldList: IFormField[] = [];
+  formFieldList: Observable<IFormField[]> = this.store.select(formBuilderSelector);
 
-  @Output() selectedField = new EventEmitter<IFormField>();
 
-  onDrop(event: CdkDragDrop<IFormField[]>) {
+  constructor(
+    private store: Store,
+  ) {
+  }
+
+  onDrop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -28,9 +35,10 @@ export class FormEditAreaComponent {
         event.currentIndex
       );
     }
+    // this.store.dispatch(addField({field: event.item.data}));
   }
 
   selectField(field) {
-    this.selectedField.emit(field);
+
   }
 }

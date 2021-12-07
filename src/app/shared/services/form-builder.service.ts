@@ -2,6 +2,7 @@ import {Inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IFormField} from "../models/model";
+import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,28 @@ export class FormBuilderService {
 
   getDefaultFields(): Observable<IFormField[]> {
     return this.http.get<IFormField[]>(`${this.apiUrl}/440/field-templates`);
+  }
+
+  addField(event?) {
+    console.log(event)
+    // event = Object.assign(event);
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // } else {
+    //   copyArrayItem(
+    //     event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // }
+  }
+
+  saveForm() {
+
   }
 }

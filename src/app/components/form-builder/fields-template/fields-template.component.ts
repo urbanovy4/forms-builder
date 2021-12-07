@@ -4,10 +4,10 @@ import {CdkDragDrop} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-fields-list',
-  templateUrl: './fields-list.component.html',
-  styleUrls: ['./fields-list.component.scss', '../form-builder.component.scss']
+  templateUrl: './fields-template.component.html',
+  styleUrls: ['./fields-template.component.scss', '../form-builder.component.scss']
 })
-export class FieldsListComponent {
+export class FieldsTemplateComponent {
 
   @Input('defaultFields') defaultFields: IFormField[];
 

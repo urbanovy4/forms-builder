@@ -7,7 +7,12 @@
 
 
   .drag-group {
+    flex: 2;
     display: flex;
+  }
+
+  .style-list {
+    flex: 1;
   }
 }
 
