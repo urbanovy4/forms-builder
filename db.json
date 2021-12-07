@@ -1,3 +1,83 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "eee@eee",
+      "password": "$2a$10$XrP496e/Dv0Qt7nLrjt14.2a7YaCiqQklUGBKIln.H1Y0UOBLzvYm",
+      "id": 1
+    },
+    {
+      "email": "eee@eee3",
+      "password": "$2a$10$dipzu2Vg0gsSohiDsU/vpOJTqbMenxtgJWXqxXDdMpcojSCYAOYha",
+      "id": 2
+    }
+  ],
+  "field-templates": [
+    {
+      "id": 1,
+      "type": "text",
+      "icon": "fa fa-font",
+      "label": "Text",
+      "required": false,
+      "availableStyles": {
+        "width": "100%",
+        "height": "10px",
+        "borderStyle": "",
+        "fontSize": "14px",
+        "fontWeight": "normal",
+        "color": ""
+      }
+    },
+    {
+      "id": 2,
+      "type": "text-area",
+      "icon": "fa fa-text-width",
+      "label": "Textarea",
+      "required": false,
+      "availableStyles": {
+        "width": "",
+        "height": "",
+        "fontSize": "",
+        "fontWeight": "normal",
+        "color": ""
+      }
+    },
+    {
+      "id": 3,
+      "type": "button",
+      "icon": "fa fa-paper-plane",
+      "label": "Button",
+      "required": false,
+      "availableStyles": {
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "normal",
+        "color": ""
+      }
+    },
+    {
+      "id": 4,
+      "type": "checkbox",
+      "icon": "fa fa-list",
+      "label": "Checkbox",
+      "required": false,
+      "availableStyles": {}
+    },
+    {
+      "id": 5,
+      "type": "select",
+      "icon": "fa fa-bars",
+      "label": "Select",
+      "required": false,
+      "availableStyles": {
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "normal",
+        "color": ""
+      }
+    }
+  ]
 }

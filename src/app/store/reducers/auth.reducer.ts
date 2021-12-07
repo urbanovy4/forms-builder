@@ -2,19 +2,18 @@ import {
   logInFailure,
   logInSuccess,
   registerFailure,
-  registerSuccess,
   setToken,
   signOut
 } from "../actions/auth.action";
-import {createReducer, on} from "@ngrx/store";
+import {createFeatureSelector, createReducer, createSelector, on} from "@ngrx/store";
 
-export interface AuthState {
+export interface IAuthState {
   isAuthenticated: boolean;
   accessToken: string | null;
   errorMessage: string | null;
 }
 
-export const initialState: AuthState = {
+export const initialState: IAuthState = {
   isAuthenticated: false,
   accessToken: null,
   errorMessage: null,
@@ -34,11 +33,6 @@ export const authReducer = createReducer(initialState,
       errorMessage: error
     }
   }),
-  // on(registerSuccess, (state) => {
-  //   return {
-  //     ...state
-  //   }
-  // }),
   on(registerFailure, (state, {error}) => {
     return {
       ...state,
@@ -53,5 +47,13 @@ export const authReducer = createReducer(initialState,
       ...state,
       isAuthenticated: true
     }
+  })
+);
+
+export const featureSelector = createFeatureSelector<IAuthState>('auth');
+export const authSelector = createSelector(
+  featureSelector,
+  state => ({
+    accessToken: state.accessToken, errorMessage: state.errorMessage, isAuthenticated: state.isAuthenticated
   })
 );

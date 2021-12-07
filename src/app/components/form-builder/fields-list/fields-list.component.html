@@ -1,0 +1,13 @@
+<div>
+  <h2>Select Fields</h2>
+  <span>Customize your form by drag and <br> drop below fields to the form area.</span>
+</div>
+<div cdkDropList (cdkDropListDropped)="onDrop($event)" [cdkDropListData]="defaultFields" class="field-list">
+  <mat-list>
+    <mat-list-item *ngFor="let field of defaultFields" cdkDrag [cdkDragData]="field" id="{{field.id}}">
+      <i [ngClass]="field.icon" class="fa fa-font"></i>
+      <span>{{field.label}}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+

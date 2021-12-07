@@ -1,0 +1,16 @@
+.edit-area {
+  flex: 2;
+  margin: 0 2rem;
+  padding-top: 1rem;
+  width: 400px;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px dashed #c5c5c5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .field {
+    margin: .5rem;
+  }
+}

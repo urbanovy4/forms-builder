@@ -5,7 +5,7 @@ import {catchError, map, switchMap, tap} from "rxjs/operators";
 import {AuthService} from "../../shared/services/auth.service";
 import {of} from "rxjs";
 import {Router} from "@angular/router";
-import {User} from "../../shared/models/model";
+import {IUser} from "../../shared/models/model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
@@ -24,7 +24,7 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActions.logIn),
       map(value => value.user),
-      switchMap((user: User) => {
+      switchMap((user: IUser) => {
         return this.authService.login(user)
           .pipe(
             map((token: string) => {

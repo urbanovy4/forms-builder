@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FbLayoutComponent } from './fb-layout.component';
+import { StylesListComponent } from './styles-list.component';
 
-describe('FbLayoutComponent', () => {
-  let component: FbLayoutComponent;
-  let fixture: ComponentFixture<FbLayoutComponent>;
+describe('StylesListComponent', () => {
+  let component: StylesListComponent;
+  let fixture: ComponentFixture<StylesListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FbLayoutComponent ]
+      declarations: [ StylesListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FbLayoutComponent);
+    fixture = TestBed.createComponent(StylesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

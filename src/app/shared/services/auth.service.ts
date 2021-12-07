@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CreateResponse, Token, User} from "../models/model";
+import {ICreateResponse, IToken, IUser} from "../models/model";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 
@@ -16,20 +16,24 @@ export class AuthService {
   ) {
   }
 
-  login(user: User): Observable<string> {
-    return this.http.post<Token>(`${this.apiUrl}/login`, user)
+  login(user: IUser): Observable<string> {
+    return this.http.post<IToken>(`${this.apiUrl}/login`, user)
       .pipe(
         map(({accessToken}) => accessToken)
       )
   }
 
-  register(user: User): Observable<CreateResponse> {
-    return this.http.post<CreateResponse>(`${this.apiUrl}/register`, user);
+  register(user: IUser): Observable<ICreateResponse> {
+    return this.http.post<ICreateResponse>(`${this.apiUrl}/register`, user);
   }
 
   signOut() {
     this.token = null;
     localStorage.clear();
+  }
+
+  getToken(): string {
+    return this.token;
   }
 
   setToken(accessToken: string) {

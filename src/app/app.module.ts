@@ -22,15 +22,24 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
 import {HeaderLayoutComponent} from './components/header/header-layout/header-layout.component';
 import {LoginLayoutComponent} from './components/auth/login/login-layout/login-layout.component';
 import {RegisterLayoutComponent} from './components/auth/register/register-layout/register-layout.component';
 import {AuthEffects} from "./store/effects/auth.effects";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { FormBuilderComponent } from './components/form-builder/form-builder.component';
-import { FbLayoutComponent } from './components/form-builder/fb-layout/fb-layout.component';
+import {FormBuilderComponent} from './components/form-builder/form-builder.component';
+import {FieldsListComponent} from './components/form-builder/fields-list/fields-list.component';
+import {StylesListComponent} from './components/form-builder/styles-list/styles-list.component';
+import {FormEditAreaComponent} from './components/form-builder/form-edit-area/form-edit-area.component';
+import {TokenInterceptor} from "./shared/services/token.interceptor";
+import {MatListModule} from "@angular/material/list";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {FormEditEffect} from "./store/effects/form-edit.effect";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSelectModule} from "@angular/material/select";
+import {PortalModule} from "@angular/cdk/portal";
 
 @NgModule({
   declarations: [
@@ -43,12 +52,14 @@ import { FbLayoutComponent } from './components/form-builder/fb-layout/fb-layout
     LoginLayoutComponent,
     RegisterLayoutComponent,
     FormBuilderComponent,
-    FbLayoutComponent,
-
+    FieldsListComponent,
+    StylesListComponent,
+    FormEditAreaComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    DragDropModule,
     HttpClientModule,
     MatToolbarModule,
     RouterModule,
@@ -56,8 +67,8 @@ import { FbLayoutComponent } from './components/form-builder/fb-layout/fb-layout
     AppRoutingModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
     ReactiveComponentModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -67,14 +78,23 @@ import { FbLayoutComponent } from './components/form-builder/fb-layout/fb-layout
       }
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, FormEditEffect]),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    PortalModule
   ],
   providers: [
-    {provide: 'API_URL', useValue: environment.apiUrl}
+    {provide: 'API_URL', useValue: environment.apiUrl},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import {User} from "../../shared/models/model";
+import {IUser} from "../../shared/models/model";
 import {createAction, props} from "@ngrx/store";
 
 export enum AuthActionTypes {
@@ -14,7 +14,7 @@ export enum AuthActionTypes {
 
 export const logIn = createAction(
   AuthActionTypes.LOGIN,
-  props<{ user: User }>()
+  props<{ user: IUser }>()
 );
 
 export const logInSuccess = createAction(
@@ -29,7 +29,7 @@ export const logInFailure = createAction(
 
 export const register = createAction(
   AuthActionTypes.REGISTER,
-  props<{ user: User }>()
+  props<{ user: IUser }>()
 );
 
 export const registerSuccess = createAction(

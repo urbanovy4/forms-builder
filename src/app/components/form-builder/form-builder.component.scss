@@ -1,0 +1,22 @@
+.form-builder {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-around;
+  height: 60vh;
+  margin: 5rem auto;
+
+
+  .drag-group {
+    display: flex;
+  }
+}
+
+.field-list {
+  flex: 1;
+}
+
+.list-item {
+  border: 1px solid;
+  border-radius: 7px;
+}
+

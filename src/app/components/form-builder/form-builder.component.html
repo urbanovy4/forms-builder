@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="form-builder">
+    <ng-template  [cdkPortalOutlet]="selectedPortal"></ng-template>
+    <div class="drag-group" cdkDropListGroup>
+      <ng-template #dragContent>
+        <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
+        <app-form-edit-area (selectedField)="selectField($event)"></app-form-edit-area>
+      </ng-template>
+    </div>
+    <div class="style-list">
+      <ng-template #styleList>
+        <app-styles-list [selectedField]="selectedField"></app-styles-list>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<!--<div>Form</div>-->
+<!--<div>Change Styles</div>-->
