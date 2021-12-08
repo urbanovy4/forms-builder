@@ -36,11 +36,12 @@ import {FormEditAreaComponent} from './components/form-builder/form-edit-area/fo
 import {TokenInterceptor} from "./shared/services/token.interceptor";
 import {MatListModule} from "@angular/material/list";
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import {FormEditEffect} from "./store/effects/form-edit.effect";
+import {FormEditEffects} from "./store/effects/form-edit.effects";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {PortalModule} from "@angular/cdk/portal";
-import { FormEditAreaLayoutComponent } from './components/form-builder/form-edit-area/form-edit-area-layout/form-edit-area-layout.component';
+import {FormEditAreaLayoutComponent} from './components/form-builder/form-edit-area/form-edit-area-layout/form-edit-area-layout.component';
+import {StylesListLayoutComponent} from "./components/form-builder/styles-list/styles-list-layout/styles-list-layout.component";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { FormEditAreaLayoutComponent } from './components/form-builder/form-edit
     StylesListComponent,
     FormEditAreaComponent,
     FormEditAreaLayoutComponent,
+    StylesListLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,7 @@ import { FormEditAreaLayoutComponent } from './components/form-builder/form-edit
       }
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([AuthEffects, FormEditEffect]),
+    EffectsModule.forRoot([AuthEffects, FormEditEffects]),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,

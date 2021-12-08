@@ -9,13 +9,14 @@ import * as formBuilder from './reducers/form-builder.reducer';
 
 export interface AppState {
   auth: auth.IAuthState,
-  formEdit: fieldsTemplates.IFormTemplateState
+  fieldsTemplates: fieldsTemplates.IFormTemplateState,
+  formBuilder: formBuilder.IFormBuilderState,
 }
 
 export const reducers: ActionReducerMap<any> = {
   auth: auth.authReducer,
   fieldsTemplates: fieldsTemplates.fildsTemplateReducer,
-  formBuilder: formBuilder.formBuilderReducer
+  formBuilder: formBuilder.formBuilderReducer,
 };
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];

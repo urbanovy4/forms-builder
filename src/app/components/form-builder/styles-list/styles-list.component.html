@@ -1,5 +1,14 @@
 <div class="style-list-wrapper">
   <div class="style-list-content">
-    <h2 class="title">Styles</h2>
+    <div *ngIf="selectedField | ngrxPush else withoutSelectedField">
+      <h2 class="title">Styles</h2>
+      <app-styles-list-layout [selectedField]="selectedField | ngrxPush"></app-styles-list-layout>
+    </div>
+
+    <ng-template #withoutSelectedField>
+      <div>
+        <h2 class="title">Choose field</h2>
+      </div>
+    </ng-template>
   </div>
 </div>

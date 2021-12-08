@@ -3,19 +3,22 @@ import {createFeatureSelector, createReducer, createSelector, on} from "@ngrx/st
 import * as FormEditActions from '../actions/form-builder.actions';
 
 export interface IFormBuilderState {
-  fields: IFormField[]
+  fields: IFormField[],
+  selectedField: IFormField
 }
 
 export const initialState: IFormBuilderState = {
-  fields: []
+  fields: [],
+  selectedField: null
 };
 
 export const formBuilderReducer = createReducer(initialState,
-  on(FormEditActions.addField, (state, event) => {
+  on(FormEditActions.selectField, (state, {selectedField}) => {
     return {
       ...state,
+      selectedField
     }
-  }),
+  })
 );
 
 export const featureSelector = createFeatureSelector<IFormBuilderState>('formBuilder');

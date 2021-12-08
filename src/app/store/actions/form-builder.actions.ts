@@ -1,12 +1,8 @@
 import {createAction, props} from "@ngrx/store";
 import {IFormField} from "../../shared/models/model";
-import {CdkDragDrop} from "@angular/cdk/drag-drop";
 
 export enum FormBuilderActions {
-  ADD_FIELD = '[ADD] Add Field',
-  ADD_FIELD_SUCCESS = '[ADD] Add Field Success',
-  ADD_FIELD_FAILURE = '[ADD] Add Field Failure',
-  REMOVE_FIELD = '[REMOVE] Remove Field',
+  SELECT_FIELD = '[SELECT] Select Field'
 }
 
 export enum DefaultFieldAction {
@@ -29,21 +25,8 @@ export const getDefaultFieldsFailure = createAction(
   props<{ error: any }>()
 );
 
-export const addField = createAction(
-  FormBuilderActions.ADD_FIELD,
-  props<{field: IFormField}>()
-);
+export const selectField = createAction(
+  FormBuilderActions.SELECT_FIELD,
+  props<{selectedField: IFormField}>()
+)
 
-export const addFieldSuccess = createAction(
-  FormBuilderActions.ADD_FIELD_SUCCESS,
-  props<{field: IFormField}>()
-);
-
-export const addFieldFailure = createAction(
-  FormBuilderActions.ADD_FIELD_FAILURE,
-  props<{error: any}>()
-);
-
-export const removeField = createAction(
-  FormBuilderActions.REMOVE_FIELD
-);

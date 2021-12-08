@@ -13,7 +13,7 @@ import {AppState} from "../../store/app.state";
 import {Observable} from "rxjs";
 import {getDefaultFields} from "../../store/actions/form-builder.actions";
 import {authSelector} from "../../store/reducers/filds-template.reducer";
-import {DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
+import {CdkPortal, DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
 
 @Component({
   selector: 'app-form-builder',
@@ -25,6 +25,9 @@ export class FormBuilderComponent implements OnInit {
   defaultFields: Observable<IFormField[]> = this.store.select(authSelector);
   selectedField: IFormField;
 
+  @ViewChild(CdkPortal, {static: true})
+  portal: TemplatePortal;
+
   constructor(
     private store: Store<AppState>,
   ) {
@@ -35,7 +38,7 @@ export class FormBuilderComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    // this.domPortal.detach();
+    // this.portal.detach();
   }
 
   selectField(field: IFormField) {

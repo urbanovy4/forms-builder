@@ -1,5 +1,7 @@
-import {AfterViewInit, Component, Input, TemplateRef, ViewChild} from '@angular/core';
-import {Portal} from "@angular/cdk/portal";
+import {Component, OnInit} from '@angular/core';
+import {AppState} from "../../../store/app.state";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
 import {IFormField} from "../../../shared/models/model";
 
 @Component({
@@ -7,23 +9,16 @@ import {IFormField} from "../../../shared/models/model";
   templateUrl: './styles-list.component.html',
   styleUrls: ['./styles-list.component.scss']
 })
-export class StylesListComponent implements AfterViewInit {
-  @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
+export class StylesListComponent implements OnInit {
 
-  @Input('selectedField')
-  set selectField(field: IFormField) {
-    this.selectedField = field;
-    // console.log(this.selectedField)
+  selectedField: Observable<IFormField> = this.store.select(state => state.formBuilder.selectedField);
+
+  constructor(
+    private store: Store<AppState>
+  ) {
   }
 
-  selectedPortal: Portal<any>;
-
-  selectedField: IFormField;
-  constructor() {
-  }
-
-  ngAfterViewInit() {
-    // this.componentPortal = new ComponentPortal();
+  ngOnInit() {
   }
 
 }

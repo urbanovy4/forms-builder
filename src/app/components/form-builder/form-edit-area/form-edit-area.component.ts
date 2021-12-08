@@ -1,23 +1,31 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {IFormField} from "../../../shared/models/model";
 import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {formBuilderSelector} from "../../../store/reducers/form-builder.reducer";
+import {Subscription} from "rxjs";
+import {AppState} from "../../../store/app.state";
+import {selectField} from "../../../store/actions/form-builder.actions";
 
 @Component({
   selector: 'app-form-edit-area',
   templateUrl: './form-edit-area.component.html',
   styleUrls: ['./form-edit-area.component.scss', '../form-builder.component.scss']
 })
-export class FormEditAreaComponent {
+export class FormEditAreaComponent implements OnInit, OnDestroy {
 
-  formFieldList: Observable<IFormField[]> = this.store.select(formBuilderSelector);
-
+  private subscription: Subscription = new Subscription();
+  formFieldList: IFormField[] = [];
 
   constructor(
-    private store: Store,
+    private store: Store<AppState>
   ) {
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onDrop(event: CdkDragDrop<any>) {
@@ -35,10 +43,9 @@ export class FormEditAreaComponent {
         event.currentIndex
       );
     }
-    // this.store.dispatch(addField({field: event.item.data}));
   }
 
-  selectField(field) {
-
+  selectField(selectedField: IFormField) {
+    this.store.dispatch(selectField({selectedField}));
   }
 }

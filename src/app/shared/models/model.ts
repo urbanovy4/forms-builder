@@ -20,14 +20,20 @@ export interface IFormField {
   icon: string;
   label: string;
   required: boolean;
-  availableStyles: AvailableStyles;
+  availableStyles: AvailableStyles[];
+}
+
+interface Style {
+  value: string;
 }
 
 export interface AvailableStyles {
-  width?: string;
-  height?: string;
-  borderStyle?: string;
-  fontSize?: string;
-  fontWeight?: string;
-  rgbaColor?: string;
+  width?: Style;
+  height?: Style;
+  borderStyle?: Style;
+  fontSize?: Style;
+  fontWeight?: Style;
+  rgbaColor?: Style;
+  placeholder?: Style;
+  required?: Style;
 }

@@ -1,12 +1,16 @@
 <div class="container">
   <div class="form-builder">
-    <div class="drag-group" cdkDropListGroup>
-      <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
-      <app-form-edit-area></app-form-edit-area>
-    </div>
-    <div class="style-list">
-      <app-styles-list [selectedField]="selectedField"></app-styles-list>
-    </div>
+    <ng-template [cdkPortalOutlet]="portal"></ng-template>
   </div>
 </div>
+
+<ng-container *cdkPortal>
+  <div class="drag-group" cdkDropListGroup>
+    <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
+    <app-form-edit-area></app-form-edit-area>
+  </div>
+  <div class="style-list">
+    <app-styles-list></app-styles-list>
+  </div>
+</ng-container>
 

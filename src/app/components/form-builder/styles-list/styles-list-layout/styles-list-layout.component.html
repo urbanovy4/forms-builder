@@ -1,0 +1,25 @@
+<div class="container">
+  <div *ngFor="let style of selectedField.availableStyles">
+    <div *ngIf="style.width">
+      Width
+      <input type="text" name="width">
+    </div>
+    <div *ngIf="style.height">
+      Height
+    </div>
+    <div *ngIf="style.borderStyle">Border Style</div>
+    <div *ngIf="style.fontWeight">Font weight</div>
+    <div *ngIf="style.fontSize">Font size</div>
+    <div *ngIf="style.rgbaColor">Color</div>
+    <div *ngIf="style.placeholder">Placeholder</div>
+    <div *ngIf="style.required">
+      <label for="required">
+        Required
+        <input type="checkbox" id="required">
+      </label>
+    </div>
+  </div>
+  <div>
+    <button>Save</button>
+  </div>
+</div>
