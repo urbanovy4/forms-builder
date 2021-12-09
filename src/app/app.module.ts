@@ -42,6 +42,13 @@ import {MatSelectModule} from "@angular/material/select";
 import {PortalModule} from "@angular/cdk/portal";
 import {FormEditAreaLayoutComponent} from './components/form-builder/form-edit-area/form-edit-area-layout/form-edit-area-layout.component';
 import {StylesListLayoutComponent} from "./components/form-builder/styles-list/styles-list-layout/styles-list-layout.component";
+import {EnumToArrayPipe} from './shared/pipes/enum-to-array.pipe';
+import {
+  MAT_COLOR_FORMATS,
+  NgxMatColorPickerModule,
+  NGX_MAT_COLOR_FORMATS
+} from '@angular-material-components/color-picker';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +66,7 @@ import {StylesListLayoutComponent} from "./components/form-builder/styles-list/s
     FormEditAreaComponent,
     FormEditAreaLayoutComponent,
     StylesListLayoutComponent,
+    EnumToArrayPipe,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +98,8 @@ import {StylesListLayoutComponent} from "./components/form-builder/styles-list/s
     MatSnackBarModule,
     MatListModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMatColorPickerModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.apiUrl},
@@ -98,7 +107,8 @@ import {StylesListLayoutComponent} from "./components/form-builder/styles-list/s
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    {provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

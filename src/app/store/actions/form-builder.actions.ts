@@ -2,7 +2,8 @@ import {createAction, props} from "@ngrx/store";
 import {IFormField} from "../../shared/models/model";
 
 export enum FormBuilderActions {
-  SELECT_FIELD = '[SELECT] Select Field'
+  SELECT_FIELD = '[SELECT] Select Field',
+  DESELECT_FIELD = '[SELECT] Deselect Field'
 }
 
 export enum DefaultFieldAction {
@@ -28,5 +29,9 @@ export const getDefaultFieldsFailure = createAction(
 export const selectField = createAction(
   FormBuilderActions.SELECT_FIELD,
   props<{selectedField: IFormField}>()
-)
+);
+
+export const deselectField = createAction(
+  FormBuilderActions.DESELECT_FIELD
+);
 

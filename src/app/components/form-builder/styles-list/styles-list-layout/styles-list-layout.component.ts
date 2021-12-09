@@ -1,20 +1,44 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AvailableStyles, IFormField} from "../../../../shared/models/model";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AvailableStyles, BorderStyles, IFormField} from "../../../../shared/models/model";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-styles-list-layout',
   templateUrl: './styles-list-layout.component.html',
-  styleUrls: ['./styles-list-layout.component.scss']
+  styleUrls: ['./styles-list-layout.component.scss'],
 })
-export class StylesListLayoutComponent implements OnInit {
+export class StylesListLayoutComponent {
 
   @Input('selectedField') selectedField: IFormField;
+  @Output() activeStyles: EventEmitter<AvailableStyles> = new EventEmitter<AvailableStyles>();
+  borderStyles = BorderStyles;
+  stylesForm: FormGroup;
 
-  ngOnInit(): void {
+  constructor() {
+    this.initForm();
   }
 
-  ngAfterViewInit() {
-    console.log(this.selectedField.availableStyles)
+  initForm() {
+    this.stylesForm = new FormGroup({
+      width: new FormControl('', [Validators.min(100), Validators.max(500)]),
+      height: new FormControl('', [Validators.min(40), Validators.max(150)]),
+      borderStyle: new FormControl(''),
+      fontSize: new FormControl('', [Validators.max(36)]),
+      fontWeight: new FormControl('', [Validators.min(100), Validators.max(900)]),
+      color: new FormControl(''),
+      placeholder: new FormControl('', [Validators.maxLength(40)]),
+      required: new FormControl(false),
+    });
+  }
+
+  onSubmit() {
+    this.activeStyles.emit(this.stylesForm.value);
+    this.stylesForm.reset();
+  }
+
+  isCheckbox() {
+    return this.selectedField.type === 'checkbox';
   }
 
 }

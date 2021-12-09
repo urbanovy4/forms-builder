@@ -19,21 +19,30 @@ export interface IFormField {
   type: string;
   icon: string;
   label: string;
-  required: boolean;
-  availableStyles: AvailableStyles[];
+  availableStyles: AvailableStyles;
 }
 
-interface Style {
-  value: string;
-}
 
 export interface AvailableStyles {
-  width?: Style;
-  height?: Style;
-  borderStyle?: Style;
-  fontSize?: Style;
-  fontWeight?: Style;
-  rgbaColor?: Style;
-  placeholder?: Style;
-  required?: Style;
+  width?: string;
+  height?: string;
+  borderStyle?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  placeholder?: string;
+  required?: boolean;
+}
+
+export enum BorderStyles {
+  Dotted = 'dotted',
+  Dashed = 'dashed',
+  Solid = 'solid',
+  Double = 'double',
+  Groove = 'groove',
+  Ridge = 'ridge',
+  Inset = 'inset',
+  Outset = 'outset',
+  None = 'none',
+  Hidden = 'hidden'
 }

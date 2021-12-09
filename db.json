@@ -17,135 +17,73 @@
       "type": "text",
       "icon": "fa fa-font",
       "label": "Text",
-      "required": false,
-      "availableStyles": [
-        {
-          "placeholder": {
-            "value": ""
-          },
-          "width": {
-            "value": ""
-          },
-          "height": {
-            "value": ""
-          },
-          "borderStyle": {
-            "value": ""
-          },
-          "fontSize": {
-            "value": ""
-          },
-          "fontWeight": {
-            "value": ""
-          },
-          "color": {
-            "value": ""
-          }
-        }
-      ]
+      "availableStyles": {
+        "required": false,
+        "placeholder": "",
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "",
+        "color": ""
+      }
     },
     {
       "id": 2,
       "type": "textarea",
       "icon": "fa fa-text-width",
       "label": "Textarea",
-      "required": false,
-      "availableStyles": [
-        {
-          "placeholder": {
-            "value": ""
-          },
-          "width": {
-            "value": ""
-          },
-          "height": {
-            "value": ""
-          },
-          "fontSize": {
-            "value": ""
-          },
-          "fontWeight": {
-            "value": ""
-          },
-          "color": {
-            "value": ""
-          }
-        }
-      ]
+      "availableStyles": {
+        "required": false,
+        "placeholder": "",
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "",
+        "color": ""
+      }
     },
     {
       "id": 3,
       "type": "button",
       "icon": "fa fa-paper-plane",
       "label": "Button",
-      "required": false,
-      "availableStyles": [
-        {
-          "placeholder": {
-            "value": ""
-          },
-          "width": {
-            "value": ""
-          },
-          "height": {
-            "value": ""
-          },
-          "borderStyle": {
-            "value": ""
-          },
-          "fontSize": {
-            "value": ""
-          },
-          "fontWeight": {
-            "value": ""
-          },
-          "color": {
-            "value": ""
-          }
-        }
-      ]
+      "availableStyles": {
+        "required": false,
+        "placeholder": "",
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "",
+        "color": ""
+      }
     },
     {
       "id": 4,
       "type": "checkbox",
       "icon": "fa fa-list",
       "label": "Checkbox",
-      "required": false,
-      "availableStyles": [
-        {}
-      ]
+      "availableStyles": {
+        "required": false
+      }
     },
     {
       "id": 5,
       "type": "select",
       "icon": "fa fa-bars",
       "label": "Select",
-      "required": false,
-      "availableStyles": [
-        {
-          "placeholder": {
-            "value": ""
-          },
-          "width": {
-            "value": ""
-          },
-          "height": {
-            "value": ""
-          },
-          "borderStyle": {
-            "value": ""
-          },
-          "fontSize": {
-            "value": ""
-          },
-          "fontWeight": {
-            "value": ""
-          },
-          "color": {
-            "value": ""
-          }
-        }
-      ]
+      "availableStyles": {
+        "required": false,
+        "placeholder": "",
+        "width": "",
+        "height": "",
+        "borderStyle": "",
+        "fontSize": "",
+        "fontWeight": "",
+        "color": ""
+      }
     }
   ]
 }

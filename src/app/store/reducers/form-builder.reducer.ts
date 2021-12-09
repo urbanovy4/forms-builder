@@ -18,6 +18,12 @@ export const formBuilderReducer = createReducer(initialState,
       ...state,
       selectedField
     }
+  }),
+  on(FormEditActions.deselectField, (state) => {
+    return {
+      ...state,
+      selectedField: null
+    }
   })
 );
 

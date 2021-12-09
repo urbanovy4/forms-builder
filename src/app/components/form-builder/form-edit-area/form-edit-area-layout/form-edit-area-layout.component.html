@@ -6,13 +6,13 @@
      (click)="selectField(field)"
 >
   <mat-form-field class="field" appearance="fill" *ngSwitchCase="'text'">
-    <mat-label>Clearable input</mat-label>
+    <mat-label>Text</mat-label>
     <input matInput type="text">
   </mat-form-field>
   <mat-form-field class="field" *ngSwitchCase="'textarea'">
-    <textarea matInput></textarea>
+    <textarea matInput placeholder="Text area"></textarea>
   </mat-form-field>
-  <button mat-raised-button class="field" *ngSwitchCase="'button'">Basic</button>
+  <button mat-raised-button color="primary" class="field" *ngSwitchCase="'button'">Basic</button>
   <mat-checkbox class="field" color="primary" *ngSwitchCase="'checkbox'">Checked</mat-checkbox>
   <mat-form-field appearance="fill" class="field" *ngSwitchCase="'select'">
     <mat-label>Cars</mat-label>
