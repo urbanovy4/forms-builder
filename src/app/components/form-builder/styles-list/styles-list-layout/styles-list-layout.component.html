@@ -2,12 +2,12 @@
   <form [formGroup]="stylesForm" (ngSubmit)="onSubmit()">
     <div *ngIf="!isCheckbox()">
       <mat-form-field class="field">
-        <input type="number" matInput placeholder="Width" formControlName="width">
+        <input type="text" matInput placeholder="Width" formControlName="width">
       </mat-form-field>
     </div>
     <div *ngIf="!isCheckbox()">
       <mat-form-field class="field">
-        <input type="number" matInput placeholder="Height" formControlName="height">
+        <input type="text" matInput placeholder="Height" formControlName="height">
       </mat-form-field>
     </div>
     <div *ngIf="!isCheckbox()">
@@ -19,7 +19,7 @@
     </div>
     <div *ngIf="!isCheckbox()">
       <mat-form-field class="field">
-        <input type="number" matInput placeholder="Font size" formControlName="fontSize">
+        <input type="text" matInput placeholder="Font size" formControlName="fontSize">
       </mat-form-field>
     </div>
     <div *ngIf="!isCheckbox()">

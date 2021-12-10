@@ -4,10 +4,12 @@ import * as FormEditActions from '../actions/form-builder.actions';
 
 export interface IFormTemplateState {
   defaultFields: IFormField[],
+  error: string
 }
 
 export const initialState: IFormTemplateState = {
-  defaultFields: []
+  defaultFields: [],
+  error: null
 };
 
 
@@ -18,9 +20,10 @@ export const fildsTemplateReducer = createReducer(initialState,
       defaultFields
     }
   }),
-  on(FormEditActions.getDefaultFieldsFailure, (state, error) => {
+  on(FormEditActions.getDefaultFieldsFailure, (state, {error}) => {
     return {
       ...state,
+      error
     }
   })
 );

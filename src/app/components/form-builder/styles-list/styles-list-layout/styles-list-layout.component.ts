@@ -21,10 +21,10 @@ export class StylesListLayoutComponent {
 
   initForm() {
     this.stylesForm = new FormGroup({
-      width: new FormControl('', [Validators.min(100), Validators.max(500)]),
-      height: new FormControl('', [Validators.min(40), Validators.max(150)]),
+      width: new FormControl('', ),
+      height: new FormControl('', ),
       borderStyle: new FormControl(''),
-      fontSize: new FormControl('', [Validators.max(36)]),
+      fontSize: new FormControl('', ),
       fontWeight: new FormControl('', [Validators.min(100), Validators.max(900)]),
       color: new FormControl(''),
       placeholder: new FormControl('', [Validators.maxLength(40)]),
@@ -34,7 +34,7 @@ export class StylesListLayoutComponent {
 
   onSubmit() {
     this.activeStyles.emit(this.stylesForm.value);
-    this.stylesForm.reset();
+    // this.stylesForm.reset();
   }
 
   isCheckbox() {

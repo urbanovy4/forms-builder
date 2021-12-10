@@ -3,7 +3,8 @@ import {AppState} from "../../../store/app.state";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
 import {AvailableStyles, IFormField} from "../../../shared/models/model";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {changeStyle} from "../../../store/actions/form-builder.actions";
+
 
 @Component({
   selector: 'app-styles-list',
@@ -12,10 +13,11 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 })
 export class StylesListComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
+  subscription: Subscription = new Subscription();
+  private index: number;
+
   selectedField: Observable<IFormField> = this.store.select(state => state.formBuilder.selectedField);
-  form: FormGroup;
-  field: IFormField;
+  selectedFieldIndex: Observable<number> = this.store.select(state => state.formBuilder.index);
 
   constructor(
     private store: Store<AppState>,
@@ -23,18 +25,22 @@ export class StylesListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.selectedField.subscribe(field => {
-      this.field = {...field};
-    });
+    this.subscription.add(
+      this.selectedFieldIndex
+        .subscribe(index => {
+          this.index = index;
+        })
+    );
   }
 
   ngOnDestroy() {
-    console.log(this.form.value);
     this.subscription.unsubscribe();
   }
 
-  save(activeStyles: AvailableStyles) {
-    console.log(activeStyles)
+  changeStyle(styles: AvailableStyles) {
+    this.store.dispatch(changeStyle({
+      styles,
+      index: this.index
+    }));
   }
-
 }

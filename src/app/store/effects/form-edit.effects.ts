@@ -1,9 +1,10 @@
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import * as FormEditActions from '../actions/form-builder.actions';
-import {catchError, map, switchMap, tap} from "rxjs/operators";
+import {catchError, map, switchMap} from "rxjs/operators";
 import {FormBuilderService} from "../../shared/services/form-builder.service";
 import {of} from "rxjs";
 import {Injectable} from "@angular/core";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 export class FormEditEffects {
@@ -16,27 +17,18 @@ export class FormEditEffects {
   getDefaultFields$ = createEffect(() => this.actions
     .pipe(
       ofType(FormEditActions.getDefaultFields),
-      switchMap((data) => {
+      switchMap(() => {
         return this.formBuildService.getDefaultFields()
           .pipe(
-            map((value) => {
-              return FormEditActions.getDefaultFieldsSuccess({defaultFields: value});
+            map((fields) => {
+              return FormEditActions.getDefaultFieldsSuccess({defaultFields: fields});
             }),
-            catchError(({error}) => {
-              return of(FormEditActions.getDefaultFieldsFailure(error))
+            catchError((error: HttpErrorResponse) => {
+              console.log(error)
+              return of(FormEditActions.getDefaultFieldsFailure({error: error.statusText}))
             })
           )
       })
     )
   );
-
-  getDefaultFieldsSuccess$ = createEffect(() => this.actions
-      .pipe(
-        ofType(FormEditActions.getDefaultFieldsSuccess),
-        tap(() => {
-        })
-      ),
-    {dispatch: false}
-  );
-
 }

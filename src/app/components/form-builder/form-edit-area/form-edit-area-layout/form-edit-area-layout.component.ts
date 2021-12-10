@@ -1,8 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IFormField} from "../../../../shared/models/model";
-import {TemplatePortal} from "@angular/cdk/portal";
-import {Observable} from "rxjs";
-import {PortalService} from "../../../../shared/services/portal.service";
 
 @Component({
   selector: 'app-form-edit-area-layout',
@@ -12,7 +9,7 @@ import {PortalService} from "../../../../shared/services/portal.service";
 export class FormEditAreaLayoutComponent implements OnInit {
 
   @Input('formFieldList') formFieldList: IFormField[];
-  @Output() selectedField = new EventEmitter<IFormField>();
+  @Output() selectedField = new EventEmitter<number>();
 
   constructor(
   ) {
@@ -21,8 +18,8 @@ export class FormEditAreaLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectField(field: IFormField) {
-    this.selectedField.emit(field);
+  selectField(index: number) {
+    this.selectedField.emit(index);
   }
 
 }

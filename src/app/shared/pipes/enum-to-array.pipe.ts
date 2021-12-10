@@ -1,12 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'enumToArray'
+  name: 'enumToArray',
+  pure: false
 })
 export class EnumToArrayPipe implements PipeTransform {
-
   transform(data: Object) {
     return Object.keys(data);
   }
-
 }
