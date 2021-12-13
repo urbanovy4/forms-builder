@@ -6,6 +6,7 @@ export enum AuthActionTypes {
   LOGIN_SUCCESS = '[Auth] Login Success',
   LOGIN_FAILURE = '[Auth] Login Failure',
   SET_TOKEN = '[Auth] Set Token',
+  SET_USER_ID = '[Auth] Set User Id',
   REGISTER = '[Auth] Register',
   REGISTER_SUCCESS = '[Auth] Register Success',
   REGISTER_FAILURE = '[Auth] Register Failure',
@@ -19,7 +20,7 @@ export const logIn = createAction(
 
 export const logInSuccess = createAction(
   AuthActionTypes.LOGIN_SUCCESS,
-  props<{ accessToken: string }>()
+  props<{ accessToken: string, userId: number }>()
 );
 
 export const logInFailure = createAction(
@@ -45,6 +46,11 @@ export const registerFailure = createAction(
 export const setToken = createAction(
   AuthActionTypes.SET_TOKEN,
   props<{ accessToken: string }>()
-)
+);
+
+export const setUserId = createAction(
+  AuthActionTypes.SET_USER_ID,
+  props<{userId: number}>()
+);
 
 export const signOut = createAction(AuthActionTypes.SIGN_OUT);

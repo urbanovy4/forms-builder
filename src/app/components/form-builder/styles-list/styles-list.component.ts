@@ -3,7 +3,7 @@ import {AppState} from "../../../store/app.state";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
 import {AvailableStyles, IFormField} from "../../../shared/models/model";
-import {changeStyle} from "../../../store/actions/form-builder.actions";
+import {changeStyle} from "../../../store/actions/fields.actions";
 
 
 @Component({

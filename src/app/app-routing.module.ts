@@ -6,6 +6,7 @@ import {RegisterComponent} from "./components/auth/register/register.component";
 import {AuthComponent} from "./components/auth/auth.component";
 import {FormBuilderComponent} from "./components/form-builder/form-builder.component";
 import {AuthGuard} from "./shared/guards/auth.guard";
+import {UserFormsComponent} from "./pages/user-forms/user-forms.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'form-builder', component: FormBuilderComponent, canActivate: [AuthGuard]
+    path: 'forms-builder', component: FormBuilderComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-forms', component: UserFormsComponent, canActivate: [AuthGuard]
   }
 ];
 

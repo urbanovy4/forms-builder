@@ -48,6 +48,8 @@ import {
   NgxMatColorPickerModule,
   NGX_MAT_COLOR_FORMATS
 } from '@angular-material-components/color-picker';
+import {UserFormsComponent} from './pages/user-forms/user-forms.component';
+import {UserFormsEffects} from "./store/effects/user-forms.effects";
 
 
 @NgModule({
@@ -67,6 +69,7 @@ import {
     FormEditAreaLayoutComponent,
     StylesListLayoutComponent,
     EnumToArrayPipe,
+    UserFormsComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,7 @@ import {
       }
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([AuthEffects, FormEditEffects]),
+    EffectsModule.forRoot([AuthEffects, FormEditEffects, UserFormsEffects]),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,

@@ -16,11 +16,8 @@ export class AuthService {
   ) {
   }
 
-  login(user: IUser): Observable<string> {
-    return this.http.post<IToken>(`${this.apiUrl}/login`, user)
-      .pipe(
-        map(({accessToken}) => accessToken)
-      )
+  login(user: IUser): Observable<ICreateResponse> {
+    return this.http.post<ICreateResponse>(`${this.apiUrl}/login`, user);
   }
 
   register(user: IUser): Observable<ICreateResponse> {
@@ -34,6 +31,10 @@ export class AuthService {
 
   getToken(): string {
     return this.token;
+  }
+
+  setUserId(userId: number) {
+    localStorage.setItem('userId', userId + '');
   }
 
   setToken(accessToken: string) {

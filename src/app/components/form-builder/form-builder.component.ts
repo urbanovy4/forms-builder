@@ -10,10 +10,12 @@ import {
 import {IFormField} from "../../shared/models/model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.state";
-import {Observable} from "rxjs";
-import {deselectField, getDefaultFields} from "../../store/actions/form-builder.actions";
+import {Observable, Subscription} from "rxjs";
+import {deselectField, getDefaultFields, saveForm} from "../../store/actions/fields.actions";
 import {authSelector} from "../../store/reducers/filds-template.reducer";
 import {CdkPortal, DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
+import {copy} from "../../shared/utils/utils";
+import {FormBuilderService} from "../../shared/services/form-builder.service";
 
 @Component({
   selector: 'app-form-builder',
@@ -24,7 +26,13 @@ export class FormBuilderComponent implements OnInit {
 
   @ViewChild(CdkPortal, {static: true}) portal: TemplatePortal;
 
+  private subscription: Subscription = new Subscription();
+
   defaultFields: Observable<IFormField[]> = this.store.select(authSelector);
+  fields$: Observable<IFormField[]> = this.store.select(state => state.formBuilder.fields);
+  userId$: Observable<number> = this.store.select(state => state.auth.userId);
+  userId: number;
+  fields: IFormField[] = [];
 
   constructor(
     private store: Store<AppState>,
@@ -33,10 +41,34 @@ export class FormBuilderComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getDefaultFields());
+    this.getFields();
+    this.getUserId();
+  }
+
+  private getFields() {
+    this.subscription.add(
+      this.fields$.subscribe(fields => {
+        this.fields = copy(fields);
+      })
+    );
+  }
+
+  private getUserId() {
+    this.subscription.add(
+      this.userId$.subscribe(id => {
+        this.userId = id;
+      })
+    );
   }
 
   ngOnDestroy() {
     this.store.dispatch(deselectField());
+    this.subscription.unsubscribe();
+  }
+
+  saveForm() {
+    console.log(this.userId)
+    this.store.dispatch(saveForm({fields: this.fields, userId: this.userId}));
   }
 
 }

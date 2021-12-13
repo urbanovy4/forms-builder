@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {AvailableStyles, BorderStyles, IFormField} from "../../../../shared/models/model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   selector: 'app-styles-list-layout',
   templateUrl: './styles-list-layout.component.html',
   styleUrls: ['./styles-list-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StylesListLayoutComponent {
 

@@ -29,9 +29,19 @@ export interface AvailableStyles {
   borderStyle?: string;
   fontSize?: string;
   fontWeight?: string;
-  color?: string;
+  color?: Color;
   placeholder?: string;
   required?: boolean;
+}
+
+interface Color {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+  roundA: number;
+  hex: string;
+  rgba: string;
 }
 
 export enum BorderStyles {

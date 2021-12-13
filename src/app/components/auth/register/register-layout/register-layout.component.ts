@@ -1,10 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-register-layout',
   templateUrl: './register-layout.component.html',
-  styleUrls: ['./register-layout.component.scss', './../register.component.scss'],
+  styleUrls: ['./register-layout.component.scss', '../register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterLayoutComponent {
 

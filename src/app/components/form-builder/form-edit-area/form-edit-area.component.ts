@@ -4,7 +4,7 @@ import {IFormField} from "../../../shared/models/model";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
 import {AppState} from "../../../store/app.state";
-import {addField, moveFieldInArray, selectField} from "../../../store/actions/form-builder.actions";
+import {addField, moveFieldInArray, selectField} from "../../../store/actions/fields.actions";
 import {copy} from "../../../shared/utils/utils";
 
 @Component({

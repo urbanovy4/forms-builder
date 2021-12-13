@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.state";
-import {signOut} from "../../store/actions/auth.action";
+import {signOut} from "../../store/actions/auth.actions";
 
 @Component({
   selector: 'app-header',

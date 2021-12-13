@@ -1,12 +1,20 @@
 <div class="container">
   <div class="form-builder">
+  <div>
+    <button routerLink="/user-forms">To userForms</button>
+  </div>
     <ng-template [cdkPortalOutlet]="portal"></ng-template>
   </div>
 </div>
 
 <ng-container *cdkPortal>
   <div class="drag-group" cdkDropListGroup>
-    <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
+    <div class="fields-template-wrapper">
+      <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
+      <div class="save-form" *ngIf="fields.length">
+        <button class="btn btn-primary" (click)="saveForm()">Save form</button>
+      </div>
+    </div>
     <app-form-edit-area></app-form-edit-area>
   </div>
   <div class="style-list">

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import * as AuthActions from '../actions/auth.action';
+import * as AuthActions from '../actions/auth.actions';
 import {catchError, map, switchMap, tap} from "rxjs/operators";
 import {AuthService} from "../../shared/services/auth.service";
 import {of} from "rxjs";
@@ -27,8 +27,8 @@ export class AuthEffects {
       switchMap((user: IUser) => {
         return this.authService.login(user)
           .pipe(
-            map((token: string) => {
-              return AuthActions.logInSuccess({accessToken: token})
+            map(({accessToken, user}) => {
+              return AuthActions.logInSuccess({accessToken, userId: user.id})
             }),
             catchError((error) => {
               return of(AuthActions.logInFailure(error));
@@ -58,9 +58,10 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() => this.actions
       .pipe(
         ofType(AuthActions.logInSuccess),
-        tap(({accessToken}) => {
+        tap(({accessToken, userId}) => {
           this.authService.setToken(accessToken);
-          this.router.navigate(['/form-builder'])
+          this.authService.setUserId(userId);
+          this.router.navigate(['/forms-builder'])
         })
       ),
     {dispatch: false}
@@ -128,5 +129,15 @@ export class AuthEffects {
         })
       ),
     {dispatch: false}
-  )
+  );
+
+  setUserId$ = createEffect(() => this.actions
+      .pipe(
+        ofType(AuthActions.setUserId),
+        tap(({userId}) => {
+          this.authService.setUserId(userId)
+        })
+      ),
+    {dispatch: false}
+  );
 }

@@ -1,6 +1,6 @@
 import {IFormField} from "../../shared/models/model";
 import {createFeatureSelector, createReducer, createSelector, on} from "@ngrx/store";
-import * as FormEditActions from '../actions/form-builder.actions';
+import * as FormEditActions from '../actions/fields.actions';
 import {updateArray} from "../../shared/utils/utils";
 
 export interface IFormBuilderState {

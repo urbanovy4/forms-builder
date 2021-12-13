@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IFormField} from "../../../../shared/models/model";
 
 @Component({
   selector: 'app-form-edit-area-layout',
   templateUrl: './form-edit-area-layout.component.html',
-  styleUrls: ['./form-edit-area-layout.component.scss', '../form-edit-area.component.scss']
+  styleUrls: ['./form-edit-area-layout.component.scss', '../form-edit-area.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormEditAreaLayoutComponent implements OnInit {
 

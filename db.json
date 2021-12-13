@@ -65,11 +65,9 @@
       "type": "checkbox",
       "icon": "fa fa-list",
       "label": "Checkbox",
-      "availableStyles":
-        {
-          "required": false
-        }
-
+      "availableStyles": {
+        "required": false
+      }
     },
     {
       "id": 5,
@@ -87,5 +85,7 @@
         "color": ""
       }
     }
+  ],
+  "saved-forms": [
   ]
 }

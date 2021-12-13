@@ -1,10 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-login-layout',
   templateUrl: './login-layout.component.html',
-  styleUrls: ['./login-layout.component.scss', './../login.component.scss'],
+  styleUrls: ['./login-layout.component.scss', '../login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginLayoutComponent {
 

@@ -9,6 +9,12 @@
   .drag-group {
     flex: 2;
     display: flex;
+
+    .fields-template-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 
   .style-list {
