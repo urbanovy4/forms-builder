@@ -12,4 +12,8 @@ export class FieldsTemplateComponent {
 
   @Input('defaultFields') defaultFields: IFormField[];
 
+
+  noReturnPredicate() {
+    return false
+  }
 }

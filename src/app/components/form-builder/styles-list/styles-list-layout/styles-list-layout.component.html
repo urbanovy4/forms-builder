@@ -35,7 +35,7 @@
         <ngx-mat-color-picker #picker></ngx-mat-color-picker>
       </mat-form-field>
     </div>
-    <div *ngIf="!isCheckbox()">
+    <div>
       <mat-form-field class="field">
         <input matInput type="text" placeholder="Placeholder text" formControlName="placeholder">
       </mat-form-field>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="save-styles">
-      <button mat-raised-button type="submit" color="primary">Save</button>
+      <button mat-raised-button type="submit" color="primary" [disabled]="stylesForm.invalid">Save</button>
     </div>
   </form>
 </div>

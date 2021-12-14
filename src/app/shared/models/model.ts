@@ -34,6 +34,13 @@ export interface AvailableStyles {
   required?: boolean;
 }
 
+export interface Form {
+  id: number;
+  userId: number;
+  fields: IFormField[];
+  formName: string;
+}
+
 interface Color {
   r: number;
   g: number;

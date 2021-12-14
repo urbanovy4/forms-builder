@@ -7,20 +7,19 @@ import {IFormField} from "../../../../shared/models/model";
   styleUrls: ['./form-edit-area-layout.component.scss', '../form-edit-area.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormEditAreaLayoutComponent implements OnInit {
+export class FormEditAreaLayoutComponent {
 
   @Input('formFieldList') formFieldList: IFormField[];
-  @Output() selectedField = new EventEmitter<number>();
+  @Output() selectField = new EventEmitter<number>();
+  @Output() changeFormList = new EventEmitter<IFormField[]>();
 
-  constructor(
-  ) {
+  selectedField(index: number) {
+    this.selectField.emit(index);
   }
 
-  ngOnInit(): void {
-  }
-
-  selectField(index: number) {
-    this.selectedField.emit(index);
+  removeField(index: number) {
+    this.formFieldList.splice(index, 1);
+    this.changeFormList.emit(this.formFieldList);
   }
 
 }

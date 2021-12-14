@@ -1,10 +1,11 @@
 import {createAction, props} from "@ngrx/store";
-import {IFormField} from "../../shared/models/model";
+import {Form} from "../../shared/models/model";
 
 export enum UserFormsActions {
-  GET_FORMS = '[User] Get Forms',
-  GET_FORMS_SUCCESS = '[User] Get Forms Success',
-  GET_FORMS_FAILURE = '[User] Get Forms Failure'
+  GET_FORMS = '[FORM] Get Forms',
+  GET_FORMS_SUCCESS = '[FORM] Get Forms Success',
+  GET_FORMS_FAILURE = '[FORM] Get Forms Failure',
+  SELECT_FORM = '[FORM] Select Form'
 }
 
 export const getForms = createAction(
@@ -14,10 +15,15 @@ export const getForms = createAction(
 
 export const getFormsSuccess = createAction(
   UserFormsActions.GET_FORMS_SUCCESS,
-  props<{forms: [{userId: number, fields: IFormField[], id: number}]}>()
+  props<{forms: Form[]}>()
 );
 
 export const getFormsFailure = createAction(
   UserFormsActions.GET_FORMS_FAILURE,
   props<{error: string}>()
+);
+
+export const selectForm = createAction(
+  UserFormsActions.SELECT_FORM,
+  props<{selectedForm: Form}>()
 );

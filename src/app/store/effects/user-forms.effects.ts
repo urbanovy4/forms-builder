@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import * as UserActions from '../actions/user-forms.actions'
-import {catchError, map, switchMap} from "rxjs/operators";
+import {catchError, map, switchMap, tap} from "rxjs/operators";
 import {UserFormsService} from "../../shared/services/user-forms.service";
-import {IFormField} from "../../shared/models/model";
+import {Form, IFormField} from "../../shared/models/model";
 import {of} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 
@@ -16,22 +16,29 @@ export class UserFormsEffects {
   }
 
   getForms$ = createEffect(() => this.actions
-      .pipe(
-        ofType(UserActions.getForms),
-        switchMap(({userId}) => {
-          return this.userFormsService.getForms(userId)
-          // .pipe(
-          //   map((response: [{ userId: number, fields: IFormField[], id: number }]) => {
-          //     return UserActions.getFormsSuccess({forms: response})
-          //   }),
-          //   catchError((error: HttpErrorResponse) => {
-          //     return of(UserActions.getFormsFailure({error: error.statusText}))
-          //   })
-          // )
-        })
-      ),
-    {dispatch: false}
+    .pipe(
+      ofType(UserActions.getForms),
+      switchMap(({userId}) => {
+        return this.userFormsService.getForms(userId)
+          .pipe(
+            map((forms: Form[]) => {
+              return UserActions.getFormsSuccess({forms})
+            }),
+            catchError((error: HttpErrorResponse) => {
+              return of(UserActions.getFormsFailure({error: error.statusText}))
+            })
+          )
+      })
+    )
   );
 
+
+  getFormsFailure$ = createEffect(() => this.actions
+    .pipe(
+      ofType(UserActions.getFormsFailure),
+      tap()
+    ),
+    {dispatch: false}
+  );
 
 }

@@ -1,0 +1,60 @@
+<div class="field-list">
+  <div class="field"
+       *ngFor="let field of selectedForm.fields; let i = index"
+       [ngSwitch]="field.type"
+  >
+    <!--    <div class="drag-placeholder" *cdkDragPlaceholder></div>-->
+    <mat-form-field [ngStyle]="field.availableStyles" appearance="outline" *ngSwitchCase="'text'">
+      <mat-label>{{field.availableStyles.placeholder || 'Text'}}</mat-label>
+      <input
+        matInput
+        [style.color]="field.availableStyles.color.rgba"
+        [required]="field.availableStyles.required"
+        [placeholder]="field.availableStyles.placeholder || 'Text'"
+      >
+    </mat-form-field>
+    <mat-form-field *ngSwitchCase="'textarea'" [ngStyle]="field.availableStyles" appearance="outline">
+      <textarea
+        matInput
+        [style.color]="field.availableStyles.color.rgba"
+        [required]="field.availableStyles.required"
+        [placeholder]="field.availableStyles.placeholder"
+      ></textarea>
+    </mat-form-field>
+    <!--    <div class="col-10" *ngSwitchCase="'textarea'">-->
+    <!--      <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>-->
+    <!--      <textarea class="form-control"-->
+    <!--                [ngStyle]="field.availableStyles"-->
+    <!--                [style.color]="field.availableStyles.color.rgba"-->
+    <!--                [required]="field.availableStyles.required"-->
+    <!--                [placeholder]="field.availableStyles.placeholder">-->
+    <!--        </textarea>-->
+    <!--    </div>-->
+    <div class="col-10" *ngSwitchCase="'button'">
+      <button type="button" class="btn btn-primary"
+              [ngStyle]="field.availableStyles"
+              [style.color]="field.availableStyles.color.rgba"
+      >
+        {{field.availableStyles.placeholder || 'Button'}}
+      </button>
+    </div>
+    <div class="col-10" *ngSwitchCase="'checkbox'">
+      <input class="form-check-input" type="checkbox">
+      <label class="form-check-label">
+        {{field.label || 'Test label'}}
+      </label>
+    </div>
+    <div class="col-10" *ngSwitchCase="'select'">
+      <label>Select list:</label>
+      <select class="form-control"
+              [ngStyle]="field.availableStyles"
+              [style.color]="field.availableStyles.color.rgba"
+      >
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+  </div>
+</div>

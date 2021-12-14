@@ -22,8 +22,8 @@ export class StylesListLayoutComponent {
 
   initForm() {
     this.stylesForm = new FormGroup({
-      width: new FormControl('', ),
-      height: new FormControl('', ),
+      width: new FormControl(''),
+      height: new FormControl(''),
       borderStyle: new FormControl(''),
       fontSize: new FormControl('', ),
       fontWeight: new FormControl('', [Validators.min(100), Validators.max(900)]),
@@ -35,7 +35,6 @@ export class StylesListLayoutComponent {
 
   onSubmit() {
     this.activeStyles.emit(this.stylesForm.value);
-    // this.stylesForm.reset();
   }
 
   isCheckbox() {

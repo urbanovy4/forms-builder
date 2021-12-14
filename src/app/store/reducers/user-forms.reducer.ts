@@ -1,19 +1,15 @@
 import {createReducer, on} from "@ngrx/store";
-import {IFormField} from "../../shared/models/model";
+import {Form} from "../../shared/models/model";
 import * as UserActions from '../actions/user-forms.actions';
 
-interface FormsResponse {
-  userId: number;
-  fields: IFormField[];
-  id: number;
-}
-
 export interface IUserFormsState {
-  forms: FormsResponse[]
+  forms: Form[],
+  selectedForm: Form
 }
 
 const initialState: IUserFormsState = {
-  forms: []
+  forms: [],
+  selectedForm: null
 };
 
 export const userFormsReducer = createReducer(initialState,
@@ -21,6 +17,12 @@ export const userFormsReducer = createReducer(initialState,
     return {
       ...state,
       forms
+    }
+  }),
+  on(UserActions.selectForm, (state, {selectedForm}) => {
+    return {
+      ...state,
+      selectedForm
     }
   })
 );

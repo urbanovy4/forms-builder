@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.state";
 import {signOut} from "../../store/actions/auth.actions";
+import {clearFieldState} from "../../store/actions/fields.actions";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import {signOut} from "../../store/actions/auth.actions";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public isAuthenticated = this.store.select(state => state.auth.isAuthenticated);
+  public isAuthenticated: Observable<boolean> = this.store.select<boolean>(state => state.auth.isAuthenticated);
 
   constructor(
     private store: Store<AppState>
@@ -21,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.store.dispatch(signOut());
+    this.store.dispatch(clearFieldState());
   }
 
 }

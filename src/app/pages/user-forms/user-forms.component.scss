@@ -1,0 +1,16 @@
+.container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  .form-wrapper {
+    width: 600px;
+    //margin: 1rem auto;
+  }
+
+  .selected-form {
+    width: 400px;
+  }
+}
+
+

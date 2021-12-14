@@ -4,7 +4,13 @@ import {IFormField} from "../../../shared/models/model";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
 import {AppState} from "../../../store/app.state";
-import {addField, moveFieldInArray, selectField} from "../../../store/actions/fields.actions";
+import {
+  addField,
+  deselectField,
+  moveFieldInArray,
+  removeField,
+  selectField
+} from "../../../store/actions/fields.actions";
 import {copy} from "../../../shared/utils/utils";
 
 @Component({
@@ -15,7 +21,7 @@ import {copy} from "../../../shared/utils/utils";
 export class FormEditAreaComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
-  formFieldList$: Observable<IFormField[]> = this.store.select(state => state.formBuilder.fields);
+  formFieldList$: Observable<IFormField[]> = this.store.select<IFormField[]>(state => state.formBuilder.fields);
   formFieldList: IFormField[] = [];
 
   constructor(
@@ -70,4 +76,9 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   selectField(index: number) {
     this.store.dispatch(selectField({index}));
   }
+
+  removeField(fields: IFormField[]) {
+    this.store.dispatch(removeField({fields}));
+  }
+
 }

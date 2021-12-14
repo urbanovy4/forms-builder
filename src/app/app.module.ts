@@ -50,6 +50,8 @@ import {
 } from '@angular-material-components/color-picker';
 import {UserFormsComponent} from './pages/user-forms/user-forms.component';
 import {UserFormsEffects} from "./store/effects/user-forms.effects";
+import { FormsListComponent } from './components/forms-list/forms-list.component';
+import { SelectedFormComponent } from './components/selected-form/selected-form.component';
 
 
 @NgModule({
@@ -70,6 +72,8 @@ import {UserFormsEffects} from "./store/effects/user-forms.effects";
     StylesListLayoutComponent,
     EnumToArrayPipe,
     UserFormsComponent,
+    FormsListComponent,
+    SelectedFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,11 @@ import {AvailableStyles, IFormField} from "../../shared/models/model";
 
 export enum FieldsActions {
   ADD_FIELD = '[FIELD] Add Field',
+  REMOVE_FIELD = '[FIELD] Remove Field',
   SELECT_FIELD = '[FIELD] Select Field',
   DESELECT_FIELD = '[FIELD] Deselect Field',
   MOVE_FIELD = '[FIELD] Move Field',
+  CLEAR_FIELD_STATE = '[FIELD] Clear Field State'
 }
 
 export enum ChangeStyleActions {
@@ -43,6 +45,11 @@ export const addField = createAction(
   props<{field: IFormField}>()
 );
 
+export const removeField = createAction(
+  FieldsActions.REMOVE_FIELD,
+  props<{fields: IFormField[]}>()
+);
+
 export const selectField = createAction(
   FieldsActions.SELECT_FIELD,
   props<{index: number}>()
@@ -50,6 +57,10 @@ export const selectField = createAction(
 
 export const deselectField = createAction(
   FieldsActions.DESELECT_FIELD
+);
+
+export const clearFieldState = createAction(
+  FieldsActions.CLEAR_FIELD_STATE
 );
 
 export const changeStyle = createAction(
@@ -64,7 +75,7 @@ export const moveFieldInArray = createAction(
 
 export const saveForm = createAction(
   FormActions.SAVE_FORM,
-  props<{fields: IFormField[], userId: number}>()
+  props<{fields: IFormField[], userId: number, formName: string}>()
 );
 
 export const saveFormSuccess = createAction(

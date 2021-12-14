@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.state";
-import {Subscription} from "rxjs";
-import {getForms} from "../../store/actions/user-forms.actions";
+import {Observable, Subscription} from "rxjs";
+import {getForms, selectForm} from "../../store/actions/user-forms.actions";
+import {Form} from "../../shared/models/model";
 
 @Component({
   selector: 'app-user-forms',
@@ -13,8 +14,11 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
 
-  userId$ = this.store.select(state => state.auth.userId);
+  userId$: Observable<number> = this.store.select<number>(state => state.auth.userId);
+  forms$: Observable<Form[]> = this.store.select<Form[]>(state => state.userForms.forms);
+
   userId: number;
+  selectedForm: Form;
 
   constructor(
     private store: Store<AppState>
@@ -39,5 +43,10 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   getForms(userId: number) {
     this.store.dispatch(getForms({userId}));
+  }
+
+  selectForm(selectedForm: Form) {
+    this.selectedForm = selectedForm;
+    this.store.dispatch(selectForm({selectedForm}))
   }
 }

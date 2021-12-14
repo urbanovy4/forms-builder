@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
-  <span>Forms Builder</span>
+  <span routerLink="/forms-builder" routerLinkActive="active">Forms Builder</span>
+  <span *ngIf="isAuthenticated">&nbsp; / &nbsp;</span>
+  <span routerLink="/user-forms" routerLinkActive="active" *ngIf="isAuthenticated">User forms</span>
   <span class="example-spacer"></span>
   <div class="btn-group" *ngIf="!isAuthenticated else authenticated">
-    <button mat-icon-button routerLink="/login">
+    <button mat-icon-button routerLinkActive="active" routerLink="/login">
       Log In
     </button>
-    <button mat-icon-button routerLink="/register">
+    <button mat-icon-button routerLinkActive="active" routerLink="/register">
       Sign Up
     </button>
   </div>

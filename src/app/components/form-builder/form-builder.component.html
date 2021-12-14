@@ -1,8 +1,5 @@
 <div class="container">
   <div class="form-builder">
-  <div>
-    <button routerLink="/user-forms">To userForms</button>
-  </div>
     <ng-template [cdkPortalOutlet]="portal"></ng-template>
   </div>
 </div>
@@ -11,9 +8,13 @@
   <div class="drag-group" cdkDropListGroup>
     <div class="fields-template-wrapper">
       <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
-      <div class="save-form" *ngIf="fields.length">
-        <button class="btn btn-primary" (click)="saveForm()">Save form</button>
-      </div>
+      <form [formGroup]="form" (ngSubmit)="saveForm()" *ngIf="fields.length">
+        <div class="form-group">
+          <label for="form-name">Form name</label>
+          <input type="text" class="form-control" id="form-name" placeholder="Form name" formControlName="formName">
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save form</button>
+      </form>
     </div>
     <app-form-edit-area></app-form-edit-area>
   </div>

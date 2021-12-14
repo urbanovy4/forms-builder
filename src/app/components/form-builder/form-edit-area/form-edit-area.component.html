@@ -1,7 +1,10 @@
-<div class="edit-area" cdkDropList [cdkDropListData]="formFieldList" (cdkDropListDropped)="onDrop($event)">
-  <app-form-edit-area-layout (selectedField)="selectField($event)"
-                             [formFieldList]="formFieldList">
-  </app-form-edit-area-layout>
-
-
+<div class="edit-area"
+     cdkDropList
+     [cdkDropListData]="formFieldList"
+     (cdkDropListDropped)="onDrop($event)">
+  <app-form-edit-area-layout
+    (selectField)="selectField($event)"
+    (changeFormList)="removeField($event)"
+    [formFieldList]="formFieldList"
+  ></app-form-edit-area-layout>
 </div>

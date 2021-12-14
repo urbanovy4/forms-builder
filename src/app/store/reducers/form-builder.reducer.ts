@@ -22,6 +22,12 @@ export const formBuilderReducer = createReducer(initialState,
       fields: state.fields.concat(field)
     }
   }),
+  on(FormEditActions.removeField, (state, {fields}) => {
+    return {
+      ...state,
+      fields
+    }
+  }),
   on(FormEditActions.selectField, (state, {index}) => {
     return {
       ...state,
@@ -29,11 +35,14 @@ export const formBuilderReducer = createReducer(initialState,
       index
     }
   }),
-  on(FormEditActions.deselectField, (state) => {
+  on(FormEditActions.deselectField, state => {
     return {
       ...state,
       selectedField: null
     }
+  }),
+  on(FormEditActions.clearFieldState, () => {
+    return initialState;
   }),
   on(FormEditActions.changeStyle, (state, {styles, index}) => {
     return {
@@ -53,5 +62,5 @@ export const formBuilderReducer = createReducer(initialState,
 export const featureSelector = createFeatureSelector<IFormBuilderState>('formBuilder');
 export const formBuilderSelector = createSelector(
   featureSelector,
-  state => state.fields
+  state => state
 );

@@ -38,8 +38,8 @@ export class FormEditEffects {
   saveForm$ = createEffect(() => this.actions
     .pipe(
       ofType(FormActions.saveForm),
-      switchMap(({fields, userId}) => {
-        return this.formBuildService.saveForm(fields, userId)
+      switchMap(({fields, userId, formName}) => {
+        return this.formBuildService.saveForm(fields, userId, formName)
           .pipe(
             map(() => {
               return FormActions.saveFormSuccess({message: 'Form has been successfully created'})

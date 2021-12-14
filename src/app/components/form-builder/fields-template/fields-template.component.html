@@ -4,7 +4,11 @@
       <h2>Select Fields</h2>
       <span>Customize your form by drag and <br> drop below fields to the form area.</span>
     </div>
-    <div cdkDropList [cdkDropListData]="defaultFields" cdkDropListSortingDisabled class="field-list">
+    <div cdkDropList
+         [cdkDropListData]="defaultFields"
+         [cdkDropListEnterPredicate]="noReturnPredicate"
+         cdkDropListSortingDisabled
+         class="field-list">
       <mat-list>
         <mat-list-item class="item" *ngFor="let field of defaultFields" cdkDrag [cdkDragData]="field" id="{{field.id}}">
           <i [ngClass]="field.icon" class="fa fa-font"></i>
