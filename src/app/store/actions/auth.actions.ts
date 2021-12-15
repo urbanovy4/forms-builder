@@ -1,4 +1,4 @@
-import {IUser} from "../../shared/models/model";
+import {IUser} from "../../helpers/models/model";
 import {createAction, props} from "@ngrx/store";
 
 export enum AuthActionTypes {

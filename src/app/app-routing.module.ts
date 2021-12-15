@@ -1,26 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./pages/components/auth/login/login.component";
-import {RegisterComponent} from "./pages/components/auth/register/register.component";
-import {AuthComponent} from "./pages/components/auth/auth.component";
-import {FormBuilderComponent} from "./pages/components/forms-builder/form-builder.component";
-import {AuthGuard} from "./shared/guards/auth.guard";
-import {UserFormsComponent} from "./pages/components/user-forms/user-forms.component";
 
 const routes: Routes = [
   {
-    path: '', component: AuthComponent, children: [
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
-      {path: 'login', component: LoginComponent,},
-      {path: 'register', component: RegisterComponent},
-    ]
+    path: '', redirectTo: 'auth', pathMatch: 'full'
   },
   {
-    path: 'forms-builder', component: FormBuilderComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'user-forms', component: UserFormsComponent, canActivate: [AuthGuard]
+    path: 'auth',
+    loadChildren: () => import('./form-builder/form-builder.module').then(m => m.FormBuilderModule)
   }
 ];
 

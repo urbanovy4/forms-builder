@@ -2,10 +2,10 @@ import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import * as AuthActions from '../actions/auth.actions';
 import {catchError, map, switchMap, tap} from "rxjs/operators";
-import {AuthService} from "../../shared/services/auth.service";
+import {AuthService} from "../../helpers/services/auth.service";
 import {of} from "rxjs";
 import {Router} from "@angular/router";
-import {IUser} from "../../shared/models/model";
+import {IUser} from "../../helpers/models/model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
@@ -61,7 +61,7 @@ export class AuthEffects {
         tap(({accessToken, userId}) => {
           this.authService.setToken(accessToken);
           this.authService.setUserId(userId);
-          this.router.navigate(['/forms-builder'])
+          this.router.navigate(['/fb/forms-builder'])
         })
       ),
     {dispatch: false}
@@ -71,7 +71,7 @@ export class AuthEffects {
       .pipe(
         ofType(AuthActions.registerSuccess),
         tap(({email}) => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/fb/login']);
           this.snackBar.open(`Now you can enter to system using your data`, null, {
             duration: this.duration,
             verticalPosition: 'top',

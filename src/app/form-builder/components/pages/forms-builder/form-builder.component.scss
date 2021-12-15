@@ -1,0 +1,43 @@
+.form-builder {
+  display: flex;
+  justify-content: space-around;
+  height: 60vh;
+  margin: 5rem auto;
+
+
+  .drag-group {
+    flex: 2;
+    display: flex;
+
+    .fields-template-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 2rem;
+
+      #form-name {
+        margin-bottom: .7rem;
+      }
+
+      //.save-btn {
+      //  position: absolute;
+      //  right: 5rem;
+      //  bottom: 5rem;
+      //}
+    }
+  }
+
+  .style-list {
+    flex: 1;
+  }
+}
+
+.field-list {
+  flex: 1;
+}
+
+.list-item {
+  border: 1px solid;
+  border-radius: 7px;
+}
+

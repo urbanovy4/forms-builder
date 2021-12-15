@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="form-builder">
+    <ng-template [cdkPortalOutlet]="portal"></ng-template>
+  </div>
+</div>
+
+<ng-container *cdkPortal>
+  <div class="drag-group" cdkDropListGroup>
+    <div class="fields-template-wrapper">
+      <app-fields-list [defaultFields]="defaultFields | ngrxPush"></app-fields-list>
+      <div class="save-btn" *ngIf="fields.length">
+        <button (click)="openSaveWindow()" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+      </div>
+    </div>
+    <app-form-edit-area></app-form-edit-area>
+  </div>
+  <div class="style-list">
+    <app-styles-list></app-styles-list>
+  </div>
+</ng-container>
+

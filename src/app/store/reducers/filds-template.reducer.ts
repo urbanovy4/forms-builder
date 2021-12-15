@@ -1,9 +1,9 @@
-import {IFormField} from "../../shared/models/model";
+import {FormField} from "../../helpers/models/model";
 import {createFeatureSelector, createReducer, createSelector, on} from "@ngrx/store";
-import * as FormEditActions from '../actions/fields.actions';
+import * as FormEditActions from '../actions/forms.actions';
 
 export interface IFormTemplateState {
-  defaultFields: IFormField[],
+  defaultFields: FormField[],
   error: string
 }
 
@@ -11,7 +11,6 @@ export const initialState: IFormTemplateState = {
   defaultFields: [],
   error: null
 };
-
 
 export const fildsTemplateReducer = createReducer(initialState,
   on(FormEditActions.getDefaultFieldsSuccess, (state, {defaultFields}) => {

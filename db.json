@@ -96,88 +96,10 @@
       "userId": 1,
       "fields": [
         {
-          "id": 2,
-          "type": "textarea",
-          "icon": "fa fa-text-width",
-          "label": "Textarea",
-          "availableStyles": {
-            "width": "",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": {
-              "r": 244,
-              "g": 31,
-              "b": 105,
-              "a": 1,
-              "roundA": 1,
-              "hex": "f41f69",
-              "rgba": "rgba(244,31,105,1)"
-            },
-            "placeholder": "",
-            "required": false
-          }
-        }
-      ],
-      "formName": "tetxt",
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
-          "id": 2,
-          "type": "textarea",
-          "icon": "fa fa-text-width",
-          "label": "Textarea",
-          "availableStyles": {
-            "width": "",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": {
-              "r": 2,
-              "g": 247,
-              "b": 105,
-              "a": 0.4,
-              "roundA": 0,
-              "hex": "02f769",
-              "rgba": "rgba(2,247,105,0.4)"
-            },
-            "placeholder": "",
-            "required": false
-          }
-        }
-      ],
-      "formName": "ddd",
-      "id": 8
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
           "id": 1,
           "type": "text",
           "icon": "fa fa-font",
           "label": "Text",
-          "availableStyles": {
-            "required": false,
-            "placeholder": "",
-            "width": "",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": ""
-          }
-        },
-        {
-          "id": 2,
-          "type": "textarea",
-          "icon": "fa fa-text-width",
-          "label": "Textarea",
           "availableStyles": {
             "required": false,
             "placeholder": "",
@@ -215,83 +137,6 @@
           }
         },
         {
-          "id": 5,
-          "type": "select",
-          "icon": "fa fa-bars",
-          "label": "Select",
-          "availableStyles": {
-            "required": false,
-            "placeholder": "",
-            "width": "",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": ""
-          }
-        }
-      ],
-      "formName": "My test form",
-      "id": 9
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
-          "id": 1,
-          "type": "text",
-          "icon": "fa fa-font",
-          "label": "Text",
-          "availableStyles": {
-            "width": "3000px",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": "",
-            "placeholder": "",
-            "required": false
-          }
-        }
-      ],
-      "formName": "das111",
-      "id": 10
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
-          "id": 2,
-          "type": "textarea",
-          "icon": "fa fa-text-width",
-          "label": "Textarea",
-          "availableStyles": {
-            "width": "300px",
-            "height": "20px",
-            "borderStyle": "Dashed",
-            "fontSize": "23px",
-            "fontWeight": "",
-            "color": {
-              "r": 54,
-              "g": 243,
-              "b": 61,
-              "a": 1,
-              "roundA": 1,
-              "hex": "36f33d",
-              "rgba": "rgba(54,243,61,1)"
-            },
-            "placeholder": "asd@3",
-            "required": true
-          }
-        }
-      ],
-      "formName": "wqeeqw",
-      "id": 11
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
           "id": 1,
           "type": "text",
           "icon": "fa fa-font",
@@ -306,74 +151,10 @@
             "fontWeight": "",
             "color": ""
           }
-        },
-        {
-          "id": 4,
-          "type": "checkbox",
-          "icon": "fa fa-list",
-          "label": "Checkbox",
-          "availableStyles": {
-            "required": false
-          }
         }
       ],
-      "formName": "My test form",
-      "id": 12
-    },
-    {
-      "userId": 1,
-      "fields": [
-        {
-          "id": 2,
-          "type": "textarea",
-          "icon": "fa fa-text-width",
-          "label": "Textarea",
-          "availableStyles": {
-            "width": "200px",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": "",
-            "placeholder": "",
-            "required": false
-          }
-        },
-        {
-          "id": 3,
-          "type": "button",
-          "icon": "fa fa-paper-plane",
-          "label": "Button",
-          "availableStyles": {
-            "required": false,
-            "placeholder": "",
-            "width": "",
-            "height": "",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": ""
-          }
-        },
-        {
-          "id": 5,
-          "type": "select",
-          "icon": "fa fa-bars",
-          "label": "Select",
-          "availableStyles": {
-            "width": "20px",
-            "height": "25px",
-            "borderStyle": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "color": "",
-            "placeholder": "",
-            "required": false
-          }
-        }
-      ],
-      "formName": "Custom Form",
-      "id": 13
+      "formName": "asd",
+      "id": 2
     }
   ]
 }
