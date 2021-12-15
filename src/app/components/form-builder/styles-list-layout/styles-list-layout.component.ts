@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {AvailableStyles, BorderStyles, IFormField} from "../../../../shared/models/model";
+import {AvailableStyles, BorderStyles, IFormField} from "../../../shared/models/model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 

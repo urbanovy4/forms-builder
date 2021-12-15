@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AppState} from "../../../store/app.state";
+import {AppState} from "../../../../store/app.state";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
-import {AvailableStyles, IFormField} from "../../../shared/models/model";
-import {changeStyle} from "../../../store/actions/fields.actions";
+import {AvailableStyles, IFormField} from "../../../../shared/models/model";
+import {changeStyle} from "../../../../store/actions/fields.actions";
 
 
 @Component({

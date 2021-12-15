@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./components/auth/login/login.component";
-import {RegisterComponent} from "./components/auth/register/register.component";
-import {AuthComponent} from "./components/auth/auth.component";
-import {FormBuilderComponent} from "./components/form-builder/form-builder.component";
+import {LoginComponent} from "./pages/components/auth/login/login.component";
+import {RegisterComponent} from "./pages/components/auth/register/register.component";
+import {AuthComponent} from "./pages/components/auth/auth.component";
+import {FormBuilderComponent} from "./pages/components/forms-builder/form-builder.component";
 import {AuthGuard} from "./shared/guards/auth.guard";
-import {UserFormsComponent} from "./pages/user-forms/user-forms.component";
+import {UserFormsComponent} from "./pages/components/user-forms/user-forms.component";
 
 const routes: Routes = [
   {

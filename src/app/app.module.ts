@@ -11,9 +11,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from "@angular/material/input";
-import {AuthComponent} from './components/auth/auth.component';
-import {RegisterComponent} from "./components/auth/register/register.component";
-import {LoginComponent} from "./components/auth/login/login.component";
+import {AuthComponent} from './pages/components/auth/auth.component';
+import {RegisterComponent} from "./pages/components/auth/register/register.component";
+import {LoginComponent} from "./pages/components/auth/login/login.component";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {StoreModule} from '@ngrx/store';
 import {reducers, metaReducers} from './store/app.state';
@@ -25,14 +25,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
 import {HeaderLayoutComponent} from './components/header/header-layout/header-layout.component';
-import {LoginLayoutComponent} from './components/auth/login/login-layout/login-layout.component';
-import {RegisterLayoutComponent} from './components/auth/register/register-layout/register-layout.component';
 import {AuthEffects} from "./store/effects/auth.effects";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {FormBuilderComponent} from './components/form-builder/form-builder.component';
+import {FormBuilderComponent} from './pages/components/forms-builder/form-builder.component';
 import {FieldsTemplateComponent} from './components/form-builder/fields-template/fields-template.component';
-import {StylesListComponent} from './components/form-builder/styles-list/styles-list.component';
-import {FormEditAreaComponent} from './components/form-builder/form-edit-area/form-edit-area.component';
+import {StylesListComponent} from './pages/components/forms-builder/styles-list/styles-list.component';
+import {FormEditAreaComponent} from './pages/components/forms-builder/form-edit-area/form-edit-area.component';
 import {TokenInterceptor} from "./shared/services/token.interceptor";
 import {MatListModule} from "@angular/material/list";
 import {DragDropModule} from "@angular/cdk/drag-drop";
@@ -40,18 +38,19 @@ import {FormEditEffects} from "./store/effects/form-edit.effects";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {PortalModule} from "@angular/cdk/portal";
-import {FormEditAreaLayoutComponent} from './components/form-builder/form-edit-area/form-edit-area-layout/form-edit-area-layout.component';
-import {StylesListLayoutComponent} from "./components/form-builder/styles-list/styles-list-layout/styles-list-layout.component";
+import {FormEditAreaLayoutComponent} from './components/form-builder/form-edit-area-layout/form-edit-area-layout.component';
+import {StylesListLayoutComponent} from "./components/form-builder/styles-list-layout/styles-list-layout.component";
 import {EnumToArrayPipe} from './shared/pipes/enum-to-array.pipe';
 import {
   MAT_COLOR_FORMATS,
   NgxMatColorPickerModule,
   NGX_MAT_COLOR_FORMATS
 } from '@angular-material-components/color-picker';
-import {UserFormsComponent} from './pages/user-forms/user-forms.component';
+import {UserFormsComponent} from './pages/components/user-forms/user-forms.component';
 import {UserFormsEffects} from "./store/effects/user-forms.effects";
 import { FormsListComponent } from './components/forms-list/forms-list.component';
 import { SelectedFormComponent } from './components/selected-form/selected-form.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 
 
 @NgModule({
@@ -62,8 +61,6 @@ import { SelectedFormComponent } from './components/selected-form/selected-form.
     AuthComponent,
     HeaderComponent,
     HeaderLayoutComponent,
-    LoginLayoutComponent,
-    RegisterLayoutComponent,
     FormBuilderComponent,
     FieldsTemplateComponent,
     StylesListComponent,
@@ -74,6 +71,7 @@ import { SelectedFormComponent } from './components/selected-form/selected-form.
     UserFormsComponent,
     FormsListComponent,
     SelectedFormComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,

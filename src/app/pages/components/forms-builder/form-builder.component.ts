@@ -7,15 +7,15 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {IFormField} from "../../shared/models/model";
+import {IFormField} from "../../../shared/models/model";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../store/app.state";
+import {AppState} from "../../../store/app.state";
 import {Observable, Subscription} from "rxjs";
-import {deselectField, getDefaultFields, saveForm} from "../../store/actions/fields.actions";
-import {authSelector} from "../../store/reducers/filds-template.reducer";
+import {deselectField, getDefaultFields, saveForm} from "../../../store/actions/fields.actions";
+import {authSelector} from "../../../store/reducers/filds-template.reducer";
 import {CdkPortal, DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
-import {copy} from "../../shared/utils/utils";
-import {FormBuilderService} from "../../shared/services/form-builder.service";
+import {copy} from "../../../shared/utils/utils";
+import {FormBuilderService} from "../../../shared/services/form-builder.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({

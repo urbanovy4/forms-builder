@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../store/app.state";
+import {AppState} from "../../../store/app.state";
 import {Observable, Subscription} from "rxjs";
-import {getForms, selectForm} from "../../store/actions/user-forms.actions";
-import {Form} from "../../shared/models/model";
+import {getForms, selectForm} from "../../../store/actions/user-forms.actions";
+import {Form} from "../../../shared/models/model";
 
 @Component({
   selector: 'app-user-forms',

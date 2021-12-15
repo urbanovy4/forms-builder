@@ -3,33 +3,20 @@
        *ngFor="let field of selectedForm.fields; let i = index"
        [ngSwitch]="field.type"
   >
-    <!--    <div class="drag-placeholder" *cdkDragPlaceholder></div>-->
-    <mat-form-field [ngStyle]="field.availableStyles" appearance="outline" *ngSwitchCase="'text'">
-      <mat-label>{{field.availableStyles.placeholder || 'Text'}}</mat-label>
-      <input
-        matInput
-        [style.color]="field.availableStyles.color.rgba"
-        [required]="field.availableStyles.required"
-        [placeholder]="field.availableStyles.placeholder || 'Text'"
-      >
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="'textarea'" [ngStyle]="field.availableStyles" appearance="outline">
-      <textarea
-        matInput
-        [style.color]="field.availableStyles.color.rgba"
-        [required]="field.availableStyles.required"
-        [placeholder]="field.availableStyles.placeholder"
-      ></textarea>
-    </mat-form-field>
-    <!--    <div class="col-10" *ngSwitchCase="'textarea'">-->
-    <!--      <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>-->
-    <!--      <textarea class="form-control"-->
-    <!--                [ngStyle]="field.availableStyles"-->
-    <!--                [style.color]="field.availableStyles.color.rgba"-->
-    <!--                [required]="field.availableStyles.required"-->
-    <!--                [placeholder]="field.availableStyles.placeholder">-->
-    <!--        </textarea>-->
-    <!--    </div>-->
+    <div class="col-10" *ngSwitchCase="'text'">
+      <label>{{field.availableStyles.placeholder || 'Text'}}</label>
+      <input type="text" class="form-control" [ngStyle]="field.availableStyles"
+             [required]="field.availableStyles.required" [placeholder]="field.availableStyles.placeholder || 'Text'">
+    </div>
+        <div class="col-10" *ngSwitchCase="'textarea'">
+          <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>
+          <textarea class="form-control"
+                    [ngStyle]="field.availableStyles"
+                    [style.color]="field.availableStyles.color.rgba"
+                    [required]="field.availableStyles.required"
+                    [placeholder]="field.availableStyles.placeholder">
+            </textarea>
+        </div>
     <div class="col-10" *ngSwitchCase="'button'">
       <button type="button" class="btn btn-primary"
               [ngStyle]="field.availableStyles"

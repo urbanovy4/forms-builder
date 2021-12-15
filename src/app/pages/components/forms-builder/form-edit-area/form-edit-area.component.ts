@@ -1,17 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
-import {IFormField} from "../../../shared/models/model";
+import {IFormField} from "../../../../shared/models/model";
 import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
-import {AppState} from "../../../store/app.state";
+import {AppState} from "../../../../store/app.state";
 import {
   addField,
   deselectField,
   moveFieldInArray,
   removeField,
   selectField
-} from "../../../store/actions/fields.actions";
-import {copy} from "../../../shared/utils/utils";
+} from "../../../../store/actions/fields.actions";
+import {copy} from "../../../../shared/utils/utils";
 
 @Component({
   selector: 'app-form-edit-area',
