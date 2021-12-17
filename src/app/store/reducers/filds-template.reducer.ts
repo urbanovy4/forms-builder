@@ -13,18 +13,18 @@ export const initialState: IFormTemplateState = {
 };
 
 export const fildsTemplateReducer = createReducer(initialState,
-  on(FormEditActions.getDefaultFieldsSuccess, (state, {defaultFields}) => {
-    return {
-      ...state,
-      defaultFields
-    }
-  }),
-  on(FormEditActions.getDefaultFieldsFailure, (state, {error}) => {
-    return {
-      ...state,
-      error
-    }
-  })
+  // on(FormEditActions.getDefaultFieldsSuccess, (state, {defaultFields}) => {
+  //   return {
+  //     ...state,
+  //     defaultFields
+  //   }
+  // }),
+  // on(FormEditActions.getDefaultFieldsFailure, (state, {error}) => {
+  //   return {
+  //     ...state,
+  //     error
+  //   }
+  // })
 );
 
 export const featureSelector = createFeatureSelector<IFormTemplateState>('fieldsTemplates');

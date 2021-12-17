@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ICreateResponse, IToken, IUser} from "../models/model";
-import {map} from "rxjs/operators";
+import {UserResponse, User} from "../models/model";
 import {Observable} from "rxjs";
+import {map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +12,27 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    @Inject('API_URL') private readonly apiUrl: string
+    @Inject('API_URL') private readonly apiUrl: string,
   ) {
   }
 
-  login(user: IUser): Observable<ICreateResponse> {
-    return this.http.post<ICreateResponse>(`${this.apiUrl}/login`, user);
+  login(user: User): Observable<{accessToken: string, userId: number}> {
+    return this.http.post<UserResponse>(`${this.apiUrl}/login`, user)
+      .pipe(
+        tap(({accessToken}) => {
+
+        }),
+        map(res => {
+          return {
+            accessToken: res.accessToken,
+            userId: res.user.id
+          }
+        })
+      );
   }
 
-  register(user: IUser): Observable<ICreateResponse> {
-    return this.http.post<ICreateResponse>(`${this.apiUrl}/register`, user);
+  register(user: User): Observable<UserResponse> {
+    return this.http.post<UserResponse>(`${this.apiUrl}/register`, user);
   }
 
   signOut() {
@@ -43,7 +54,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.token;
+    return !!localStorage.getItem('token');
   }
 
 }

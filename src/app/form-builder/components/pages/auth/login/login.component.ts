@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../../store/states/app.state";
-import {logIn} from "../../../../../store/actions/auth.actions";
+import {AuthFacade} from "../../../../store/auth/facades/auth.facade";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
 
   constructor(
-    private store: Store<AppState>
+    private authFacade: AuthFacade
   ) {
   }
 
@@ -26,12 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(logIn({
-      user: {
-        email: this.loginForm.value.email,
-        password: this.loginForm.value.password
-      }
-    }));
+    this.authFacade.login({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    });
   }
 }
 

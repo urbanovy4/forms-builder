@@ -15,10 +15,12 @@ import {deselectField, getDefaultFields, saveForm, showSaveDialog} from "../../.
 import {authSelector} from "../../../../store/reducers/filds-template.reducer";
 import {CdkPortal, DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
 import {copy} from "../../../../helpers/utils/utils";
-import {FormsService} from "../../../../helpers/services/forms.service";
+import {FormBuilderService} from "../../../../helpers/services/form-builder.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {SaveDialogComponent} from "../../dialogs/save-dialog/save-dialog.component";
+import {AuthFacade} from "../../../store/auth/facades/auth.facade";
+import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
 
 @Component({
   selector: 'app-form-builder',
@@ -31,49 +33,64 @@ export class FormBuilderComponent implements OnInit {
 
   private subscription: Subscription = new Subscription();
 
-  defaultFields: Observable<FormField[]> = this.store.select(authSelector);
-  // fields$: Observable<FormField[]> = this.store.select(state => state.formBuilder.fields);
-  // userId$: Observable<number> = this.store.select(state => state.auth.userId);
+  defaultFields$: Observable<FormField[]>;
+  isAuthenticated$: Observable<boolean>;
+
+  // fields$: Observable<FormField[]> = this.store.select(states => states.formBuilder.fields);
+  // userId$: Observable<number> = this.store.select(states => states.auth.userId);
   fields$: Observable<any>
   userId$: Observable<any>
   userId: number;
   fields: FormField[] = [];
 
   constructor(
-    private store: Store<AppState>,
+    private formBuilderFacade: FormBuilderFacade,
+    private authFacade: AuthFacade
   ) {
+    this.setAuthUserData();
   }
 
   ngOnInit(): void {
-    this.store.dispatch(getDefaultFields());
-    this.getFields();
-    this.getUserId();
+    this.defaultFields$ = this.formBuilderFacade.defaultFields$;
+    this.isAuthenticated$ = this.authFacade.isAuthenticated$;
+    this.formBuilderFacade.getDefaultFields();
+    // this.getFields();
+    // this.getUserId();
+  }
+
+  private setAuthUserData() {
+    const potentialToken: string = localStorage.getItem('token');
+    const potentialUserId: string = localStorage.getItem('userId');
+    if (potentialToken) {
+      this.authFacade.setToken(potentialToken);
+      this.authFacade.setUserId(+potentialUserId);
+    }
   }
 
   private getFields() {
-    this.subscription.add(
-      this.fields$.subscribe(fields => {
-        this.fields = copy(fields);
-      })
-    );
+    // this.subscription.add(
+    //   this.fields$.subscribe(fields => {
+    //     this.fields = copy(fields);
+    //   })
+    // );
   }
 
   private getUserId() {
-    this.subscription.add(
-      this.userId$.subscribe(id => {
-        this.userId = id;
-      })
-    );
+    // this.subscription.add(
+    //   this.userId$.subscribe(id => {
+    //     this.userId = id;
+    //   })
+    // );
   }
 
 
   ngOnDestroy() {
-    this.store.dispatch(deselectField());
+    this.formBuilderFacade.deselectField();
     this.subscription.unsubscribe();
   }
 
   openSaveWindow() {
-    this.store.dispatch(showSaveDialog({fields: this.fields, userId: this.userId}))
+    // this.store.dispatch(showSaveDialog({fields: this.fields, userId: this.userId}))
   }
 
 }

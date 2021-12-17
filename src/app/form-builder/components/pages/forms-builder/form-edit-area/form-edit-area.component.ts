@@ -12,6 +12,7 @@ import {
   selectField
 } from "../../../../../store/actions/forms.actions";
 import {copy} from "../../../../../helpers/utils/utils";
+import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
 
 @Component({
   selector: 'app-form-edit-area',
@@ -21,16 +22,16 @@ import {copy} from "../../../../../helpers/utils/utils";
 export class FormEditAreaComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
-  // formFieldList$: Observable<FormField[]> = this.store.select<FormField[]>(state => state.formBuilder.fields);
-  formFieldList$: Observable<FormField[]>
+  formFieldList$: Observable<FormField[]>;
   formFieldList: FormField[] = [];
 
   constructor(
-    private store: Store<AppState>
+    private formBuilderFacade: FormBuilderFacade
   ) {
   }
 
   ngOnInit() {
+    // this.formFieldList$ = this.formBuilderFacade.fields$;
     this.subscription.add(
       this.formFieldList$.subscribe(fields => {
         this.formFieldList = copy(fields);
@@ -66,20 +67,24 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   }
 
   private addField(field: FormField) {
-    this.store.dispatch(addField({field}));
+    this.formBuilderFacade.addField(field);
+    // this.store.dispatch(addField({field}));
   }
 
   private moveField(fields: FormField[]) {
     const fieldsCopy = [...fields];
-    this.store.dispatch(moveFieldInArray({fields: fieldsCopy}));
+    this.formBuilderFacade.moveField(fields);
+    // this.store.dispatch(moveFieldInArray({fields: fieldsCopy}));
   }
 
   selectField(index: number) {
-    this.store.dispatch(selectField({index}));
+    this.formBuilderFacade.selectField(index);
+    // this.store.dispatch(selectField({index}));
   }
 
   removeField(fields: FormField[]) {
-    this.store.dispatch(removeField({fields}));
+    this.formBuilderFacade.removeField(fields);
+    // this.store.dispatch(removeField({fields}));
   }
 
 }

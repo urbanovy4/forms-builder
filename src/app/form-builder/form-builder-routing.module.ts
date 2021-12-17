@@ -4,31 +4,23 @@ import {AuthComponent} from "./components/pages/auth/auth.component";
 import {LoginComponent} from "./components/pages/auth/login/login.component";
 import {RegisterComponent} from "./components/pages/auth/register/register.component";
 import {FormBuilderComponent} from "./components/pages/forms-builder/form-builder.component";
+import {UserFormsComponent} from "./components/pages/forms-builder/user-forms/user-forms.component";
+import {AuthGuard} from "../helpers/guards/auth.guard";
 
 const routes: Routes = [
-
   {
     path: '', component: AuthComponent, children: [
-      {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
+      {path: '', redirectTo: '/login', pathMatch: 'full'},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
     ]
+  },
+  {
+    path: 'forms-builder', component: FormBuilderComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-forms', component: UserFormsComponent, canActivate: [AuthGuard]
   }
-
-
-  // {
-  //   path: '', component: AuthComponent, children: [
-  //     {path: '', redirectTo: '/login', pathMatch: 'full'},
-  //     {path: 'login', component: LoginComponent,},
-  //     {path: 'register', component: RegisterComponent},
-  //   ]
-  // },
-  // {
-  //   path: 'forms-builder', component: FormBuilderComponent, canActivate: [AuthGuard]
-  // },
-  // {
-  //   path: 'user-forms', component: UserFormsComponent, canActivate: [AuthGuard]
-  // }
 ];
 
 @NgModule({

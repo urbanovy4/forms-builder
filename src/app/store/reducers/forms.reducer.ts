@@ -20,66 +20,61 @@ export const initialState: FormBuilderState = {
   selectedForm: null
 };
 
-const adapter = createEntityAdapter<FormBuilderState>();
 
 export const formsReducer = createReducer(initialState,
-  on(FormEditActions.addField, (state, {field}) => {
-    return {
-      ...state,
-      fields: state.fields.concat(field)
-    }
-  }),
-  on(FormEditActions.removeField, (state, {fields}) => {
-    return {
-      ...state,
-      fields
-    }
-  }),
-  on(FormEditActions.selectField, (state, {index}) => {
-    return {
-      ...state,
-      selectedField: state.fields[index],
-      index
-    }
-  }),
-  on(FormEditActions.deselectField, state => {
-    return {
-      ...state,
-      selectedField: null
-    }
-  }),
-  on(FormEditActions.getFormsSuccess, (state, {forms}) => {
-    return {
-      ...state,
-      forms
-    }
-  }),
-  on(FormEditActions.selectForm, (state, {selectedForm}) => {
-    return {
-      ...state,
-      selectedForm
-    }
-  }),
-  on(FormEditActions.clearFieldState, () => {
-    return initialState;
-  }),
-  on(FormEditActions.changeStyle, (state, {styles, index}) => {
-    return {
-      ...state,
-      selectedField: state.selectedField,
-      fields: updateArray(state.fields, index, styles)
-    }
-  }),
-  on(FormEditActions.moveFieldInArray, (state, {fields}) => {
-    return {
-      ...state,
-      fields
-    }
-  }),
+  // on(FormEditActions.addField, (state, {field}) => {
+  //   return {
+  //     ...state,
+  //     fields: state.fields.concat(field)
+  //   }
+  // }),
+  // on(FormEditActions.removeField, (state, {fields}) => {
+  //   return {
+  //     ...state,
+  //     fields
+  //   }
+  // }),
+  // on(FormEditActions.selectField, (state, {index}) => {
+  //   return {
+  //     ...state,
+  //     selectedField: state.fields[index],
+  //     index
+  //   }
+  // }),
+  // on(FormEditActions.deselectField, state => {
+  //   return {
+  //     ...state,
+  //     selectedField: null
+  //   }
+  // }),
+  // on(FormEditActions.getFormsSuccess, (state, {forms}) => {
+  //   return {
+  //     ...state,
+  //     forms
+  //   }
+  // }),
+  // on(FormEditActions.selectForm, (state, {selectedForm}) => {
+  //   return {
+  //     ...state,
+  //     selectedForm
+  //   }
+  // }),
+  // on(FormEditActions.clearFieldState, () => {
+  //   return initialState;
+  // }),
+  // on(FormEditActions.changeStyle, (state, {styles, index}) => {
+  //   return {
+  //     ...state,
+  //     selectedField: state.selectedField,
+  //     fields: updateArray(state.fields, index, styles)
+  //   }
+  // }),
+  // on(FormEditActions.moveFieldInArray, (state, {fields}) => {
+  //   return {
+  //     ...state,
+  //     fields
+  //   }
+  // }),
 );
 
-export const featureSelector = createFeatureSelector<FormBuilderState>('formBuilder');
-export const formBuilderSelector = createSelector(
-  featureSelector,
-  state => state
-);
+

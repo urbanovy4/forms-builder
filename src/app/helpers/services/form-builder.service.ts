@@ -6,7 +6,7 @@ import {FormField} from "../models/model";
 @Injectable({
   providedIn: 'root'
 })
-export class FormsService {
+export class FormBuilderService {
 
   constructor(
     @Inject('API_URL') private readonly apiUrl: string,

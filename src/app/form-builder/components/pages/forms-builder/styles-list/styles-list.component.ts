@@ -1,9 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AppState} from "../../../../../store/states/app.state";
-import {Store} from "@ngrx/store";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 import {AvailableStyles, FormField} from "../../../../../helpers/models/model";
-import {changeStyle} from "../../../../../store/actions/forms.actions";
+import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
 
 
 @Component({
@@ -11,38 +9,26 @@ import {changeStyle} from "../../../../../store/actions/forms.actions";
   templateUrl: './styles-list.component.html',
   styleUrls: ['./styles-list.component.scss']
 })
-export class StylesListComponent implements OnInit, OnDestroy {
+export class StylesListComponent implements OnInit {
 
-  subscription: Subscription = new Subscription();
-  private index: number;
-
-  // selectedField$: Observable<FormField> = this.store.select(state => state.formBuilder.selectedField);
-  // selectedFieldIndex$: Observable<number> = this.store.select(state => state.formBuilder.index);
   selectedField$: Observable<FormField>;
   selectedFieldIndex$: Observable<number>;
 
   constructor(
-    private store: Store<AppState>,
+    private formBuilderFacade: FormBuilderFacade
   ) {
   }
 
   ngOnInit() {
-    this.subscription.add(
-      this.selectedFieldIndex$
-        .subscribe(index => {
-          this.index = index;
-        })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.selectedField$ = this.formBuilderFacade.selectedField$;
+    this.selectedFieldIndex$ = this.formBuilderFacade.selectedFieldIndex$;
   }
 
   changeStyle(styles: AvailableStyles) {
-    this.store.dispatch(changeStyle({
-      styles,
-      index: this.index
-    }));
+    this.formBuilderFacade.changeStyle(styles);
+    // this.store.dispatch(changeStyle({
+    //   styles,
+    //   index: this.index
+    // }));
   }
 }

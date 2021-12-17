@@ -31,7 +31,7 @@ export class TokenInterceptor implements HttpInterceptor{
 
   private authErrorHandler(error: HttpErrorResponse): Observable<any> {
     if (error.status === 401) {
-      this.router.navigate(['/fb/login'])
+      this.router.navigate(['/login'])
     }
 
     return throwError(error);

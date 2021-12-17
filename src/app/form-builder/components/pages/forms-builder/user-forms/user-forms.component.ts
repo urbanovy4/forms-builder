@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../../store/states/app.state";
+import {AppState} from "../../../../../store/states/app.state";
 import {Observable, Subscription} from "rxjs";
-import {Form} from "../../../../helpers/models/model";
-import {getForms, selectForm, showRemoveDialog} from "../../../../store/actions/forms.actions";
+import {Form} from "../../../../../helpers/models/model";
+import {getForms, selectForm, showRemoveDialog} from "../../../../../store/actions/forms.actions";
 
 @Component({
   selector: 'app-user-forms',
@@ -14,8 +14,8 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
 
-  // userId$: Observable<number> = this.store.select<number>(state => state.auth.userId);
-  // forms$: Observable<Form[]> = this.store.select<Form[]>(state => state.formBuilder.forms);
+  // userId$: Observable<number> = this.store.select<number>(states => states.auth.userId);
+  // forms$: Observable<Form[]> = this.store.select<Form[]>(states => states.formBuilder.forms);
   userId$: Observable<number>;
   forms$: Observable<Form[]>;
 

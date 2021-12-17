@@ -8,13 +8,13 @@ import {
 } from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {AuthService} from "../services/auth.service";
+import {AuthFacade} from "../../form-builder/store/auth/facades/auth.facade";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(
     private authService: AuthService,
+    private authFacade: AuthFacade,
     private router: Router
   ) {
   }
@@ -24,9 +24,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       return of(true);
     }
 
-    this.authService.signOut();
-    this.router.navigate(['/fb/login']);
-
+    this.authFacade.signOut();
+    this.router.navigate(['/login']);
     return of(false);
   }
 

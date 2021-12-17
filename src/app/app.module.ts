@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
-import {ReactiveComponentModule} from "@ngrx/component";
 import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./helpers/services/token.interceptor";
@@ -29,7 +28,6 @@ import {AppStoreModule} from "./store/app-store.module";
       useClass: TokenInterceptor,
       multi: true
     },
-
   ],
   bootstrap: [AppComponent]
 })

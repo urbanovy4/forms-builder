@@ -1,16 +1,16 @@
-export interface IUser {
+export interface User {
   email: string;
   password: string;
 }
 
-export interface IToken {
+export interface Token {
   accessToken: string;
 }
 
-export interface ICreateResponse extends IToken {
+export interface UserResponse extends Token {
   user: {
-    email: string,
-    id: number
+    email: string;
+    id: number;
   }
 }
 
@@ -62,4 +62,15 @@ export enum BorderStyles {
   Outset = 'outset',
   None = 'none',
   Hidden = 'hidden'
+}
+
+export interface FormBuilderState {
+  fields: FormField[];
+  selectedField: FormField;
+  index: number;
+  forms: Form[];
+  selectedForm: Form;
+}
+
+export interface AuthState extends UserResponse {
 }

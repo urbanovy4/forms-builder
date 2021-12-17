@@ -18,9 +18,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
         strictStateImmutability: true
       }
     }),
-    StoreRouterConnectingModule.forRoot({
-      routerState: RouterState.Minimal
-    }),
+    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
   ]

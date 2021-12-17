@@ -4,10 +4,10 @@
   <span routerLink="/user-forms" routerLinkActive="active" *ngIf="isAuthenticated">User forms</span>
   <span class="example-spacer"></span>
   <div class="btn-group" *ngIf="!isAuthenticated else authenticated">
-    <button mat-icon-button routerLinkActive="active" routerLink="/fb/login">
+    <button mat-icon-button routerLinkActive="active" routerLink="/login">
       Log In
     </button>
-    <button mat-icon-button routerLinkActive="active" routerLink="/fb/register">
+    <button mat-icon-button routerLinkActive="active" routerLink="/register">
       Sign Up
     </button>
   </div>
