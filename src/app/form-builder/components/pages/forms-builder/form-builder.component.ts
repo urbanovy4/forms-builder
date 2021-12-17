@@ -1,26 +1,13 @@
 import {
-  AfterViewChecked,
-  AfterViewInit,
-  Component, ElementRef, OnDestroy,
+  Component,
   OnInit,
-  TemplateRef,
   ViewChild,
-  ViewContainerRef
 } from '@angular/core';
 import {FormField} from "../../../../helpers/models/model";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../store/states/app.state";
 import {Observable, Subscription} from "rxjs";
-import {deselectField, getDefaultFields, saveForm, showSaveDialog} from "../../../../store/actions/forms.actions";
-import {authSelector} from "../../../../store/reducers/filds-template.reducer";
-import {CdkPortal, DomPortal, Portal, TemplatePortal} from "@angular/cdk/portal";
-import {copy} from "../../../../helpers/utils/utils";
-import {FormBuilderService} from "../../../../helpers/services/form-builder.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MatDialog} from "@angular/material/dialog";
-import {SaveDialogComponent} from "../../dialogs/save-dialog/save-dialog.component";
+import {CdkPortal, TemplatePortal} from "@angular/cdk/portal";
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
-import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
+import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
 
 @Component({
   selector: 'app-form-builder',
@@ -44,16 +31,16 @@ export class FormBuilderComponent implements OnInit {
   fields: FormField[] = [];
 
   constructor(
-    private formBuilderFacade: FormBuilderFacade,
+    private fieldsTemplateFacade: FieldsTemplateFacade,
     private authFacade: AuthFacade
   ) {
     this.setAuthUserData();
   }
 
   ngOnInit(): void {
-    this.defaultFields$ = this.formBuilderFacade.defaultFields$;
+    this.defaultFields$ = this.fieldsTemplateFacade.defaultFields$;
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
-    this.formBuilderFacade.getDefaultFields();
+    this.fieldsTemplateFacade.getDefaultFields();
     // this.getFields();
     // this.getUserId();
   }
@@ -85,7 +72,7 @@ export class FormBuilderComponent implements OnInit {
 
 
   ngOnDestroy() {
-    this.formBuilderFacade.deselectField();
+    // this.formBuilderFacade.deselectField();
     this.subscription.unsubscribe();
   }
 

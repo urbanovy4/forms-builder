@@ -14,22 +14,7 @@ export class FormBuilderEffect {
   ) {
   }
 
-  getDefaultFields$ = createEffect(() => this.actions
-    .pipe(
-      ofType(FormBuilderActions.getDefaultFields),
-      switchMap(() => {
-        return this.formBuilderService.getDefaultFields()
-          .pipe(
-            map(defaultFields => {
-              return FormBuilderActions.getDefaultFieldsSuccess({defaultFields})
-            }),
-            catchError((error: HttpErrorResponse) => {
-              return of(FormBuilderActions.getDefaultFieldsFailure({error: error.statusText}))
-            })
-          )
-      })
-    )
-  );
+
 
   // .pipe(
   //     ofType(FormBuilderActions.getDefaultFields),

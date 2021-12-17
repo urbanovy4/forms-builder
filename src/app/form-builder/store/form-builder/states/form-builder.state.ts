@@ -3,13 +3,17 @@ import {createEntityAdapter, EntityState} from "@ngrx/entity";
 
 export const formBuilderFeatureName = 'form-builder';
 
-export interface State extends EntityState<FormField>{
-  selectedField: FormField;
-  index: number;
-  forms: Form[];
-  selectedForm: Form;
-  defaultFields: FormField[];
-  error: string;
+// export interface State extends EntityState<FormField>{
+//   selectedField: FormField;
+//   index: number;
+//   forms: Form[];
+//   selectedForm: Form;
+//   defaultFields: FormField[];
+//   error: string;
+// }
+
+export interface State extends EntityState<FormField> {
+  selectedId?: number;
 }
 
 // export const initialState: State = {

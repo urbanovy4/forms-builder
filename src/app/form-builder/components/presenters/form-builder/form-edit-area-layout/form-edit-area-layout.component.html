@@ -1,6 +1,6 @@
 <div class="field-list">
   <div class="field"
-       *ngFor="let field of formFieldList; let i = index"
+       *ngFor="let field of formFieldList | formatArray: formFieldList.length; let i = index"
        [cdkDragData]="field"
        [ngSwitch]="field.type"
        (click)="selectedField(i)"
@@ -43,8 +43,9 @@
         <option>4</option>
       </select>
     </div>
+    {{field.id}}
     <div>
-      <i class="fa fa-trash pull-right" (click)="removeField(i)"></i>
+      <i class="fa fa-trash pull-right" (click)="removeField(i, field.id)"></i>
     </div>
   </div>
 </div>

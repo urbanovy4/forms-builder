@@ -25,6 +25,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {AuthGuard} from "../../helpers/guards/auth.guard";
+import {FormatArrayPipe} from "../../helpers/pipes/format-array.pipe";
 
 @NgModule({
  declarations: [
@@ -36,6 +37,7 @@ import {AuthGuard} from "../../helpers/guards/auth.guard";
    FormEditAreaComponent,
    FormEditAreaLayoutComponent,
    StylesListLayoutComponent,
+   FormatArrayPipe,
    EnumToArrayPipe,
    UserFormsComponent,
    FormsListComponent,
@@ -66,6 +68,7 @@ import {AuthGuard} from "../../helpers/guards/auth.guard";
     FormEditAreaComponent,
     FormEditAreaLayoutComponent,
     StylesListLayoutComponent,
+    FormatArrayPipe,
     EnumToArrayPipe,
     UserFormsComponent,
     FormsListComponent,

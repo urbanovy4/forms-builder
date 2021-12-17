@@ -11,11 +11,6 @@ export enum ChangeStyleActions {
   CHANGE_STYLE = '[STYLE] Change Style'
 }
 
-export enum DefaultFieldAction {
-  GET_DEFAULT_FIELDS = '[FIELDS] Get Default Fields',
-  GET_DEFAULT_FIELDS_SUCCESS = '[FIELDS] Get Default Fields Success',
-  GET_DEFAULT_FIELDS_FAILURE = '[FIELDS] Get Default Fields Failure',
-}
 
 export enum FormActions {
   GET_FORMS = '[FORM] Get Forms',

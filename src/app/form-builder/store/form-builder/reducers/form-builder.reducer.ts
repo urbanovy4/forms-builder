@@ -1,34 +1,13 @@
 import {createReducer, on} from "@ngrx/store";
-import {initialState} from "../states/form-builder.state";
+import {adapter, initialState} from "../states/form-builder.state";
 import * as FormEditActions from "./../actions/form-builder.action";
 
-import {updateArray} from "../../../../helpers/utils/utils";
-
-
 export const formBuilderReducer = createReducer(initialState,
-  on(FormEditActions.getDefaultFieldsSuccess, (state, {defaultFields}) => {
-    return {
-      ...state,
-      defaultFields
-    }
-  }),
-  on(FormEditActions.getDefaultFieldsFailure, (state, {error}) => {
-    return {
-      ...state,
-      error
-    }
-  }),
   on(FormEditActions.addField, (state, {field}) => {
-    return {
-      ...state,
-      // fields: state.fields.concat(field)
-    }
+    return adapter.addOne(field, {...state});
   }),
-  on(FormEditActions.removeField, (state, {fields}) => {
-    return {
-      ...state,
-      fields
-    }
+  on(FormEditActions.removeField, (state, {id}) => {
+    return adapter.removeOne(id, {...state});
   }),
   on(FormEditActions.selectField, (state, {index}) => {
     return {
@@ -61,13 +40,10 @@ export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.changeStyle, (state, {styles, index}) => {
     return {
       ...state,
-      selectedField: state.selectedField,
+      // selectedField: state.selectedField,
       // fields: updateArray(state.fields, index, styles)
     }
   }),
   on(FormEditActions.moveFieldInArray, (state, {fields}) => {
-    return {
-      ...state,
-      fields
-    }
+    return adapter.setAll(fields, {...state})
   }),);

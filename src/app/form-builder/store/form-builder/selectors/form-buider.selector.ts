@@ -1,34 +1,31 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {formBuilderFeatureName, State} from "../states/form-builder.state";
+import {formBuilderFeatureName, State, adapter} from "../states/form-builder.state";
 
 export const featureSelector = createFeatureSelector<State>(formBuilderFeatureName);
 
-export const defaultFields = createSelector(
-  featureSelector,
-  state => state.defaultFields
-);
+const {selectAll} = adapter.getSelectors();
 
 export const fields = createSelector(
   featureSelector,
-  state => state
+  selectAll
 );
 
 export const selectedField = createSelector(
   featureSelector,
-  state => state.selectedField
+  state => state
 );
 
 export const forms = createSelector(
   featureSelector,
-  state => state.forms
+  state => state
 );
 
 export const selectedForm = createSelector(
   featureSelector,
-  state => state.selectedForm
+  state => state
 );
 
 export const selectedFieldIndex = createSelector(
   featureSelector,
-  state => state.index
+  state => state
 );

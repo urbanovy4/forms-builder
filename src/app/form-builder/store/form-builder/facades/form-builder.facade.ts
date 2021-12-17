@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
 import {select, Store} from "@ngrx/store";
 import {State} from "../states/form-builder.state";
-import {addField, getDefaultFields, moveFieldInArray, removeField, selectField} from "../actions/form-builder.action";
+import {addField, moveFieldInArray, removeField, selectField} from "../actions/form-builder.action";
 import {Observable} from "rxjs";
 import {AvailableStyles, Form, FormField} from "../../../../helpers/models/model";
 import {
-  defaultFields,
   fields,
   forms,
   selectedField,
@@ -19,24 +18,15 @@ import {deselectField} from "../../../../store/actions/forms.actions";
 })
 export class FormBuilderFacade {
 
-  defaultFields$: Observable<FormField[]> = this.store.pipe(select(defaultFields));
-  // fields$: Observable<FormField[]> = this.store.pipe(select(fields));
-  selectedField$: Observable<FormField> = this.store.pipe(select(selectedField));
-  forms$: Observable<Form[]> = this.store.pipe(select(forms));
-  selectedForm$: Observable<Form> = this.store.pipe(select(selectedForm));
-  selectedFieldIndex$: Observable<number> = this.store.pipe(select(selectedFieldIndex));
+  fields$: Observable<FormField[]> = this.store.pipe(select(fields));
+  // selectedField$: Observable<FormField> = this.store.pipe(select(selectedField));
+  // forms$: Observable<Form[]> = this.store.pipe(select(forms));
+  // selectedForm$: Observable<Form> = this.store.pipe(select(selectedForm));
+  // selectedFieldIndex$: Observable<number> = this.store.pipe(select(selectedFieldIndex));
 
   constructor(
     private store: Store<State>
   ) {
-  }
-
-  /**
-   * Get default fields
-   */
-
-  getDefaultFields() {
-    this.store.dispatch(getDefaultFields());
   }
 
   /**
@@ -76,11 +66,11 @@ export class FormBuilderFacade {
 
   /**
    * Remove field
-   * @param fields Fields
+   * @param id Id
    */
 
-  removeField(fields: FormField[]) {
-    this.store.dispatch(removeField({fields}))
+  removeField(id: number) {
+    this.store.dispatch(removeField({id}))
   }
 
   /**

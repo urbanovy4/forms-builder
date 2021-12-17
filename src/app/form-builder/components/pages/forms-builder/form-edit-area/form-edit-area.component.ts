@@ -13,6 +13,9 @@ import {
 } from "../../../../../store/actions/forms.actions";
 import {copy} from "../../../../../helpers/utils/utils";
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
+import {map} from "rxjs/operators";
+import {fields} from "../../../../store/form-builder/selectors/form-buider.selector";
+import {parseGuardsRules} from "json-server-auth/dist/guards";
 
 @Component({
   selector: 'app-form-edit-area',
@@ -31,12 +34,12 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.formFieldList$ = this.formBuilderFacade.fields$;
-    this.subscription.add(
-      this.formFieldList$.subscribe(fields => {
-        this.formFieldList = copy(fields);
-      })
-    );
+    this.formFieldList$ = this.formBuilderFacade.fields$;
+    // this.subscription.add(
+    //   this.formFieldList$.subscribe(fields => {
+    //     this.formFieldList = copy(fields);
+    //   })
+    // );
   }
 
   ngOnDestroy() {
@@ -73,7 +76,7 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
 
   private moveField(fields: FormField[]) {
     const fieldsCopy = [...fields];
-    this.formBuilderFacade.moveField(fields);
+    this.formBuilderFacade.moveField(fieldsCopy);
     // this.store.dispatch(moveFieldInArray({fields: fieldsCopy}));
   }
 
@@ -82,8 +85,8 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
     // this.store.dispatch(selectField({index}));
   }
 
-  removeField(fields: FormField[]) {
-    this.formBuilderFacade.removeField(fields);
+  removeField(id: number) {
+    this.formBuilderFacade.removeField(id);
     // this.store.dispatch(removeField({fields}));
   }
 

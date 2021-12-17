@@ -1,22 +1,7 @@
 import {createAction, props} from "@ngrx/store";
 import {AvailableStyles, Form, FormField} from "../../../../helpers/models/model";
 
-import {DefaultFieldAction, DialogActions, FormBuilderActions, ChangeStyleActions, FormActions} from './actions.model';
-
-
-export const getDefaultFields = createAction(
-  DefaultFieldAction.GET_DEFAULT_FIELDS,
-);
-
-export const getDefaultFieldsSuccess = createAction(
-  DefaultFieldAction.GET_DEFAULT_FIELDS_SUCCESS,
-  props<{ defaultFields: FormField[] }>()
-);
-
-export const getDefaultFieldsFailure = createAction(
-  DefaultFieldAction.GET_DEFAULT_FIELDS_FAILURE,
-  props<{ error: string }>()
-);
+import {DialogActions, FormBuilderActions, ChangeStyleActions, FormActions} from './actions.model';
 
 export const addField = createAction(
   FormBuilderActions.ADD_FIELD,
@@ -25,7 +10,7 @@ export const addField = createAction(
 
 export const removeField = createAction(
   FormBuilderActions.REMOVE_FIELD,
-  props<{ fields: FormField[] }>()
+  props<{ id: number }>()
 );
 
 export const selectField = createAction(

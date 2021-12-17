@@ -11,8 +11,12 @@ import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-bui
 })
 export class StylesListComponent implements OnInit {
 
-  selectedField$: Observable<FormField>;
-  selectedFieldIndex$: Observable<number>;
+
+  /**
+   * Temporarily
+   */
+  selectedField$: Observable<FormField> = new Observable<FormField>();
+  selectedFieldIndex$: Observable<number> = new Observable<number>();
 
   constructor(
     private formBuilderFacade: FormBuilderFacade
@@ -20,8 +24,8 @@ export class StylesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedField$ = this.formBuilderFacade.selectedField$;
-    this.selectedFieldIndex$ = this.formBuilderFacade.selectedFieldIndex$;
+    // this.selectedField$ = this.formBuilderFacade.selectedField$;
+    // this.selectedFieldIndex$ = this.formBuilderFacade.selectedFieldIndex$;
   }
 
   changeStyle(styles: AvailableStyles) {

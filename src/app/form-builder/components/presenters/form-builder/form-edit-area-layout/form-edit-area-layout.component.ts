@@ -11,15 +11,15 @@ export class FormEditAreaLayoutComponent {
 
   @Input('formFieldList') formFieldList: FormField[];
   @Output() selectField = new EventEmitter<number>();
-  @Output() changeFormList = new EventEmitter<FormField[]>();
+  @Output() changeFormList = new EventEmitter<number>();
 
   selectedField(index: number) {
     this.selectField.emit(index);
   }
 
-  removeField(index: number) {
+  removeField(index: number, id: number) {
     this.formFieldList.splice(index, 1);
-    this.changeFormList.emit(this.formFieldList);
+    this.changeFormList.emit(id);
   }
 
 }
