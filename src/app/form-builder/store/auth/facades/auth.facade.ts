@@ -3,14 +3,15 @@ import {select, Store} from "@ngrx/store";
 import {AuthState, User} from "../../../../helpers/models/model";
 import {logIn, register, setToken, setUserId, signOut} from "../actions/auth.action";
 import {Observable} from "rxjs";
-import * as AuthSelectors from '../selectors/auth.selector'
+import {checkAuth, getUserId} from "../selectors/auth.selector";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthFacade {
 
-  isAuthenticated$: Observable<boolean> = this.store.pipe(select(AuthSelectors.checkAuth));
+  isAuthenticated$: Observable<boolean> = this.store.pipe(select(checkAuth));
+  userId$: Observable<number> = this.store.pipe(select(getUserId));
 
   constructor(
     private store: Store<AuthState>

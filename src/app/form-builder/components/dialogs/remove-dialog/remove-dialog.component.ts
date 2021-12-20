@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../../store/states/app.state";
-import {removeForm} from "../../../../store/actions/forms.actions";
+import {removeForm} from "../../../store/user-forms/actions/user-forms.action";
 
 @Component({
   selector: 'app-remove-form-dialog',

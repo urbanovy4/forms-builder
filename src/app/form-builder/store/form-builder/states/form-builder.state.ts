@@ -1,38 +1,18 @@
-import {Form, FormField} from "../../../../helpers/models/model";
-import {createEntityAdapter, EntityState} from "@ngrx/entity";
+import {FormField} from "../../../../helpers/models/model";
 
 export const formBuilderFeatureName = 'form-builder';
 
-// export interface State extends EntityState<FormField>{
-//   selectedField: FormField;
-//   index: number;
-//   forms: Form[];
-//   selectedForm: Form;
-//   defaultFields: FormField[];
-//   error: string;
-// }
-
-export interface State extends EntityState<FormField> {
-  selectedId?: number;
+export interface State {
+  selectedField: FormField,
+  selectedFieldIndex: number,
+  fields: FormField[],
+  error: string
 }
 
-// export const initialState: State = {
-//   defaultFields: [],
-//   fields: [],
-//   selectedField: null,
-//   index: null,
-//   forms: [],
-//   selectedForm: null,
-//   error: null
-// }
 
-export const adapter = createEntityAdapter<FormField>()
-
-export const initialState: State = adapter.getInitialState({
-  defaultFields: [],
+export const initialState: State = {
   selectedField: null,
-  index: null,
-  forms: [],
-  selectedForm: null,
+  selectedFieldIndex: null,
+  fields: [],
   error: null
-})
+};

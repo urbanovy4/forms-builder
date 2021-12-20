@@ -85,62 +85,62 @@ export const moveFieldInArray = createAction(
   props<{ fields: FormField[] }>()
 );
 
-export const saveForm = createAction(
-  FormActions.SAVE_FORM,
-  props<{ fields: FormField[], userId: number, formName: string }>()
-);
-
-export const saveFormSuccess = createAction(
-  FormActions.SAVE_FORM_SUCCESS,
-  props<{ message: string }>()
-);
-
-export const saveFormFailure = createAction(
-  FormActions.SAVE_FORM_FAILURE,
-  props<{ error: any }>()
-);
-
-export const removeForm = createAction(
-  FormActions.REMOVE_FORM,
-  props<{formId: number}>()
-);
-
-export const removeFormSuccess = createAction(
-  FormActions.REMOVE_FORM_SUCCESS,
-  props<any>()
-);
-
-export const removeFormFailure = createAction(
-  FormActions.REMOVE_FORM_FAILURE,
-  props<{error: string}>()
-);
-
-export const getForms = createAction(
-  FormActions.GET_FORMS,
-  props<{userId: number}>()
-);
-
-export const getFormsSuccess = createAction(
-  FormActions.GET_FORMS_SUCCESS,
-  props<{forms: Form[]}>()
-);
-
-export const getFormsFailure = createAction(
-  FormActions.GET_FORMS_FAILURE,
-  props<{error: string}>()
-);
-
-export const selectForm = createAction(
-  FormActions.SELECT_FORM,
-  props<{selectedForm: Form}>()
-);
-
-export const showSaveDialog = createAction(
-  DialogActions.SHOW_SAVE_DIALOG,
-  props<{fields: FormField[], userId: number}>()
-);
-
-export const showRemoveDialog = createAction(
-  DialogActions.SHOW_REMOVE_DIALOG,
-  props<{formId: number}>()
-);
+// export const saveForm = createAction(
+//   FormActions.SAVE_FORM,
+//   props<{ fields: FormField[], userId: number, formName: string }>()
+// );
+//
+// export const saveFormSuccess = createAction(
+//   FormActions.SAVE_FORM_SUCCESS,
+//   props<{ message: string }>()
+// );
+//
+// export const saveFormFailure = createAction(
+//   FormActions.SAVE_FORM_FAILURE,
+//   props<{ error: any }>()
+// );
+//
+// export const removeForm = createAction(
+//   FormActions.REMOVE_FORM,
+//   props<{formId: number}>()
+// );
+//
+// export const removeFormSuccess = createAction(
+//   FormActions.REMOVE_FORM_SUCCESS,
+//   props<any>()
+// );
+//
+// export const removeFormFailure = createAction(
+//   FormActions.REMOVE_FORM_FAILURE,
+//   props<{error: string}>()
+// );
+//
+// export const getForms = createAction(
+//   FormActions.GET_FORMS,
+//   props<{userId: number}>()
+// );
+//
+// export const getFormsSuccess = createAction(
+//   FormActions.GET_FORMS_SUCCESS,
+//   props<{forms: Form[]}>()
+// );
+//
+// export const getFormsFailure = createAction(
+//   FormActions.GET_FORMS_FAILURE,
+//   props<{error: string}>()
+// );
+//
+// export const selectForm = createAction(
+//   FormActions.SELECT_FORM,
+//   props<{selectedForm: Form}>()
+// );
+//
+// export const showSaveDialog = createAction(
+//   DialogActions.SHOW_SAVE_DIALOG,
+//   props<{fields: FormField[], userId: number}>()
+// );
+//
+// export const showRemoveDialog = createAction(
+//   DialogActions.SHOW_REMOVE_DIALOG,
+//   props<{formId: number}>()
+// );

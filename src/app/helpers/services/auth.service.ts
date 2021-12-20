@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserResponse, User} from "../models/model";
 import {Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
@@ -19,9 +19,6 @@ export class AuthService {
   login(user: User): Observable<{accessToken: string, userId: number}> {
     return this.http.post<UserResponse>(`${this.apiUrl}/login`, user)
       .pipe(
-        tap(({accessToken}) => {
-
-        }),
         map(res => {
           return {
             accessToken: res.accessToken,

@@ -12,7 +12,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class StylesListLayoutComponent {
 
   @Input('selectedField') selectedField: FormField;
-  @Output() activeStyles: EventEmitter<AvailableStyles> = new EventEmitter<AvailableStyles>();
+  @Input('index') index: number;
+  @Output() activeStyles: EventEmitter<{ styles: AvailableStyles, index: number }> = new EventEmitter<{ styles: AvailableStyles, index: number }>();
   borderStyles = BorderStyles;
   stylesForm: FormGroup;
 
@@ -25,7 +26,7 @@ export class StylesListLayoutComponent {
       width: new FormControl(''),
       height: new FormControl(''),
       borderStyle: new FormControl(''),
-      fontSize: new FormControl('', ),
+      fontSize: new FormControl('',),
       fontWeight: new FormControl('', [Validators.min(100), Validators.max(900)]),
       color: new FormControl(''),
       placeholder: new FormControl('', [Validators.maxLength(40)]),
@@ -34,7 +35,7 @@ export class StylesListLayoutComponent {
   }
 
   onSubmit() {
-    this.activeStyles.emit(this.stylesForm.value);
+    this.activeStyles.emit({styles: this.stylesForm.value, index: this.index});
   }
 
   isCheckbox() {

@@ -11,7 +11,7 @@ import {FormEditAreaComponent} from "./pages/forms-builder/form-edit-area/form-e
 import {FormEditAreaLayoutComponent} from "./presenters/form-builder/form-edit-area-layout/form-edit-area-layout.component";
 import {StylesListLayoutComponent} from "./presenters/form-builder/styles-list-layout/styles-list-layout.component";
 import {EnumToArrayPipe} from "../../helpers/pipes/enum-to-array.pipe";
-import {UserFormsComponent} from "./pages/forms-builder/user-forms/user-forms.component";
+import {UserFormsComponent} from "./pages/user-forms/user-forms.component";
 import {FormsListComponent} from "./presenters/forms-list/forms-list.component";
 import {SelectedFormComponent} from "./presenters/selected-form/selected-form.component";
 import {AuthLayoutComponent} from "./presenters/auth-layout/auth-layout.component";

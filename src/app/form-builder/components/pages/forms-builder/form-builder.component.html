@@ -9,10 +9,12 @@
   <div class="drag-group" cdkDropListGroup>
     <div class="fields-template-wrapper">
       <app-fields-list [defaultFields]="defaultFields$ | ngrxPush"></app-fields-list>
-      <div class="save-btn" *ngIf="fields.length">
-        <button (click)="openSaveWindow()" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
-          <mat-icon>bookmark</mat-icon>
-        </button>
+      <div class="save-btn" *ngrxLet="fields$ as fields">
+        <div *ngrxLet="userId$ as userId">
+          <button *ngIf="fields.length" (click)="openSaveWindow(fields, userId)" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+            <mat-icon>bookmark</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
     <app-form-edit-area></app-form-edit-area>

@@ -1,9 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../store/states/app.state";
-import {saveForm} from "../../../../store/actions/forms.actions";
+import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
 
 @Component({
   selector: 'app-save-form',
@@ -16,7 +14,7 @@ export class SaveDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private store: Store<AppState>
+    private formBuilderFacade: FormBuilderFacade
   ) {
   }
 
@@ -26,7 +24,8 @@ export class SaveDialogComponent implements OnInit {
 
   save() {
     const {fields, userId} = this.data;
-    this.store.dispatch(saveForm({formName: this.form.value.formName, fields, userId}));
+    this.formBuilderFacade.saveForm(this.form.value.formName, fields, userId);
+    // this.store.dispatch(saveForm({formName: this.form.value.formName, fields, userId}));
   }
 
 

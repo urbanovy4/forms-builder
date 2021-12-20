@@ -8,6 +8,7 @@ import {Observable, Subscription} from "rxjs";
 import {CdkPortal, TemplatePortal} from "@angular/cdk/portal";
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
+import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
 
 @Component({
   selector: 'app-form-builder',
@@ -18,21 +19,15 @@ export class FormBuilderComponent implements OnInit {
 
   @ViewChild(CdkPortal, {static: true}) portal: TemplatePortal;
 
-  private subscription: Subscription = new Subscription();
-
   defaultFields$: Observable<FormField[]>;
   isAuthenticated$: Observable<boolean>;
-
-  // fields$: Observable<FormField[]> = this.store.select(states => states.formBuilder.fields);
-  // userId$: Observable<number> = this.store.select(states => states.auth.userId);
-  fields$: Observable<any>
-  userId$: Observable<any>
-  userId: number;
-  fields: FormField[] = [];
+  fields$: Observable<FormField[]>;
+  userId$: Observable<number>;
 
   constructor(
     private fieldsTemplateFacade: FieldsTemplateFacade,
-    private authFacade: AuthFacade
+    private authFacade: AuthFacade,
+    private formBuilderFacade: FormBuilderFacade
   ) {
     this.setAuthUserData();
   }
@@ -40,9 +35,9 @@ export class FormBuilderComponent implements OnInit {
   ngOnInit(): void {
     this.defaultFields$ = this.fieldsTemplateFacade.defaultFields$;
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
+    this.userId$ = this.authFacade.userId$;
+    this.fields$ = this.formBuilderFacade.fields$;
     this.fieldsTemplateFacade.getDefaultFields();
-    // this.getFields();
-    // this.getUserId();
   }
 
   private setAuthUserData() {
@@ -54,29 +49,12 @@ export class FormBuilderComponent implements OnInit {
     }
   }
 
-  private getFields() {
-    // this.subscription.add(
-    //   this.fields$.subscribe(fields => {
-    //     this.fields = copy(fields);
-    //   })
-    // );
-  }
-
-  private getUserId() {
-    // this.subscription.add(
-    //   this.userId$.subscribe(id => {
-    //     this.userId = id;
-    //   })
-    // );
-  }
-
-
   ngOnDestroy() {
     // this.formBuilderFacade.deselectField();
-    this.subscription.unsubscribe();
   }
 
-  openSaveWindow() {
+  openSaveWindow(fields, userId) {
+    this.formBuilderFacade.showSaveDialog({fields, userId});
     // this.store.dispatch(showSaveDialog({fields: this.fields, userId: this.userId}))
   }
 

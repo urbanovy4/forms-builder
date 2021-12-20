@@ -1,11 +1,10 @@
 <div class="field-list">
   <div class="field"
-       *ngFor="let field of formFieldList | formatArray: formFieldList.length; let i = index"
+       *ngFor="let field of formFieldList; let i = index"
        [cdkDragData]="field"
        [ngSwitch]="field.type"
-       (click)="selectedField(i)"
-       cdkDrag
-  >
+       (click)="selectedField(field, i)"
+       cdkDrag>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>
     <div class="handle">
       <i class="fa fa-ellipsis-v " cdkDragHandle></i>
@@ -43,9 +42,8 @@
         <option>4</option>
       </select>
     </div>
-    {{field.id}}
     <div>
-      <i class="fa fa-trash pull-right" (click)="removeField(i, field.id)"></i>
+      <i class="fa fa-trash pull-right" (click)="removeField($event, i)"></i>
     </div>
   </div>
 </div>

@@ -12,5 +12,6 @@ export class FormsListItemComponent {
   @Input() form: Form;
   @Output() selectedForm = new EventEmitter<Form>();
   @Output() remove = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<number>();
 
 }

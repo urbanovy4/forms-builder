@@ -1,21 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {FormField} from "../../../../../helpers/models/model";
-import {Store} from "@ngrx/store";
 import {Observable, Subscription} from "rxjs";
-import {AppState} from "../../../../../store/states/app.state";
-import {
-  addField,
-  deselectField,
-  moveFieldInArray,
-  removeField,
-  selectField
-} from "../../../../../store/actions/forms.actions";
-import {copy} from "../../../../../helpers/utils/utils";
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
-import {map} from "rxjs/operators";
-import {fields} from "../../../../store/form-builder/selectors/form-buider.selector";
-import {parseGuardsRules} from "json-server-auth/dist/guards";
+import {copy} from "../../../../../helpers/utils/utils";
 
 @Component({
   selector: 'app-form-edit-area',
@@ -24,9 +12,14 @@ import {parseGuardsRules} from "json-server-auth/dist/guards";
 })
 export class FormEditAreaComponent implements OnInit, OnDestroy {
 
+  @Input() fieldsLength: number = 0;
+
   private subscription: Subscription = new Subscription();
+
   formFieldList$: Observable<FormField[]>;
   formFieldList: FormField[] = [];
+  selectedField$: Observable<FormField>;
+  selectedField: FormField;
 
   constructor(
     private formBuilderFacade: FormBuilderFacade
@@ -35,22 +28,20 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.formFieldList$ = this.formBuilderFacade.fields$;
-    // this.subscription.add(
-    //   this.formFieldList$.subscribe(fields => {
-    //     this.formFieldList = copy(fields);
-    //   })
-    // );
+    this.selectedField$ = this.formBuilderFacade.selectedField$;
+    this.getFieldsValue();
+    this.getSelectedFieldValue();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onDrop(event: CdkDragDrop<any>) {
+  onDrop(event: CdkDragDrop<FormField[]>) {
     this.dragItem(event);
   }
 
-  private dragItem(event: CdkDragDrop<any>) {
+  private dragItem(event: CdkDragDrop<FormField[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -70,24 +61,38 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   }
 
   private addField(field: FormField) {
-    this.formBuilderFacade.addField(field);
-    // this.store.dispatch(addField({field}));
+    const formField = copy(field);
+    this.formBuilderFacade.addField(formField);
   }
 
   private moveField(fields: FormField[]) {
-    const fieldsCopy = [...fields];
-    this.formBuilderFacade.moveField(fieldsCopy);
-    // this.store.dispatch(moveFieldInArray({fields: fieldsCopy}));
+    this.formBuilderFacade.moveField(fields);
   }
 
-  selectField(index: number) {
-    this.formBuilderFacade.selectField(index);
-    // this.store.dispatch(selectField({index}));
+  selectField({field, index}) {
+    this.formBuilderFacade.selectField({field, index});
   }
 
-  removeField(id: number) {
-    this.formBuilderFacade.removeField(id);
+  removeField(fields: FormField[]) {
+    const formFields = [...fields];
+    this.formBuilderFacade.removeField(formFields);
     // this.store.dispatch(removeField({fields}));
+  }
+
+  private getFieldsValue() {
+    this.subscription.add(
+      this.formFieldList$.subscribe((fields: FormField[]) => {
+        this.formFieldList = copy(fields);
+      })
+    );
+  }
+
+  private getSelectedFieldValue() {
+    this.subscription.add(
+      this.selectedField$.subscribe(field => {
+        this.selectedField = field;
+      })
+    );
   }
 
 }

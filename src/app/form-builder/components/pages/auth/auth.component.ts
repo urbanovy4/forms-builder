@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 
 @Component({
   selector: 'app-auth',
@@ -6,4 +7,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
+  isAuthenticated$ = this.authFacade.isAuthenticated$;
+
+  constructor(
+    private authFacade: AuthFacade
+  ) {
+  }
 }

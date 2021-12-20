@@ -224,6 +224,70 @@
       ],
       "formName": "asd",
       "id": 2
+    },
+    {
+      "userId": 1,
+      "fields": [
+        {
+          "id": 1,
+          "type": "text",
+          "icon": "fa fa-font",
+          "label": "Text",
+          "availableStyles": {
+            "required": false,
+            "placeholder": "",
+            "width": "",
+            "height": "",
+            "borderStyle": "",
+            "fontSize": "",
+            "fontWeight": "",
+            "color": ""
+          }
+        },
+        {
+          "id": 4,
+          "type": "checkbox",
+          "icon": "fa fa-list",
+          "label": "Checkbox",
+          "availableStyles": {
+            "required": false
+          }
+        }
+      ],
+      "formName": "daseq",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "fields": [
+        {
+          "id": 1,
+          "type": "text",
+          "icon": "fa fa-font",
+          "label": "Text",
+          "availableStyles": {
+            "required": false,
+            "placeholder": "",
+            "width": "",
+            "height": "",
+            "borderStyle": "",
+            "fontSize": "",
+            "fontWeight": "",
+            "color": ""
+          }
+        },
+        {
+          "id": 4,
+          "type": "checkbox",
+          "icon": "fa fa-list",
+          "label": "Checkbox",
+          "availableStyles": {
+            "required": false
+          }
+        }
+      ],
+      "formName": "das",
+      "id": 4
     }
   ]
 }

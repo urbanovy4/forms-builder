@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {AvailableStyles, Form, FormField} from "../../../../helpers/models/model";
+import {AvailableStyles, FormField} from "../../../../helpers/models/model";
 
 import {DialogActions, FormBuilderActions, ChangeStyleActions, FormActions} from './actions.model';
 
@@ -10,12 +10,12 @@ export const addField = createAction(
 
 export const removeField = createAction(
   FormBuilderActions.REMOVE_FIELD,
-  props<{ id: number }>()
+  props<{ fields: FormField[] }>()
 );
 
 export const selectField = createAction(
   FormBuilderActions.SELECT_FIELD,
-  props<{ index: number }>()
+  props<{ field: FormField, index: number }>()
 );
 
 export const deselectField = createAction(
@@ -49,41 +49,6 @@ export const saveFormSuccess = createAction(
 export const saveFormFailure = createAction(
   FormActions.SAVE_FORM_FAILURE,
   props<{ error: any }>()
-);
-
-export const removeForm = createAction(
-  FormActions.REMOVE_FORM,
-  props<{ formId: number }>()
-);
-
-export const removeFormSuccess = createAction(
-  FormActions.REMOVE_FORM_SUCCESS,
-  props<any>()
-);
-
-export const removeFormFailure = createAction(
-  FormActions.REMOVE_FORM_FAILURE,
-  props<{ error: string }>()
-);
-
-export const getForms = createAction(
-  FormActions.GET_FORMS,
-  props<{ userId: number }>()
-);
-
-export const getFormsSuccess = createAction(
-  FormActions.GET_FORMS_SUCCESS,
-  props<{ forms: Form[] }>()
-);
-
-export const getFormsFailure = createAction(
-  FormActions.GET_FORMS_FAILURE,
-  props<{ error: string }>()
-);
-
-export const selectForm = createAction(
-  FormActions.SELECT_FORM,
-  props<{ selectedForm: Form }>()
 );
 
 export const showSaveDialog = createAction(

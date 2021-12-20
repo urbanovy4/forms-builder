@@ -4,7 +4,7 @@ import {AuthComponent} from "./components/pages/auth/auth.component";
 import {LoginComponent} from "./components/pages/auth/login/login.component";
 import {RegisterComponent} from "./components/pages/auth/register/register.component";
 import {FormBuilderComponent} from "./components/pages/forms-builder/form-builder.component";
-import {UserFormsComponent} from "./components/pages/forms-builder/user-forms/user-forms.component";
+import {UserFormsComponent} from "./components/pages/user-forms/user-forms.component";
 import {AuthGuard} from "../helpers/guards/auth.guard";
 
 const routes: Routes = [

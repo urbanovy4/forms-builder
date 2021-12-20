@@ -22,17 +22,4 @@ export class FormBuilderService {
   saveForm(fields: FormField[], userId: number, formName: string) {
     return this.http.post(`${this.apiUrl}/660/saved-forms`, {userId, fields, formName});
   }
-
-  getForms(userId: number) {
-    return this.http.get(`${this.apiUrl}/660/saved-forms`, {
-      params: {
-        userId
-      }
-    });
-  }
-
-  removeForm(formId: number) {
-    return this.http.delete(`${this.apiUrl}/660/saved-forms/${formId}`);
-  }
-
 }
