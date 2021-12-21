@@ -20,7 +20,9 @@
         *ngFor="let form of forms$ | ngrxPush"
         [form]="form"
         (selectedForm)="selectForm($event)"
-        (remove)="removeForm($event)"></app-forms-list-item>
+        (remove)="removeForm($event)"
+        (edit)="editForm($event)"
+      ></app-forms-list-item>
     </app-forms-list>
   </mat-card>
 </ng-template>

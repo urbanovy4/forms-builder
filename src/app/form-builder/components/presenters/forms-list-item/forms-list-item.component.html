@@ -1,9 +1,9 @@
 <mat-list-item role="listitem" (click)="selectedForm.emit(form)">
   <p matLine>{{form.formName}}</p>
-  <button mat-icon-button color="primary" (click)="edit.emit(form.id)">
+  <button mat-icon-button color="primary" (click)="edit.emit(form); $event.stopPropagation()">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-icon-button color="warn" aria-label="Remove" (click)="remove.emit(form.id)">
+  <button mat-icon-button color="warn" aria-label="Remove" (click)="remove.emit(form.id); $event.stopPropagation()">
     <mat-icon>delete_outlined</mat-icon>
   </button>
 </mat-list-item>

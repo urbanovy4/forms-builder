@@ -26,6 +26,8 @@ import {RouterModule} from "@angular/router";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {AuthGuard} from "../../helpers/guards/auth.guard";
 import {FormatArrayPipe} from "../../helpers/pipes/format-array.pipe";
+import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
+import { PreviewDialogComponent } from './dialogs/preview-dialog/preview-dialog.component';
 
 @NgModule({
  declarations: [
@@ -48,7 +50,9 @@ import {FormatArrayPipe} from "../../helpers/pipes/format-array.pipe";
    AuthComponent,
    RegisterComponent,
    LoginComponent,
-   AuthLayoutComponent
+   AuthLayoutComponent,
+   EditDialogComponent,
+   PreviewDialogComponent
  ],
   imports: [
     CommonModule,

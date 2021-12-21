@@ -56,7 +56,3 @@ export const showSaveDialog = createAction(
   props<{ fields: FormField[], userId: number }>()
 );
 
-export const showRemoveDialog = createAction(
-  DialogActions.SHOW_REMOVE_DIALOG,
-  props<{ formId: number }>()
-);

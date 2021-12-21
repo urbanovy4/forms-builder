@@ -5,10 +5,12 @@ export const featureName = 'user-forms';
 
 export interface State extends EntityState<Form> {
   selectedFormId?: number;
+  error?: string
 }
 
 export const adapter = createEntityAdapter<Form>();
 
 export const initialState = adapter.getInitialState({
-  selectedFormId: null
+  selectedFormId: null,
+  error: null
 });

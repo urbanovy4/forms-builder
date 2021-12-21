@@ -4,6 +4,7 @@ import {AuthState, User} from "../../../../helpers/models/model";
 import {logIn, register, setToken, setUserId, signOut} from "../actions/auth.action";
 import {Observable} from "rxjs";
 import {checkAuth, getUserId} from "../selectors/auth.selector";
+import {clearFieldState} from "../../form-builder/actions/form-builder.action";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,6 @@ export class AuthFacade {
   /**
    * Login
    */
-
   login(user: User) {
     this.store.dispatch(logIn({user}))
   }
@@ -29,7 +29,6 @@ export class AuthFacade {
   /**
    * Register
    */
-
   register(user: User) {
     this.store.dispatch(register({user}))
   }
@@ -37,16 +36,14 @@ export class AuthFacade {
   /**
    * SignOut
    */
-
   signOut() {
     this.store.dispatch(signOut());
-    // this.store.dispatch(clearFieldState());
+    this.store.dispatch(clearFieldState());
   }
 
   /**
    * Set token
    */
-
   setToken(accessToken: string) {
     this.store.dispatch(setToken({accessToken}));
   }
@@ -54,7 +51,6 @@ export class AuthFacade {
   /**
    * Set user id
    */
-
   setUserId(userId: number) {
     this.store.dispatch(setUserId({userId}))
   }

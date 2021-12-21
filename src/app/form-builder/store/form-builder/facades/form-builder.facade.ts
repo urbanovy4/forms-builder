@@ -4,6 +4,7 @@ import {State} from "../states/form-builder.state";
 import {
   addField,
   changeStyle,
+  deselectField,
   moveFieldInArray,
   removeField,
   saveForm,
@@ -11,7 +12,6 @@ import {
   showSaveDialog
 } from "../actions/form-builder.action";
 import {AvailableStyles, FormField} from "../../../../helpers/models/model";
-import {deselectField} from "../../../../store/actions/forms.actions";
 import {Observable} from "rxjs";
 import {fields, selectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
 

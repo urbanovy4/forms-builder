@@ -20,6 +20,9 @@ export enum FormActions {
   SAVE_FORM = '[FORM] Save Form',
   SAVE_FORM_SUCCESS = '[FORM] Save Form Success',
   SAVE_FORM_FAILURE = '[FORM] Save Form Failure',
+  EDIT_FORM = '[FORM] Edit Form',
+  EDIT_FORM_SUCCESS = '[FORM] Edit Form Success',
+  EDIT_FORM_FAILURE = '[FORM] Edit Form Failure',
   REMOVE_FORM = '[FORM] Remove Form',
   REMOVE_FORM_SUCCESS = '[FORM] Remove Form Success',
   REMOVE_FORM_FAILURE = '[FORM] Remove Form Failure',
@@ -27,5 +30,7 @@ export enum FormActions {
 
 export enum DialogActions {
   SHOW_SAVE_DIALOG = '[DIALOG] Show Save Dialog',
-  SHOW_REMOVE_DIALOG = '[DIALOG] Show Remove Dialog'
+  SHOW_REMOVE_DIALOG = '[DIALOG] Show Remove Dialog',
+  SHOW_EDIT_DIALOG = '[DIALOG] Show Edit Dialog',
+  SHOW_PREVIEW_DIALOG = '[DIALOG] Show Preview Dialog'
 }

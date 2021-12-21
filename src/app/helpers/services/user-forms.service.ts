@@ -1,5 +1,6 @@
 import {Inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Form} from "../models/model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class UserFormsService {
         userId
       }
     });
+  }
+
+  editForm(form: Form) {
+    return this.http.put(`${this.apiUrl}/660/saved-forms/${form.id}`, form);
   }
 
   removeForm(formId: number) {

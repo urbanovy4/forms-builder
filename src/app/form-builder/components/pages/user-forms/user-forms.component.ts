@@ -47,11 +47,17 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   selectForm(selectedForm: Form) {
     // this.selectedForm = selectedForm;
+    this.userFormsFacade.showPreviewDialog(selectedForm);
     // this.store.dispatch(selectForm({selectedForm}))
   }
 
   removeForm(formId: number) {
-    // this.store.dispatch(showRemoveDialog({formId}));
+    this.userFormsFacade.showRemoveDialog(formId);
+  }
+
+  editForm(form: Form) {
+    this.userFormsFacade.showEditDialog(form);
+    // this.userFormsFacade.editForm(formId);
   }
 
   private getUserIdValue() {

@@ -1,5 +1,18 @@
-.example-spacer {
-  flex: 1 1 auto;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .router-group {
+    margin: 0 .5rem;
+    padding: .5rem;
+    font-size: 18px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {
@@ -7,11 +20,20 @@
 }
 
 .btn-group {
-  width: 100px;
+  width: 150px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+
+  .btn {
+    border-radius: 3px;
+
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
 }
 
 .active {
+  background-color: var(--background-color);
   font-weight: 600;
 }

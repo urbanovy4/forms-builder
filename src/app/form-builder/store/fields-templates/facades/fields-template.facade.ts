@@ -17,6 +17,10 @@ export class FieldsTemplateFacade {
   ) {
   }
 
+
+  /**
+   * Get default fields
+   */
   getDefaultFields() {
     this.store.dispatch(getDefaultFields());
   }

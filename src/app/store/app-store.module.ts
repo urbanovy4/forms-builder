@@ -3,11 +3,8 @@ import {StoreModule} from "@ngrx/store";
 import {metaReducers, reducers} from "./states/app.state";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../../environments/environment";
-import {RouterState, StoreRouterConnectingModule} from "@ngrx/router-store";
+import {StoreRouterConnectingModule} from "@ngrx/router-store";
 import {EffectsModule} from "@ngrx/effects";
-import {AuthEffects} from "./effects/auth.effects";
-import {FormsEffects} from "./effects/forms.effects";
-import {ReactiveComponentModule} from "@ngrx/component";
 
 @NgModule({
   imports: [
@@ -24,5 +21,4 @@ import {ReactiveComponentModule} from "@ngrx/component";
   ]
 })
 export class AppStoreModule {
-
 }
