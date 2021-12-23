@@ -24,4 +24,9 @@ export const form = createSelector(
   getSelectedId,
   getFormEntity,
   (id, entities) => entities[id]
-)
+);
+
+export const loading = createSelector(
+  userFormFeatureSelector,
+  state => state.loading
+);

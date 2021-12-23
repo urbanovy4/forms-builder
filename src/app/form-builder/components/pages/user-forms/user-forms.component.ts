@@ -1,6 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../store/states/app.state";
 import {Observable, Subscription} from "rxjs";
 import {Form} from "../../../../helpers/models/model";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
@@ -15,11 +13,11 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
   forms$: Observable<Form[]>;
+  loading$: Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
   userId$: Observable<number>;
   userId: number;
 
-  selectedForm: Form;
 
   constructor(
     private userFormsFacade: UserFormsFacade,
@@ -30,8 +28,9 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
-    this.forms$ = this.userFormsFacade.forms$;
     this.userId$ = this.authFacade.userId$;
+    this.forms$ = this.userFormsFacade.forms$;
+    this.loading$ = this.userFormsFacade.loading$;
     this.getUserIdValue();
     this.getForms(this.userId);
   }
@@ -42,13 +41,10 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   getForms(userId: number) {
     this.userFormsFacade.getForms(userId)
-    // this.store.dispatch(getForms({userId}));
   }
 
   selectForm(selectedForm: Form) {
-    // this.selectedForm = selectedForm;
     this.userFormsFacade.showPreviewDialog(selectedForm);
-    // this.store.dispatch(selectForm({selectedForm}))
   }
 
   removeForm(formId: number) {
@@ -57,7 +53,6 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   editForm(form: Form) {
     this.userFormsFacade.showEditDialog(form);
-    // this.userFormsFacade.editForm(formId);
   }
 
   private getUserIdValue() {

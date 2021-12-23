@@ -22,6 +22,10 @@ export const deselectField = createAction(
   FormBuilderActions.DESELECT_FIELD
 );
 
+export const clearFormBuilderState = createAction(
+  FormBuilderActions.CLEAR_FORM_BUILDER_STATE
+);
+
 export const clearFieldState = createAction(
   FormBuilderActions.CLEAR_FIELD_STATE
 );

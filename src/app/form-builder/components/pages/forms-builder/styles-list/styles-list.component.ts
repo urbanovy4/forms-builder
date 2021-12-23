@@ -26,9 +26,5 @@ export class StylesListComponent implements OnInit {
 
   changeStyle(event: { styles: AvailableStyles, index: number }) {
     this.formBuilderFacade.changeStyle(event.styles, event.index);
-    // this.store.dispatch(changeStyle({
-    //   styles,
-    //   index: this.index
-    // }));
   }
 }

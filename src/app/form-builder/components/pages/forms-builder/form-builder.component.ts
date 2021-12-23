@@ -4,7 +4,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import {FormField} from "../../../../helpers/models/model";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 import {CdkPortal, TemplatePortal} from "@angular/cdk/portal";
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
@@ -55,7 +55,6 @@ export class FormBuilderComponent implements OnInit {
 
   openSaveWindow(fields, userId) {
     this.formBuilderFacade.showSaveDialog({fields, userId});
-    // this.store.dispatch(showSaveDialog({fields: this.fields, userId: this.userId}))
   }
 
 }

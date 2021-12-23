@@ -40,7 +40,7 @@
         <input matInput type="text" placeholder="Placeholder text" formControlName="placeholder">
       </mat-form-field>
     </div>
-    <div>
+    <div *ngIf="!isButton()">
       <mat-checkbox color="primary" formControlName="required">Required</mat-checkbox>
     </div>
 

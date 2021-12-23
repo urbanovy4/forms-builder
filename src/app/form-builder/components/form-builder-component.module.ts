@@ -28,6 +28,7 @@ import {AuthGuard} from "../../helpers/guards/auth.guard";
 import {FormatArrayPipe} from "../../helpers/pipes/format-array.pipe";
 import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
 import { PreviewDialogComponent } from './dialogs/preview-dialog/preview-dialog.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
  declarations: [
@@ -52,7 +53,8 @@ import { PreviewDialogComponent } from './dialogs/preview-dialog/preview-dialog.
    LoginComponent,
    AuthLayoutComponent,
    EditDialogComponent,
-   PreviewDialogComponent
+   PreviewDialogComponent,
+   LoaderComponent
  ],
   imports: [
     CommonModule,

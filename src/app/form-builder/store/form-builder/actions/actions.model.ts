@@ -4,7 +4,8 @@ export enum FormBuilderActions {
   SELECT_FIELD = '[FORM BUILDER] Select Field',
   DESELECT_FIELD = '[FORM BUILDER] Deselect Field',
   MOVE_FIELD = '[FORM BUILDER] Move Field',
-  CLEAR_FIELD_STATE = '[FORM BUILDER] Clear Field State'
+  CLEAR_FIELD_STATE = '[FORM BUILDER] Clear Field State',
+  CLEAR_FORM_BUILDER_STATE = '[FORM BUILDER] Clear Form Builder State'
 }
 
 export enum ChangeStyleActions {

@@ -3,7 +3,7 @@ import {select, Store} from "@ngrx/store";
 import {State} from "../states/form-builder.state";
 import {
   addField,
-  changeStyle,
+  changeStyle, clearFormBuilderState,
   deselectField,
   moveFieldInArray,
   removeField,
@@ -38,6 +38,13 @@ export class FormBuilderFacade {
   }
 
   /**
+   * Clear form builder state
+   */
+  clearFormBuilderState() {
+    this.store.dispatch(clearFormBuilderState());
+  }
+
+  /**
    * Add field
    * @param field Field
    */
@@ -61,7 +68,7 @@ export class FormBuilderFacade {
    * @param index number
    */
 
-  selectField({ field, index }) {
+  selectField({field, index}) {
     this.store.dispatch(selectField({field, index}))
   }
 
@@ -71,9 +78,7 @@ export class FormBuilderFacade {
    */
 
   removeField(fields: FormField[]) {
-    // if (deselectCondition) {
-      this.deselectField();
-    // }
+    this.deselectField();
     this.store.dispatch(removeField({fields}))
   }
 

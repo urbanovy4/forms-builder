@@ -25,7 +25,7 @@ export class SaveDialogComponent implements OnInit {
   save() {
     const {fields, userId} = this.data;
     this.formBuilderFacade.saveForm(this.form.value.formName, fields, userId);
-    // this.store.dispatch(saveForm({formName: this.form.value.formName, fields, userId}));
+    this.formBuilderFacade.clearFormBuilderState();
   }
 
 

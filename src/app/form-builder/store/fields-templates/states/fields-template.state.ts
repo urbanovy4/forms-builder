@@ -10,5 +10,5 @@ export interface State extends EntityState<FormField> {
 export const adapter = createEntityAdapter<FormField>();
 
 export const initialState: State = adapter.getInitialState({
-  error: null
+  error: null,
 });

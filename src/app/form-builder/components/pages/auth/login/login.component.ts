@@ -9,7 +9,7 @@ import {AuthFacade} from "../../../../store/auth/facades/auth.facade";
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup
+  loginForm: FormGroup;
 
   constructor(
     private authFacade: AuthFacade

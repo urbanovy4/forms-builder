@@ -29,7 +29,7 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formFieldList$ = this.formBuilderFacade.fields$;
     this.selectedField$ = this.formBuilderFacade.selectedField$;
-    this.getFieldsValue();
+    // this.getFieldsValue();
     this.getSelectedFieldValue();
   }
 
@@ -66,7 +66,8 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   }
 
   private moveField(fields: FormField[]) {
-    this.formBuilderFacade.moveField(fields);
+    const formFields = copy(fields);
+    this.formBuilderFacade.moveField(formFields);
   }
 
   selectField({field, index}) {
@@ -76,7 +77,6 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
   removeField(fields: FormField[]) {
     const formFields = [...fields];
     this.formBuilderFacade.removeField(formFields);
-    // this.store.dispatch(removeField({fields}));
   }
 
   private getFieldsValue() {

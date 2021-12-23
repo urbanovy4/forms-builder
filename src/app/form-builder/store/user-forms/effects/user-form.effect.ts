@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import * as UserFormsActions from '../actions/user-forms.action';
-import {catchError, map, switchMap, tap} from "rxjs/operators";
+import {catchError, delay, map, switchMap, tap} from "rxjs/operators";
 import {Form} from "../../../../helpers/models/model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {of} from "rxjs";
@@ -30,14 +30,15 @@ export class UserFormEffect {
   getForms$ = createEffect(() => this.actions
     .pipe(
       ofType(UserFormsActions.getForms),
+      delay(200),
       switchMap(({userId}) => {
         return this.userFormsService.getForms(userId)
           .pipe(
             map((forms: Form[]) => {
-              return UserFormsActions.getFormsSuccess({forms})
+              return UserFormsActions.getFormsSuccess({forms});
             }),
             catchError((error: HttpErrorResponse) => {
-              return of(UserFormsActions.getFormsFailure({error: error.statusText}))
+              return of(UserFormsActions.getFormsFailure({error: error.statusText}));
             })
           );
       })
@@ -51,10 +52,10 @@ export class UserFormEffect {
         return this.userFormsService.removeForm(formId)
           .pipe(
             map(() => {
-              return UserFormsActions.removeFormSuccess({formId})
+              return UserFormsActions.removeFormSuccess({formId});
             }),
             catchError((error: HttpErrorResponse) => {
-              return of(UserFormsActions.removeFormFailure({error: error.message}))
+              return of(UserFormsActions.removeFormFailure({error: error.message}));
             })
           )
       })
@@ -138,7 +139,7 @@ export class UserFormEffect {
             maxHeight: '60vh',
             maxWidth: '50vw',
             minWidth: '30vw'
-          })
+          });
         })
       ),
     {dispatch: false}

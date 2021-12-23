@@ -1,8 +1,8 @@
 <div class="wrapper">
   <div>
     <div>
-      <h2>Select Fields</h2>
-      <span>Customize your form by drag and <br> drop below fields to the form area.</span>
+      <h2>Basic Fields</h2>
+      <span>Customize your form by drag and drop below fields to the form area.</span>
     </div>
     <div cdkDropList
          [cdkDropListData]="defaultFields"
@@ -10,20 +10,18 @@
          [cdkDropListSortPredicate]="noReturnPredicate"
          cdkDropListSortingDisabled
          class="field-list">
-      <mat-selection-list [multiple]="false">
-        <mat-list-item class="item" *ngFor="let field of defaultFields" cdkDrag [cdkDragData]="field" id="{{field.id}}">
-          <i [ngClass]="field.icon"></i>
+      <mat-list>
+        <mat-list-item
+          class="item"
+          *ngFor="let field of defaultFields"
+          cdkDrag
+          [cdkDragData]="field"
+          id="{{field.id}}">
           <span>{{field.label}}</span>
-          <div *cdkDragPreview><i [ngClass]="field.icon"></i></div>
+          <i [ngClass]="field.icon"></i>
+          <div *cdkDragPreview></div>
         </mat-list-item>
-      </mat-selection-list>
+      </mat-list>
     </div>
   </div>
-
 </div>
-
-<!--<mat-selection-list #shoes [multiple]="false">-->
-<!--  <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">-->
-<!--    {{shoe}}-->
-<!--  </mat-list-option>-->
-<!--</mat-selection-list>-->

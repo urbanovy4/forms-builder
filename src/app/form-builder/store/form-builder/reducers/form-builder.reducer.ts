@@ -32,11 +32,12 @@ export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.clearFieldState, () => {
     return initialState;
   }),
+  on(FormEditActions.clearFormBuilderState, () => {
+    return initialState;
+  }),
   on(FormEditActions.changeStyle, (state, {styles, index}) => {
     return {
       ...state,
-      // selectedField: state.selectedField,
-      // selectedFieldIndex: index,
       fields: updateArray(state.fields, index, styles)
     }
   }),

@@ -1,8 +1,7 @@
 import {AvailableStyles, FormField} from "../models/model";
-import {cloneDeep} from "lodash";
 
-export function copy(arg: any) {
-  return cloneDeep(arg);
+export function copy<T>(arg: T): T {
+  return JSON.parse(JSON.stringify(arg));
 }
 
 export function updateArray(fields: FormField[], index: number, styles: AvailableStyles) {
@@ -14,20 +13,4 @@ export function updateArray(fields: FormField[], index: number, styles: Availabl
   }
 
   return cloneFields;
-}
-
-export function formatField(field: FormField, length?: number): FormField {
-  const formField = copy(field);
-  if (field.id) {
-    formField.id = length + 1;
-  }
-  return formField;
-}
-
-export function formatFieldsArray(fields: FormField[]): FormField[] {
-  const formattedFieldsArr: FormField[] = [];
-  for (let i = 0; i <= fields.length; i++) {
-    formattedFieldsArr.push(formatField(fields[i], i));
-  }
-  return formattedFieldsArr;
 }

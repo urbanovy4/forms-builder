@@ -1,16 +1,14 @@
 <app-header [isAuthenticated]="isAuthenticated$ | ngrxPush"></app-header>
 <div class="container">
   <div class="form-wrapper">
-    <div *ngIf="!(forms$ | ngrxPush).length else formsList">
-      <h2>There are no forms yet.</h2>
+    <div *ngIf="!(loading$ | ngrxPush) else loader">
+      <div *ngIf="!((forms$ | ngrxPush).length > 0); else formsList">
+        <div>
+          <h2>There are no forms yet.</h2>
+        </div>
+      </div>
     </div>
   </div>
-
-<!--  <div class="selected-form">-->
-<!--    <div *ngIf="!selectedForm else form">-->
-<!--      The form has not yet been selected.-->
-<!--    </div>-->
-<!--  </div>-->
 </div>
 
 <ng-template #formsList>
@@ -27,11 +25,7 @@
   </mat-card>
 </ng-template>
 
-<!--<ng-template #form>-->
-<!--  <div>-->
-<!--    <h2>-->
-<!--      <strong>Selected form</strong>: {{selectedForm.formName}}-->
-<!--    </h2>-->
-<!--    <app-selected-form [selectedForm]="selectedForm"></app-selected-form>-->
-<!--  </div>-->
-<!--</ng-template>-->
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
