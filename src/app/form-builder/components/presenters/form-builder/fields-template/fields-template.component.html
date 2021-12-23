@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div>
+    <div>
+      <h2>Basic Fields</h2>
+      <span>Customize your form by drag and drop below fields to the form area.</span>
+    </div>
+    <div cdkDropList
+         [cdkDropListData]="defaultFields"
+         [cdkDropListEnterPredicate]="noReturnPredicate"
+         [cdkDropListSortPredicate]="noReturnPredicate"
+         cdkDropListSortingDisabled
+         class="field-list">
+      <mat-list>
+        <mat-list-item
+          class="item"
+          *ngFor="let field of defaultFields"
+          cdkDrag
+          [cdkDragData]="field"
+          id="{{field.id}}">
+          <span>{{field.label}}</span>
+          <i [ngClass]="field.icon"></i>
+          <div *cdkDragPreview></div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

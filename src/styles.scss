@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome";
+
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --border-color: #999;
+  --hover-color: rgba(0, 0, 0, .2);
+  --background-color: rgba(0, 0, 0, .4);
+  --icon-color: #8A888D;
+}
