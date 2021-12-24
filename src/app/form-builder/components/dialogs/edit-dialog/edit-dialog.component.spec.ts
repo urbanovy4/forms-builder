@@ -29,7 +29,7 @@ describe('EditDialogComponent', () => {
         },
         {
           provide: UserFormsFacade,
-          useValue: jasmine.createSpyObj('UserFormsFacade', ['']),
+          useValue: jasmine.createSpyObj('UserFormsFacade', ['editForm']),
         }
       ]
     }).compileComponents();
@@ -48,8 +48,9 @@ describe('EditDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should init form', () => {
-  //   component.ngOnInit();
-  //   // expect(component.).toBeTruthy();
-  // });
+  it('should call editForm', () => {
+    component.ngOnInit();
+    component.edit();
+    expect(service.editForm).toHaveBeenCalled();
+  });
 });

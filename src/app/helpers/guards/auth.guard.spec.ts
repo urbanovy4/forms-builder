@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {AuthGuard} from './auth.guard';
 import {AuthService} from "../services/auth/auth.service";
 import {AuthFacade} from "../../form-builder/store/auth/facades/auth.facade";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
@@ -11,8 +12,12 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [HttpClientTestingModule],
       providers: [
+        {
+          provide: AuthGuard,
+          useValue: jasmine.createSpyObj('AuthGuard', [''])
+        },
         {
           provide: AuthService,
           useValue: jasmine.createSpyObj('AuthService', [''])

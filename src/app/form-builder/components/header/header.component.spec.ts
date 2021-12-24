@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import {HeaderComponent} from './header.component';
 import {AuthFacade} from "../../store/auth/facades/auth.facade";
 
 describe('HeaderComponent', () => {
@@ -10,25 +10,25 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [HeaderComponent],
       providers: [
         {
           provide: AuthFacade,
-          useValue: jasmine.createSpyObj('AuthFacade', [''])
+          useValue: jasmine.createSpyObj('AuthFacade', ['signOut'])
         }
       ]
     }).compileComponents();
-
-    facade = TestBed.inject(AuthFacade);
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    facade = TestBed.inject(AuthFacade);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call signOut', () => {
+    component.signOut();
+    expect(facade.signOut).toHaveBeenCalled();
   });
 });

@@ -11,12 +11,8 @@ describe('SelectedFormComponent', () => {
       declarations: [ SelectedFormComponent ]
     })
     .compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(SelectedFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

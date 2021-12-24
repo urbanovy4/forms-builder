@@ -5,6 +5,8 @@ import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builde
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
 import {ReactiveComponentModule} from "@ngrx/component";
+import {FormField} from "../../../../helpers/models/model";
+import {MaterialModule} from "../../../../material/material.module";
 
 describe('FormBuilderComponent', () => {
   let component: FormBuilderComponent;
@@ -15,21 +17,13 @@ describe('FormBuilderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveComponentModule],
+      imports: [ReactiveComponentModule, MaterialModule],
       declarations: [FormBuilderComponent],
       providers: [
         {
           provide: FormBuilderFacade,
           useValue: jasmine.createSpyObj('FormBuilderFacade', [
-            // 'deselectField',
-            // 'clearFormBuilderState',
-            // 'addField',
-            // 'moveField',
-            // 'selectField',
-            // 'removeField',
-            // 'changeStyle',
             'showSaveDialog',
-            // 'saveForm'
           ])
         },
         {
@@ -53,7 +47,19 @@ describe('FormBuilderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('', () => {
-
+  it('should call showSaveDialog', () => {
+    const fields: FormField[] = [];
+    const userId: number = 1;
+    component.ngOnInit();
+    component.openSaveWindow(fields, userId);
+    expect(fbFacade.showSaveDialog).toHaveBeenCalled();
   });
+
+  // it('should set user data', () => {
+  //   component.ngOnInit();
+    // @ts-ignore
+    // component.setAuthUserData()
+    // expect(authFacade.setUserId).toHaveBeenCalled();
+    // expect(authFacade.setToken).toHaveBeenCalled();
+  // });
 });

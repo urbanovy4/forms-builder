@@ -13,12 +13,8 @@ describe('FormsListItemComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(FormsListItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

@@ -1,4 +1,4 @@
-import {AvailableStyles, FormField} from "../../models/model";
+import {AvailableStyles, FormField} from "../models/model";
 
 export function copy<T>(arg: T): T {
   return JSON.parse(JSON.stringify(arg));

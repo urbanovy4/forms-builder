@@ -14,7 +14,7 @@ describe('LoginComponent', () => {
       providers: [
         {
           provide: AuthFacade,
-          useValue: jasmine.createSpyObj('AuthFacade', [''])
+          useValue: jasmine.createSpyObj('AuthFacade', ['login'])
         }
       ]
     }).compileComponents();
@@ -29,5 +29,10 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call login', () => {
+    component.onSubmit();
+    expect(facade.login).toHaveBeenCalled();
   });
 });

@@ -14,7 +14,7 @@ describe('RegisterComponent', () => {
       providers: [
         {
           provide: AuthFacade,
-          useValue: jasmine.createSpyObj('AuthFacade', [''])
+          useValue: jasmine.createSpyObj('AuthFacade', ['register'])
         }
       ]
     }).compileComponents();
@@ -29,5 +29,10 @@ describe('RegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call register', () => {
+    component.onSubmit();
+    expect(facade.register).toHaveBeenCalled();
   });
 });
