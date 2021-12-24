@@ -3,7 +3,7 @@ import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-dro
 import {FormField} from "../../../../../helpers/models/model";
 import {Observable, Subscription} from "rxjs";
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
-import {copy} from "../../../../../helpers/utils/utils";
+import {copy} from "../../../../../helpers/services/utils/utils.service";
 
 @Component({
   selector: 'app-form-edit-area',

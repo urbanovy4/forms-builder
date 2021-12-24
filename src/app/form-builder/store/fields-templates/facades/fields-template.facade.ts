@@ -16,8 +16,7 @@ export class FieldsTemplateFacade {
     private store: Store
   ) {
   }
-
-
+  
   /**
    * Get default fields
    */

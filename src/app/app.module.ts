@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {TokenInterceptor} from "./helpers/services/token.interceptor";
+import {TokenInterceptor} from "./helpers/services/intercepor/token.interceptor";
 import {AppStoreModule} from "./store/app-store.module";
 
 

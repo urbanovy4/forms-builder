@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AuthLayoutComponent } from './auth-layout.component';
+import {AuthLayoutComponent} from './auth-layout.component';
 
 describe('AuthLayoutComponent', () => {
   let component: AuthLayoutComponent;
@@ -8,15 +8,12 @@ describe('AuthLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthLayoutComponent ]
+      declarations: [AuthLayoutComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(AuthLayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

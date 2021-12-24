@@ -54,7 +54,7 @@ export class FormBuilderComponent implements OnInit {
   }
 
   openSaveWindow(fields, userId) {
-    this.formBuilderFacade.showSaveDialog({fields, userId});
+    this.formBuilderFacade.showSaveDialog(fields, userId);
   }
 
 }

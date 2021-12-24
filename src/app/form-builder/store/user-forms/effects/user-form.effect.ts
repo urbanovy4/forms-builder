@@ -5,7 +5,7 @@ import {catchError, delay, map, switchMap, tap} from "rxjs/operators";
 import {Form} from "../../../../helpers/models/model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {of} from "rxjs";
-import {UserFormsService} from "../../../../helpers/services/user-forms.service";
+import {UserFormsService} from "../../../../helpers/services/user-forms/user-forms.service";
 import {RemoveDialogComponent} from "../../../components/dialogs/remove-dialog/remove-dialog.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {EditDialogComponent} from "../../../components/dialogs/edit-dialog/edit-dialog.component";

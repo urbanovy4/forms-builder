@@ -1,7 +1,7 @@
 import {createReducer, on} from "@ngrx/store";
 import {initialState} from "../states/form-builder.state";
 import * as FormEditActions from "./../actions/form-builder.action";
-import {updateArray} from "../../../../helpers/utils/utils";
+import {updateArray} from "../../../../helpers/services/utils/utils.service";
 
 export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.addField, (state, {field}) => {

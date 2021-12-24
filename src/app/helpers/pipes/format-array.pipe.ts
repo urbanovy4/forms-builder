@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {FormField} from "../models/model";
-import {copy} from "../utils/utils";
+import {copy} from "../services/utils/utils.service";
 
 @Pipe({
   name: 'formatArray',

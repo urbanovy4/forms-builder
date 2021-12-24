@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SaveDialogComponent } from './save-dialog.component';
 
-describe('SaveFormComponent', () => {
+describe('SaveDialogComponent', () => {
   let component: SaveDialogComponent;
   let fixture: ComponentFixture<SaveDialogComponent>;
 

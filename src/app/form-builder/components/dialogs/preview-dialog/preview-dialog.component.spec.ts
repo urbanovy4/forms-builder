@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PreviewDialogComponent } from './preview-dialog.component';
+import {PreviewDialogComponent} from './preview-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MaterialModule} from "../../../../material/material.module";
 
 describe('PreviewDialogComponent', () => {
   let component: PreviewDialogComponent;
@@ -8,9 +10,10 @@ describe('PreviewDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreviewDialogComponent ]
+      declarations: [PreviewDialogComponent],
+      imports: [ReactiveFormsModule, MaterialModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
