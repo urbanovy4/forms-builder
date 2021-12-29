@@ -28,7 +28,7 @@ describe('UserFormsComponent', () => {
         },
         {
           provide: AuthFacade,
-          useValue: jasmine.createSpyObj('AuthFacade', [''])
+          useValue: jasmine.createSpyObj('AuthFacade', ['setToken', 'setUserId'])
         }
       ]
     }).compileComponents();
@@ -43,10 +43,6 @@ describe('UserFormsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('should init fields', () => {
-  //   component.ngOnInit();
-  // });
 
   it('should call getForms', () => {
     const userId: number = 1;
@@ -78,8 +74,8 @@ describe('UserFormsComponent', () => {
       id: 1,
       fields: [],
       userId: 1
-    }
+    };
     component.editForm(form);
-    expect(userFormsFacade.removeForm).toHaveBeenCalled();
+    expect(userFormsFacade.showEditDialog).toHaveBeenCalled();
   });
 });

@@ -1,25 +1,31 @@
-import {copy, updateArray} from "./utils";
+import {Utils} from "./utils";
 import {AvailableStyles, FormField} from "../models/model";
 
-// describe('utils', () => {
-  // let copyFn: Function;
-  // let updateArrayFn: Function;
+describe('Utils', () => {
+  it('should call copy', () => {
+    const mockData: string = 'Test';
+    expect(Utils.copy(mockData)).toEqual(mockData);
+  });
 
-  // beforeEach(() => {
-  //   copyFn = copy;
-  //   updateArrayFn = updateArray;
-  // });/
-
-  // it('should call copy', () => {
-  //   const data: any = {};
-  //   expect(copyFn).toHaveBeenCalledWith(data);
-  // });
-  //
-  // it('should call updateArray', () => {
-  //   const fields: FormField[] = [];
-  //   const index: number = 1;
-  //   const styles: AvailableStyles = {};
-  //
-  //   expect(updateArrayFn).toHaveBeenCalledWith(fields, index, styles);
-  // });
-// });
+  it('should call updateArray', () => {
+    const fields: FormField[] = [
+      {
+        availableStyles: {},
+        id: 1,
+        icon: 'fa fa-submit',
+        label: 'Test1',
+        type: 'text'
+      },
+      {
+        availableStyles: {},
+        id: 1,
+        icon: 'fa fa-submit',
+        label: 'Test1',
+        type: 'text'
+      }
+    ];
+    const index: number = 1;
+    const styles: AvailableStyles = {};
+    expect(Utils.updateArray(fields, index, styles)).toEqual(fields);
+  });
+});

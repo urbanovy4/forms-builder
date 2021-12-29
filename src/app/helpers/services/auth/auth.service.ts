@@ -16,7 +16,7 @@ export class AuthService {
   ) {
   }
 
-  login(user: User): Observable<{accessToken: string, userId: number}> {
+  login(user: User): Observable<{ accessToken: string, userId: number }> {
     return this.http.post<UserResponse>(`${this.apiUrl}/login`, user)
       .pipe(
         map(res => {
@@ -51,7 +51,10 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    if (!this.token) {
+      this.token = localStorage.getItem('token');
+    }
+    return !!this.token;
   }
 
 }

@@ -43,7 +43,7 @@
       </select>
     </div>
     <div>
-      <i class="fa fa-trash pull-right" (click)="removeField($event, i)"></i>
+      <i class="fa fa-trash pull-right" (click)="removeField(i); $event.stopPropagation()"></i>
     </div>
   </div>
 </div>

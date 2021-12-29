@@ -39,6 +39,13 @@ describe('UserFormsFacade', () => {
     expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 
+  it('should call removeForm', () => {
+    const formId: number = 1;
+    facade.removeForm(formId);
+    const action = UserActions.removeForm({formId});
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
+
   it('should call editForm', () => {
     const mockForm: Form = {
       formName: 'test',

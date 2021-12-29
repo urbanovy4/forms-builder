@@ -25,7 +25,6 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {AuthGuard} from "../../helpers/guards/auth.guard";
-import {FormatArrayPipe} from "../../helpers/pipes/format-array.pipe";
 import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
 import { PreviewDialogComponent } from './dialogs/preview-dialog/preview-dialog.component';
 import { LoaderComponent } from './loader/loader.component';
@@ -40,7 +39,6 @@ import { LoaderComponent } from './loader/loader.component';
    FormEditAreaComponent,
    FormEditAreaLayoutComponent,
    StylesListLayoutComponent,
-   FormatArrayPipe,
    EnumToArrayPipe,
    UserFormsComponent,
    FormsListComponent,
@@ -74,7 +72,6 @@ import { LoaderComponent } from './loader/loader.component';
     FormEditAreaComponent,
     FormEditAreaLayoutComponent,
     StylesListLayoutComponent,
-    FormatArrayPipe,
     EnumToArrayPipe,
     UserFormsComponent,
     FormsListComponent,

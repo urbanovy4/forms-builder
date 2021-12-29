@@ -11,7 +11,7 @@ import {AuthService} from "../services/auth/auth.service";
 import {AuthFacade} from "../../form-builder/store/auth/facades/auth.facade";
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private authFacade: AuthFacade,
@@ -19,17 +19,17 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
     if (this.authService.isAuthenticated()) {
-      return of(true);
+      return true;
     }
 
     this.authFacade.signOut();
     this.router.navigate(['/login']);
-    return of(false);
+    return false;
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.canActivate(childRoute, state);
-  }
+  // canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  //   return this.canActivate(childRoute, state);
+  // }
 }

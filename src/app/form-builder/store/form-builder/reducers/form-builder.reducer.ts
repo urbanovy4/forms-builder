@@ -1,7 +1,7 @@
 import {createReducer, on} from "@ngrx/store";
 import {initialState} from "../states/form-builder.state";
 import * as FormEditActions from "./../actions/form-builder.action";
-import {updateArray} from "../../../../helpers/utils/utils";
+import {Utils} from "../../../../helpers/utils/utils";
 
 export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.addField, (state, {field}) => {
@@ -38,7 +38,7 @@ export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.changeStyle, (state, {styles, index}) => {
     return {
       ...state,
-      fields: updateArray(state.fields, index, styles)
+      fields: Utils.updateArray(state.fields, index, styles)
     }
   }),
   on(FormEditActions.moveFieldInArray, (state, {fields}) => {
