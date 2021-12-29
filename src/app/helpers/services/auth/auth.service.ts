@@ -9,11 +9,23 @@ import {map, tap} from "rxjs/operators";
 })
 export class AuthService {
   private token: string = null;
+  //For test
+  private loggedIn: boolean = false;
 
   constructor(
     private http: HttpClient,
     @Inject('API_URL') private readonly apiUrl: string,
   ) {
+    //For test
+    this.loggedInState = JSON.parse(localStorage.getItem('loginState'));
+  }
+
+  get loggedInState() {
+    return this.loggedIn;
+  }
+
+  set loggedInState(state: boolean) {
+    this.loggedIn = state;
   }
 
   login(user: User): Observable<{ accessToken: string, userId: number }> {
@@ -34,6 +46,7 @@ export class AuthService {
 
   signOut() {
     this.token = null;
+    this.loggedInState = false;
     localStorage.clear();
   }
 
@@ -47,14 +60,10 @@ export class AuthService {
 
   setToken(accessToken: string) {
     this.token = accessToken;
+    this.loggedInState = true;
     localStorage.setItem('token', accessToken);
-  }
-
-  isAuthenticated(): boolean {
-    if (!this.token) {
-      this.token = localStorage.getItem('token');
-    }
-    return !!this.token;
+    //For test
+    localStorage.setItem('loginState', String(this.loggedInState));
   }
 
 }

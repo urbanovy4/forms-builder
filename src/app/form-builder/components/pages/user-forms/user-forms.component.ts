@@ -16,8 +16,6 @@ export class UserFormsComponent implements OnInit, OnDestroy {
   loading$: Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
   userId$: Observable<number>;
-  userId: number;
-
 
   constructor(
     private userFormsFacade: UserFormsFacade,
@@ -28,19 +26,22 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
-    this.userId$ = this.authFacade.userId$;
     this.forms$ = this.userFormsFacade.forms$;
     this.loading$ = this.userFormsFacade.loading$;
-    this.getUserIdValue();
-    this.getForms(this.userId);
+    this.userId$ = this.authFacade.userId$;
+    this.getForms();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  getForms(userId: number) {
-    this.userFormsFacade.getForms(userId)
+  getForms() {
+    this.subscription.add(
+      this.userId$.subscribe(id => {
+        this.userFormsFacade.getForms(id);
+      })
+    );
   }
 
   selectForm(selectedForm: Form) {
@@ -53,14 +54,6 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   editForm(form: Form) {
     this.userFormsFacade.showEditDialog(form);
-  }
-
-  private getUserIdValue() {
-    this.subscription.add(
-      this.userId$.subscribe(id => {
-        this.userId = id;
-      })
-    );
   }
 
   private setAuthUserData() {

@@ -1,4 +1,4 @@
-export const authFeatureName = 'auth';
+export const featureName = 'auth';
 
 export interface State {
   accessToken: string;

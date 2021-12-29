@@ -40,7 +40,8 @@ describe('FormBuilderComponent', () => {
     component = fixture.componentInstance;
     fbFacade = TestBed.inject(FormBuilderFacade);
     templatesFacade = TestBed.inject(FieldsTemplateFacade);
-    authFacade = TestBed.inject(AuthFacade);
+    // authFacade = TestBed.inject(AuthFacade);
+    localStorage.setItem('token', 'TestToken');
   });
 
   it('should create', () => {
@@ -54,12 +55,4 @@ describe('FormBuilderComponent', () => {
     component.openSaveWindow(fields, userId);
     expect(fbFacade.showSaveDialog).toHaveBeenCalled();
   });
-
-  // it('should set user data', () => {
-  //   component.ngOnInit();
-    // @ts-ignore
-    // component.setAuthUserData()
-    // expect(authFacade.setUserId).toHaveBeenCalled();
-    // expect(authFacade.setToken).toHaveBeenCalled();
-  // });
 });

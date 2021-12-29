@@ -1,7 +1,7 @@
 import {createEntityAdapter, EntityState} from "@ngrx/entity";
 import {Form} from "../../../../helpers/models/model";
 
-export const featureName = 'user-forms';
+export const featureName = 'userForms';
 
 export interface State extends EntityState<Form> {
   selectedFormId?: number;

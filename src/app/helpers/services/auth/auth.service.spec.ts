@@ -88,11 +88,4 @@ describe('AuthService', () => {
     expect(service.getToken()).toEqual(token);
   });
 
-  it('should ', () => {
-    const token: string = 'Test token';
-    service.setToken(token);
-    service.isAuthenticated();
-    expect(service.getToken()).toEqual(token);
-  });
-
 });
