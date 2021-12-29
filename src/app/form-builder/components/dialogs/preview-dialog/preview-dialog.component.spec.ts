@@ -1,6 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PreviewDialogComponent } from './preview-dialog.component';
+import {PreviewDialogComponent} from './preview-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MaterialModule} from "../../../../material/material.module";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Form} from "../../../../helpers/models/model";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('PreviewDialogComponent', () => {
   let component: PreviewDialogComponent;
@@ -8,15 +13,24 @@ describe('PreviewDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreviewDialogComponent ]
+      imports: [ReactiveFormsModule, MaterialModule],
+      declarations: [PreviewDialogComponent],
+      providers: [
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: <Form>{
+            userId: 1,
+            id: 1,
+            fields: [],
+            formName: 'Test'
+          }
+        }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
+      .compileComponents();
     fixture = TestBed.createComponent(PreviewDialogComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

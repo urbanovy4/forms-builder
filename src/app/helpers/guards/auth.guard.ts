@@ -1,17 +1,10 @@
 import {Injectable} from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanActivateChild,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {AuthService} from "../services/auth.service";
+import {CanActivate, Router} from '@angular/router';
+import {AuthService} from "../services/auth/auth.service";
 import {AuthFacade} from "../../form-builder/store/auth/facades/auth.facade";
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private authFacade: AuthFacade,
@@ -19,17 +12,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    if (this.authService.isAuthenticated()) {
-      return of(true);
-    }
-
-    this.authFacade.signOut();
-    this.router.navigate(['/login']);
-    return of(false);
+  canActivate(): boolean {
+    return this.checkLogin();
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.canActivate(childRoute, state);
+  checkLogin(): boolean {
+    if (this.authService.loggedInState) {
+      return true;
+    }
+
+    this.router.navigate(['/login']);
+    return false;
   }
 }

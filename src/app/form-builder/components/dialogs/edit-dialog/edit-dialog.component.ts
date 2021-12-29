@@ -14,8 +14,8 @@ export class EditDialogComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: { form: Form },
-    private userFormFacade: UserFormsFacade
+    private userFormFacade: UserFormsFacade,
+    @Inject(MAT_DIALOG_DATA) private data: { form: Form }
   ) {
   }
 

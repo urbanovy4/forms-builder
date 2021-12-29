@@ -11,7 +11,7 @@ import {
   selectField,
   showSaveDialog
 } from "../actions/form-builder.action";
-import {AvailableStyles, FormField} from "../../../../helpers/models/model";
+import {AvailableStyles, Form, FormField} from "../../../../helpers/models/model";
 import {Observable} from "rxjs";
 import {fields, selectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
 
@@ -94,9 +94,11 @@ export class FormBuilderFacade {
 
   /**
    * Show save dialog
+   * @param fields FormField[]
+   * @param userId number
    */
 
-  showSaveDialog({fields, userId}) {
+  showSaveDialog(fields: FormField[], userId: number) {
     this.store.dispatch(showSaveDialog({fields, userId}));
   }
 

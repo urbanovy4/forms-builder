@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {FormBuilderService} from "../../../../helpers/services/form-builder.service";
+import {FormBuilderService} from "../../../../helpers/services/form-builder/form-builder.service";
 import * as FormBuilderActions from "../../fields-templates/actions/fields-template.actions";
 import {catchError, map, switchMap} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";

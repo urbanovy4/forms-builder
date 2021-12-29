@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SelectedFormComponent } from './selected-form.component';
+import {SelectedFormComponent} from './selected-form.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('SelectedFormComponent', () => {
   let component: SelectedFormComponent;
@@ -8,15 +9,12 @@ describe('SelectedFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectedFormComponent ]
+      declarations: [SelectedFormComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
+      .compileComponents();
     fixture = TestBed.createComponent(SelectedFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

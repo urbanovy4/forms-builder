@@ -5,7 +5,7 @@ import {Form} from "../../../../helpers/models/model";
 import {forms, loading} from "../selectors/user-forms.selector";
 import {
   editForm,
-  getForms,
+  getForms, removeForm,
   selectForm,
   showEditDialog,
   showPreviewDialog,
@@ -35,6 +35,10 @@ export class UserFormsFacade {
 
   editForm(form: Form) {
     this.store.dispatch(editForm({form}));
+  }
+
+  removeForm(formId: number) {
+    this.store.dispatch(removeForm({formId}));
   }
 
   showPreviewDialog(form: Form) {

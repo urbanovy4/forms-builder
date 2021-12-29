@@ -1,6 +1,6 @@
 import {FormField} from "../../../../helpers/models/model";
 
-export const formBuilderFeatureName = 'form-builder';
+export const featureName = 'formBuilder';
 
 export interface State {
   selectedField: FormField,

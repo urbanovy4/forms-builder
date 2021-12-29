@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Form} from "../../../../helpers/models/model";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
@@ -16,31 +16,32 @@ export class UserFormsComponent implements OnInit, OnDestroy {
   loading$: Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
   userId$: Observable<number>;
-  userId: number;
-
 
   constructor(
     private userFormsFacade: UserFormsFacade,
     private authFacade: AuthFacade
   ) {
     this.setAuthUserData();
+    this.isAuthenticated$ = this.authFacade.isAuthenticated$;
+    this.forms$ = this.userFormsFacade.forms$;
+    this.loading$ = this.userFormsFacade.loading$;
+    this.userId$ = this.authFacade.userId$;
   }
 
   ngOnInit(): void {
-    this.isAuthenticated$ = this.authFacade.isAuthenticated$;
-    this.userId$ = this.authFacade.userId$;
-    this.forms$ = this.userFormsFacade.forms$;
-    this.loading$ = this.userFormsFacade.loading$;
-    this.getUserIdValue();
-    this.getForms(this.userId);
+    this.getForms();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  getForms(userId: number) {
-    this.userFormsFacade.getForms(userId)
+  private getForms() {
+    this.subscription.add(
+      this.userId$.subscribe(id => {
+        this.userFormsFacade.getForms(id);
+      })
+    );
   }
 
   selectForm(selectedForm: Form) {
@@ -53,14 +54,6 @@ export class UserFormsComponent implements OnInit, OnDestroy {
 
   editForm(form: Form) {
     this.userFormsFacade.showEditDialog(form);
-  }
-
-  private getUserIdValue() {
-    this.subscription.add(
-      this.userId$.subscribe(id => {
-        this.userId = id;
-      })
-    );
   }
 
   private setAuthUserData() {

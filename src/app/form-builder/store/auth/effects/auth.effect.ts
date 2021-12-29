@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AuthService} from "../../../../helpers/services/auth.service";
+import {AuthService} from "../../../../helpers/services/auth/auth.service";
 import * as AuthActions from './../actions/auth.action';
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";

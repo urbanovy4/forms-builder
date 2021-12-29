@@ -1,22 +1,34 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserResponse, User} from "../models/model";
+import {HttpClient} from "@angular/common/http";
+import {UserResponse, User} from "../../models/model";
 import {Observable} from "rxjs";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private token: string = null;
+  //For test
+  private loggedIn: boolean = false;
 
   constructor(
     private http: HttpClient,
     @Inject('API_URL') private readonly apiUrl: string,
   ) {
+    //For test
+    this.loggedInState = JSON.parse(localStorage.getItem('loginState'));
   }
 
-  login(user: User): Observable<{accessToken: string, userId: number}> {
+  get loggedInState() {
+    return this.loggedIn;
+  }
+
+  set loggedInState(state: boolean) {
+    this.loggedIn = state;
+  }
+
+  login(user: User): Observable<{ accessToken: string, userId: number }> {
     return this.http.post<UserResponse>(`${this.apiUrl}/login`, user)
       .pipe(
         map(res => {
@@ -34,6 +46,7 @@ export class AuthService {
 
   signOut() {
     this.token = null;
+    this.loggedInState = false;
     localStorage.clear();
   }
 
@@ -47,11 +60,10 @@ export class AuthService {
 
   setToken(accessToken: string) {
     this.token = accessToken;
+    this.loggedInState = true;
     localStorage.setItem('token', accessToken);
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    //For test
+    localStorage.setItem('loginState', String(this.loggedInState));
   }
 
 }

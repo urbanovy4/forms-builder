@@ -1,7 +1,7 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {formBuilderFeatureName, State} from "../states/form-builder.state";
+import {featureName, State} from "../states/form-builder.state";
 
-export const featureSelector = createFeatureSelector<State>(formBuilderFeatureName);
+export const featureSelector = createFeatureSelector<State>(featureName);
 
 export const fields = createSelector(
   featureSelector,

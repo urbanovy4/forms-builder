@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FieldsTemplateComponent } from './fields-template.component';
+import {FieldsTemplateComponent} from './fields-template.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FieldsListComponent', () => {
   let component: FieldsTemplateComponent;
@@ -8,9 +9,10 @@ describe('FieldsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldsTemplateComponent ]
+      declarations: [FieldsTemplateComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +23,9 @@ describe('FieldsListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call noReturnPredicate', () => {
+    expect(component.noReturnPredicate()).not.toBe(true);
   });
 });

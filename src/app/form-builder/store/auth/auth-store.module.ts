@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {StoreModule} from "@ngrx/store";
-import {authFeatureName} from "./states/auth.state";
+import {featureName} from "./states/auth.state";
 import {authReducer} from "./reducers/auth.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthEffect} from "./effects/auth.effect";
@@ -8,7 +8,7 @@ import {FormBuilderComponentModule} from "../../components/form-builder-componen
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(authFeatureName, authReducer),
+    StoreModule.forFeature(featureName, authReducer),
     EffectsModule.forFeature([AuthEffect]),
     FormBuilderComponentModule
   ]
