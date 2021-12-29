@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../../../../material/material.module";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Form} from "../../../../helpers/models/model";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('PreviewDialogComponent', () => {
   let component: PreviewDialogComponent;
@@ -24,7 +25,8 @@ describe('PreviewDialogComponent', () => {
             formName: 'Test'
           }
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
     fixture = TestBed.createComponent(PreviewDialogComponent);

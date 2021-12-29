@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {FormField} from "../../../../helpers/models/model";
 import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('SaveDialogComponent', () => {
   let component: SaveDialogComponent;
@@ -27,7 +28,8 @@ describe('SaveDialogComponent', () => {
           provide: FormBuilderFacade,
           useValue: jasmine.createSpyObj('FormBuilderFacade', ['saveForm', 'clearFormBuilderState'])
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SaveDialogComponent);

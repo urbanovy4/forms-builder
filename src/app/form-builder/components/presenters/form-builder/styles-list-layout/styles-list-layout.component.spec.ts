@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {StylesListLayoutComponent} from './styles-list-layout.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('StylesListLayoutComponent', () => {
   let component: StylesListLayoutComponent;
@@ -8,7 +9,8 @@ describe('StylesListLayoutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [StylesListLayoutComponent]
+      declarations: [StylesListLayoutComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
     fixture = TestBed.createComponent(StylesListLayoutComponent);

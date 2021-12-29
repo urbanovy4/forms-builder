@@ -1,10 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormEditAreaComponent } from './form-edit-area.component';
+import {FormEditAreaComponent} from './form-edit-area.component';
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
 import {ReactiveComponentModule} from "@ngrx/component";
-import {CdkDrag, CdkDragDrop} from "@angular/cdk/drag-drop";
 import {FormField} from "../../../../../helpers/models/model";
+import {ContainerModel, DragDropEventFactory} from "../../../../../helpers/factory/drag-drop-event.factory";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FormEditAreaComponent', () => {
   let component: FormEditAreaComponent;
@@ -14,15 +15,21 @@ describe('FormEditAreaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReactiveComponentModule],
-      declarations: [ FormEditAreaComponent ],
+      declarations: [FormEditAreaComponent],
       providers: [
         {
           provide: FormBuilderFacade,
-          useValue: jasmine.createSpyObj('FormBuilderFacade', [''])
+          useValue: jasmine.createSpyObj('FormBuilderFacade', [
+            'selectField',
+            'removeField',
+            'moveField',
+            'addField'
+          ])
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FormEditAreaComponent);
     component = fixture.componentInstance;
@@ -31,16 +38,92 @@ describe('FormEditAreaComponent', () => {
 
 
   it('should create', () => {
+    component.ngOnInit();
     expect(component).toBeTruthy();
   });
 
-  // it('should call onInit', () => {
-  //   component.ngOnInit();
-  // });
+  it('should call selectField', () => {
+    const field: FormField = {
+      type: 'text',
+      id: 1,
+      availableStyles: {},
+      label: 'Test',
+      icon: 'fa fa-icon'
+    };
+    const index: number = 1;
+    component.selectField({field, index});
+    expect(formBuilderFacade.selectField).toHaveBeenCalledWith({field, index});
+  });
 
-  // it('should call onDrop', () => {
-    // const event: CdkDragDrop<FormField[]> = {containe};
-    // component.ngOnInit();
-    // component.onDrop()
-  // });
+  it('should call removeField', () => {
+    const fields: FormField[] = [
+      {
+        type: 'text',
+        id: 1,
+        availableStyles: {},
+        label: 'Test1',
+        icon: 'fa fa-icon'
+      },
+      {
+        type: 'text',
+        id: 2,
+        availableStyles: {},
+        label: 'Test2',
+        icon: 'fa fa-icon'
+      },
+      {
+        type: 'text',
+        id: 3,
+        availableStyles: {},
+        label: 'Test3',
+        icon: 'fa fa-icon'
+      }
+    ];
+    component.removeField(fields);
+    expect(formBuilderFacade.removeField).toHaveBeenCalledWith(fields);
+  });
+
+  it('should call onDrop in the one container', () => {
+    const formFields: FormField[] = [];
+    const event = new DragDropEventFactory().createInContainerEvent(1, formFields, 1, 2);
+    component.onDrop(event);
+  });
+
+  it('should call onDrop between containers', () => {
+    const prevContainerModel: ContainerModel<FormField> = {
+      index: 1,
+      id: 1,
+      data: [
+        {
+          type: 'text',
+          id: 1,
+          availableStyles: {},
+          label: 'Test1',
+          icon: 'fa fa-icon'
+        },
+        {
+          type: 'text',
+          id: 1,
+          availableStyles: {},
+          label: 'Test1',
+          icon: 'fa fa-icon'
+        }
+      ]
+    };
+    const currentContainerModel: ContainerModel<FormField> = {
+      index: 2,
+      id: 2,
+      data: [
+        {
+          type: 'text',
+          id: 1,
+          availableStyles: {},
+          label: 'Test1',
+          icon: 'fa fa-icon'
+        }
+      ]
+    };
+    const event = new DragDropEventFactory().createCrossContainerEvent(prevContainerModel, currentContainerModel);
+    component.onDrop(event);
+  });
 });

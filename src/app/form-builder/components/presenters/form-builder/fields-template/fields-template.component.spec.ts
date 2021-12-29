@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FieldsTemplateComponent} from './fields-template.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FieldsListComponent', () => {
   let component: FieldsTemplateComponent;
@@ -8,7 +9,8 @@ describe('FieldsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FieldsTemplateComponent]
+      declarations: [FieldsTemplateComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });

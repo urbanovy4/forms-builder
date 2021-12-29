@@ -49,10 +49,6 @@ export class FormBuilderComponent implements OnInit {
     }
   }
 
-  ngOnDestroy() {
-    // this.formBuilderFacade.deselectField();
-  }
-
   openSaveWindow(fields, userId) {
     this.formBuilderFacade.showSaveDialog(fields, userId);
   }

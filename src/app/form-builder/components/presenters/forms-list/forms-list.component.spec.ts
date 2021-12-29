@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormsListComponent } from './forms-list.component';
+import {FormsListComponent} from './forms-list.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FormsListComponent', () => {
   let component: FormsListComponent;
@@ -8,9 +9,10 @@ describe('FormsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormsListComponent ]
+      declarations: [FormsListComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

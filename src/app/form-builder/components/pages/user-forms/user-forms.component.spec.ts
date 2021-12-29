@@ -5,6 +5,8 @@ import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.faca
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {Form} from "../../../../helpers/models/model";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {of} from "rxjs";
 
 describe('UserFormsComponent', () => {
   let component: UserFormsComponent;
@@ -30,34 +32,31 @@ describe('UserFormsComponent', () => {
           provide: AuthFacade,
           useValue: jasmine.createSpyObj('AuthFacade', ['setToken', 'setUserId'])
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserFormsComponent);
     component = fixture.componentInstance;
-
     userFormsFacade = TestBed.inject(UserFormsFacade);
     authFacade = TestBed.inject(AuthFacade);
-    localStorage.setItem('token', 'Test token')
+    localStorage.setItem('token', 'Test token');
   }));
 
   afterAll(() => {
     localStorage.clear();
-  })
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should init', () => {
-  //   component.ngOnInit();
-  //   expect(userFormsFacade.getForms).toHaveBeenCalled();
-  // });
-
-  // it('should call getForms', () => {
-  //   component.ngOnInit();
-  //   expect(userFormsFacade.getForms).toHaveBeenCalled();
-  // });
+  it('should call getForms',() => {
+    const userId: number = 1;
+    component.userId$ = of(userId);
+    component.ngOnInit();
+    expect(userFormsFacade.getForms).toHaveBeenCalledWith(userId);
+  });
 
   it('should call showPreviewDialog', () => {
     const selectedForm: Form = {

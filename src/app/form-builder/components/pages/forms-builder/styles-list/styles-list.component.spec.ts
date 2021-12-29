@@ -4,6 +4,7 @@ import {StylesListComponent} from './styles-list.component';
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {AvailableStyles} from "../../../../../helpers/models/model";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('StylesListComponent', () => {
   let component: StylesListComponent;
@@ -19,7 +20,8 @@ describe('StylesListComponent', () => {
           provide: FormBuilderFacade,
           useValue: jasmine.createSpyObj('FormBuilderFacade', ['changeStyle'])
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
     fixture = TestBed.createComponent(StylesListComponent);

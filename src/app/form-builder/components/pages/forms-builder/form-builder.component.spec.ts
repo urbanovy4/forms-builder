@@ -7,6 +7,7 @@ import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fiel
 import {ReactiveComponentModule} from "@ngrx/component";
 import {FormField} from "../../../../helpers/models/model";
 import {MaterialModule} from "../../../../material/material.module";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FormBuilderComponent', () => {
   let component: FormBuilderComponent;
@@ -33,8 +34,9 @@ describe('FormBuilderComponent', () => {
         {
           provide: AuthFacade,
           useValue: jasmine.createSpyObj('AuthFacade', ['setToken', 'setUserId'])
-        }
-      ]
+        },
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
     fixture = TestBed.createComponent(FormBuilderComponent);
     component = fixture.componentInstance;

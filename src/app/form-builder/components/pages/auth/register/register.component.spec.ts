@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
 import {AuthFacade} from "../../../../store/auth/facades/auth.facade";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -16,7 +17,8 @@ describe('RegisterComponent', () => {
           provide: AuthFacade,
           useValue: jasmine.createSpyObj('AuthFacade', ['register'])
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
     facade = TestBed.inject(AuthFacade);
   });

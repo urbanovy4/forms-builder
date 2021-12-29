@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RemoveDialogComponent} from './remove-dialog.component';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('RemoveFormDialogComponent', () => {
   let component: RemoveDialogComponent;
@@ -23,7 +24,8 @@ describe('RemoveFormDialogComponent', () => {
             formId: 1
           }
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
     fixture = TestBed.createComponent(RemoveDialogComponent);

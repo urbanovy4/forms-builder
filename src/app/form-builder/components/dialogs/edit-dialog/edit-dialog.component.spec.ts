@@ -3,9 +3,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {EditDialogComponent} from './edit-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {MaterialModule} from "../../../../material/material.module";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Form} from "../../../../helpers/models/model";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('EditDialogComponent', () => {
   let component: EditDialogComponent;
@@ -31,7 +31,8 @@ describe('EditDialogComponent', () => {
           provide: UserFormsFacade,
           useValue: jasmine.createSpyObj('UserFormsFacade', ['editForm']),
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
     fixture = TestBed.createComponent(EditDialogComponent);
     component = fixture.componentInstance;

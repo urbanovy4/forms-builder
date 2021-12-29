@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Form} from "../../../../helpers/models/model";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
@@ -22,13 +22,13 @@ export class UserFormsComponent implements OnInit, OnDestroy {
     private authFacade: AuthFacade
   ) {
     this.setAuthUserData();
-  }
-
-  ngOnInit(): void {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
     this.forms$ = this.userFormsFacade.forms$;
     this.loading$ = this.userFormsFacade.loading$;
     this.userId$ = this.authFacade.userId$;
+  }
+
+  ngOnInit(): void {
     this.getForms();
   }
 
@@ -36,7 +36,7 @@ export class UserFormsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  getForms() {
+  private getForms() {
     this.subscription.add(
       this.userId$.subscribe(id => {
         this.userFormsFacade.getForms(id);
