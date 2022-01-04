@@ -12,11 +12,10 @@ import {FormEditAreaLayoutComponent} from "./presenters/form-builder/form-edit-a
 import {StylesListLayoutComponent} from "./presenters/form-builder/styles-list-layout/styles-list-layout.component";
 import {EnumToArrayPipe} from "../../helpers/pipes/enum-to-array.pipe";
 import {UserFormsComponent} from "./pages/user-forms/user-forms.component";
-import {FormsListComponent} from "./presenters/forms-list/forms-list.component";
-import {SelectedFormComponent} from "./presenters/selected-form/selected-form.component";
+import {FormsListComponent} from "./presenters/user-forms/forms-list/forms-list.component";
 import {AuthLayoutComponent} from "./presenters/auth-layout/auth-layout.component";
 import {SaveDialogComponent} from "./dialogs/save-dialog/save-dialog.component";
-import {FormsListItemComponent} from "./presenters/forms-list-item/forms-list-item.component";
+import {FormsListItemComponent} from "./presenters/user-forms/forms-list-item/forms-list-item.component";
 import {RemoveDialogComponent} from "./dialogs/remove-dialog/remove-dialog.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../../material/material.module";
@@ -42,7 +41,6 @@ import { LoaderComponent } from './loader/loader.component';
    EnumToArrayPipe,
    UserFormsComponent,
    FormsListComponent,
-   SelectedFormComponent,
    SaveDialogComponent,
    FormsListItemComponent,
    RemoveDialogComponent,
@@ -75,7 +73,6 @@ import { LoaderComponent } from './loader/loader.component';
     EnumToArrayPipe,
     UserFormsComponent,
     FormsListComponent,
-    SelectedFormComponent,
     SaveDialogComponent,
     FormsListItemComponent,
     RemoveDialogComponent,
