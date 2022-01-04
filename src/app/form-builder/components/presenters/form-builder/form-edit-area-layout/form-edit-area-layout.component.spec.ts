@@ -41,6 +41,7 @@ describe('FormEditAreaLayoutComponent', () => {
     const index: number = 1;
     const fieldList: FormField[] = [];
     spyOn(component.changeFormList, 'emit');
+    component.fieldList = fieldList;
     component.removeField(index);
     expect(component.changeFormList.emit).toHaveBeenCalledWith(fieldList);
   });
