@@ -9,7 +9,12 @@ import {FormField} from "../../../../../helpers/models/model";
 })
 export class FormEditAreaLayoutComponent {
 
-  @Input('formFieldList') formFieldList: FormField[] = [];
+  formFieldList: FormField[];
+
+  @Input('formFieldList')
+  set fieldList(fields) {
+    this.formFieldList = [...fields];
+  }
 
   @Output() selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
   @Output() changeFormList: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
