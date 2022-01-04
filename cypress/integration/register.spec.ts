@@ -2,7 +2,7 @@ describe('Register', () => {
   let email: string;
   let password: string;
 
-  before(() => {
+  beforeEach(() => {
     email = generateRandomEmail();
     password = 'TestPassword';
   });
@@ -10,18 +10,19 @@ describe('Register', () => {
   it('should register and login', () => {
     cy.visit('/register');
     cy.url().should('include', 'register');
+    cy.get('form').contains('Sign Up');
     cy.get('[formControlName="email"]').type(email);
     cy.get('[formControlName="password"]').type(password);
     cy.get('#registerBtn').click();
-    cy.url().should('include', 'login');
-    cy.get('[formControlName="email"]').type(email);
-    cy.get('[formControlName="password"]').type(password);
-    cy.get('#loginBtn').click();
+    cy.intercept({
+      method: 'POST',
+      path: '/register'
+    }).as('register');
   });
 
-  it('should route to user form page', () => {
-    cy.url().should('include', 'forms-builder');
-    cy.get('[routerLink="/user-forms"]').click();
+  it('should route to login page', () => {
+    cy.url().should('include', 'login');
+    cy.get('form').contains('Log in');
   });
 });
 

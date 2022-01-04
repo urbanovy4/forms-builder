@@ -3,6 +3,7 @@
        *ngFor="let field of formFieldList; let i = index"
        [cdkDragData]="field"
        [ngSwitch]="field.type"
+       [id]="'form-field-' + i"
        (click)="selectedField(field, i)"
        cdkDrag>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>

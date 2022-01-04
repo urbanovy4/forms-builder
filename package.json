@@ -9,7 +9,7 @@
     "test": "ng test --code-coverage",
     "mock:server": "json-server ./server/db.json -m ./node_modules/json-server-auth -r ./server/routes.json",
     "develop": "concurrently \"npm run start\" \"npm run mock:server\"",
-    "e2e": "ng e2e",
+    "e2e": "concurrently \"npm run mock:server\" \"ng e2e\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
