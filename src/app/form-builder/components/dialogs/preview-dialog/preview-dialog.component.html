@@ -1,5 +1,5 @@
+<h2 mat-dialog-title>Preview: {{data.formName}}</h2>
 <form class="form">
-  <h3 class="mat-card-title"><strong>Form: {{data.formName}}</strong></h3>
   <div class="field"
        *ngFor="let field of data.fields; let i = index"
        [ngSwitch]="field.type"
@@ -44,3 +44,8 @@
     </div>
   </div>
 </form>
+<mat-dialog-actions align="end">
+  <button class="close" type="button" mat-button mat-dialog-close>
+    Close
+  </button>
+</mat-dialog-actions>

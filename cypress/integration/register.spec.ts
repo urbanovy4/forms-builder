@@ -3,11 +3,11 @@ describe('Register', () => {
   let password: string;
 
   beforeEach(() => {
-    email = generateRandomEmail();
+    email = generateRandomString() + '@test.com';
     password = 'TestPassword';
   });
 
-  it('should register and login', () => {
+  it('should register', () => {
     cy.visit('/register');
     cy.url().should('include', 'register');
     cy.get('form').contains('Sign Up');
@@ -27,12 +27,12 @@ describe('Register', () => {
 });
 
 
-function generateRandomEmail(): string {
+export function generateRandomString(): string {
   const chars: string = 'abcdefghijklmnopqrstuvwxyz1234567890';
-  let email: string = '';
+  let string: string = '';
   for (let i = 0; i < 10; i++) {
-    email += chars[Math.floor(Math.random() * chars.length)];
+    string += chars[Math.floor(Math.random() * chars.length)];
   }
 
-  return email + '@test.com';
+  return string;
 }
