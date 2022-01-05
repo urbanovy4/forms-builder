@@ -4,22 +4,23 @@
       <h2>Basic Fields</h2>
       <span>Customize your form by drag and drop below fields to the form area.</span>
     </div>
-    <div cdkDropList
-         [cdkDropListData]="defaultFields"
-         [cdkDropListEnterPredicate]="noReturnPredicate"
-         [cdkDropListSortPredicate]="noReturnPredicate"
-         cdkDropListSortingDisabled
-         class="field-list">
-      <mat-list>
+    <div class="field-list">
+      <mat-list
+        cdkDropList
+        [cdkDropListData]="defaultFields"
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+        [cdkDropListSortPredicate]="noReturnPredicate"
+        cdkDropListSortingDisabled
+      >
         <mat-list-item
           class="item"
-          *ngFor="let field of defaultFields"
+          *ngFor="let field of defaultFields; let i = index"
           cdkDrag
           [cdkDragData]="field"
-          id="{{field.id}}">
+          [id]="'field-' + field.id">
           <span>{{field.label}}</span>
           <i [ngClass]="field.icon"></i>
-          <div *cdkDragPreview></div>
+<!--          <div *cdkDragPreview></div>-->
         </mat-list-item>
       </mat-list>
     </div>

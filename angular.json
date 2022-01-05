@@ -70,13 +70,14 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "forms-builder:build:production"
             },
             "development": {
-              "browserTarget": "forms-builder:build:development"
+              "browserTarget": "forms-builder:build:development",
+              "extraWebpackConfig": "./cypress/coverage.webpack.js"
             }
           },
           "defaultConfiguration": "development"
@@ -105,6 +106,37 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "forms-builder:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "forms-builder:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "forms-builder:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "forms-builder:serve:production"
+            }
           }
         }
       }

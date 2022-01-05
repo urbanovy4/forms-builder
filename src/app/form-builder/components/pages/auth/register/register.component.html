@@ -2,7 +2,7 @@
   <form class="form" (ngSubmit)="onSubmit()">
       <h2 mat-dialog-title>Sign Up</h2>
     <app-auth-layout [parentForm]="registerForm"></app-auth-layout>
-    <button [disabled]="registerForm.invalid" class="btn" mat-raised-button color="primary" type="submit">Sign Up
+    <button [disabled]="registerForm.invalid" id="registerBtn" class="btn" mat-raised-button color="primary" type="submit">Sign Up
     </button>
   </form>
 </div>

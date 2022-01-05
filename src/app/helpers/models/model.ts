@@ -26,7 +26,7 @@ export interface FormField {
 export interface AvailableStyles {
   width?: string;
   height?: string;
-  borderStyle?: string;
+  borderStyle?: BorderStyles;
   fontSize?: string;
   fontWeight?: string;
   color?: Color;
@@ -52,16 +52,16 @@ interface Color {
 }
 
 export enum BorderStyles {
-  Dotted = 'dotted',
-  Dashed = 'dashed',
-  Solid = 'solid',
-  Double = 'double',
-  Groove = 'groove',
-  Ridge = 'ridge',
-  Inset = 'inset',
-  Outset = 'outset',
-  None = 'none',
-  Hidden = 'hidden'
+  Dotted = 'Dotted',
+  Dashed = 'Dashed',
+  Solid = 'Solid',
+  Double = 'Double',
+  Groove = 'Groove',
+  Ridge = 'Ridge',
+  Inset = 'Inset',
+  Outset = 'Outset',
+  None = 'None',
+  Hidden = 'Hidden'
 }
 
 export interface FormBuilderState {

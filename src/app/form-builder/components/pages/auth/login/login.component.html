@@ -2,6 +2,6 @@
   <form class="form" (ngSubmit)="onSubmit()">
       <h2 mat-dialog-title>Log in</h2>
     <app-auth-layout [parentForm]="loginForm"></app-auth-layout>
-    <button [disabled]="loginForm.invalid" class="btn" mat-raised-button color="primary" type="submit">Log In</button>
+    <button [disabled]="loginForm.invalid" id="loginBtn" class="btn" mat-raised-button color="primary" type="submit">Log In</button>
   </form>
 </div>

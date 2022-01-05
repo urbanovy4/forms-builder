@@ -67,7 +67,7 @@ export class UserFormEffect {
         ofType(UserFormsActions.removeFormSuccess),
         tap(() => {
           this.removeDialogRef.close();
-          this.snackbar.open('The form has been successfully deleted', null, {
+          this.snackbar.open('The form has been successfully removed', null, {
             duration: this.duration
           });
         })

@@ -5,7 +5,7 @@ import {provideMockStore} from "@ngrx/store/testing";
 import {State} from "../states/form-builder.state";
 import {FormBuilderFacade} from "./form-builder.facade";
 import * as FormBuilderActions from './../actions/form-builder.action';
-import {AvailableStyles, FormField} from "../../../../helpers/models/model";
+import {AvailableStyles, BorderStyles, FormField} from "../../../../helpers/models/model";
 
 describe('FormBuilderFacade', () => {
   let store: Store<State>;
@@ -47,7 +47,7 @@ describe('FormBuilderFacade', () => {
           hex: '#000001',
           roundA: 1
         },
-        borderStyle: 'Dashed',
+        borderStyle: BorderStyles.Dashed,
         fontWeight: '400',
         height: '100px',
         placeholder: 'Field',
@@ -78,7 +78,7 @@ describe('FormBuilderFacade', () => {
             hex: '#000001',
             roundA: 1
           },
-          borderStyle: 'Dashed',
+          borderStyle: BorderStyles.Dashed,
           fontWeight: '400',
           height: '100px',
           placeholder: 'Field',
@@ -102,7 +102,7 @@ describe('FormBuilderFacade', () => {
             hex: '#000001',
             roundA: 1
           },
-          borderStyle: 'Dashed',
+          borderStyle: BorderStyles.Dashed,
           fontWeight: '400',
           height: '100px',
           placeholder: 'Field',
@@ -134,7 +134,7 @@ describe('FormBuilderFacade', () => {
           hex: '#000001',
           roundA: 1
         },
-        borderStyle: 'Dashed',
+        borderStyle: BorderStyles.Dashed,
         fontWeight: '400',
         height: '100px',
         placeholder: 'Field',
@@ -165,7 +165,7 @@ describe('FormBuilderFacade', () => {
             hex: '#000001',
             roundA: 1
           },
-          borderStyle: 'Dashed',
+          borderStyle: BorderStyles.Dashed,
           fontWeight: '400',
           height: '100px',
           placeholder: 'Field',
@@ -196,7 +196,7 @@ describe('FormBuilderFacade', () => {
         hex: '#000001',
         roundA: 1
       },
-      borderStyle: 'Dashed',
+      borderStyle: BorderStyles.Dashed,
       fontWeight: '400',
       height: '100px',
       placeholder: 'Field',
@@ -222,7 +222,7 @@ describe('FormBuilderFacade', () => {
             hex: '#000001',
             roundA: 1
           },
-          borderStyle: 'Dashed',
+          borderStyle: BorderStyles.Dashed,
           fontWeight: '400',
           height: '100px',
           placeholder: 'Field',
@@ -257,7 +257,7 @@ describe('FormBuilderFacade', () => {
             hex: '#000001',
             roundA: 1
           },
-          borderStyle: 'Dashed',
+          borderStyle: BorderStyles.Dashed,
           fontWeight: '400',
           height: '100px',
           placeholder: 'Field',

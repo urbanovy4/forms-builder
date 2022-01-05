@@ -15,7 +15,8 @@
   <mat-card>
     <app-forms-list>
       <app-forms-list-item
-        *ngFor="let form of forms$ | ngrxPush"
+        *ngFor="let form of forms$ | ngrxPush; let i = index"
+        [id]="'form-' + (i + 1)"
         [form]="form"
         (selectedForm)="selectForm($event)"
         (remove)="removeForm($event)"
