@@ -1,13 +1,14 @@
 .form-builder {
   display: flex;
   justify-content: space-around;
-  height: 60vh;
+  min-height: 60vh;
   margin: 5rem auto;
 
 
   .drag-group {
-    flex: 2;
     display: flex;
+    flex: 2;
+    justify-content: space-around;
     padding: 2rem;
     border: 1px solid #e8e8e8;
     margin-right: 3rem;
@@ -41,3 +42,27 @@
   border-radius: 7px;
 }
 
+@media (max-width: 1200px) {
+  .form-builder {
+    display: block;
+
+    .drag-group {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: 999px) {
+  .drag-group {
+    flex-direction: column;
+
+    .save-btn {
+      margin-bottom: 1rem;
+    }
+
+    .fields-template-wrapper {
+      margin-right: 0 !important;
+    }
+  }
+}

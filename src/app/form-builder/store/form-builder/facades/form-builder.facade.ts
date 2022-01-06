@@ -12,13 +12,16 @@ import {
   showSaveDialog
 } from "../actions/form-builder.action";
 import {AvailableStyles, FormField} from "../../../../helpers/models/model";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {fields, selectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
 
 @Injectable({
   providedIn: "root"
 })
 export class FormBuilderFacade {
+
+  private notifyToUnsubscribe$: Subject<null> = new Subject<null>();
+  readonly notifyToUnsubscribe: Observable<null> = this.notifyToUnsubscribe$.asObservable();
 
   fields$: Observable<FormField[]> = this.store.pipe(select(fields));
   selectedField$: Observable<FormField> = this.store.pipe(select(selectedField));
@@ -32,7 +35,6 @@ export class FormBuilderFacade {
   /**
    * Deselect field
    */
-
   deselectField() {
     this.store.dispatch(deselectField());
   }
@@ -48,7 +50,6 @@ export class FormBuilderFacade {
    * Add field
    * @param field Field
    */
-
   addField(field: FormField) {
     this.store.dispatch(addField({field}));
   }
@@ -57,7 +58,6 @@ export class FormBuilderFacade {
    * Move field
    * @param fields Field
    */
-
   moveField(fields: FormField[]) {
     this.store.dispatch(moveFieldInArray({fields}));
   }
@@ -67,7 +67,6 @@ export class FormBuilderFacade {
    * @param field FormField
    * @param index number
    */
-
   selectField({field, index}) {
     this.store.dispatch(selectField({field, index}))
   }
@@ -76,7 +75,6 @@ export class FormBuilderFacade {
    * Remove field
    * @param fields FormField[]
    */
-
   removeField(fields: FormField[]) {
     this.deselectField();
     this.store.dispatch(removeField({fields}))
@@ -87,7 +85,6 @@ export class FormBuilderFacade {
    * @param styles Styles
    * @param index number
    */
-
   changeStyle(styles: AvailableStyles, index: number) {
     this.store.dispatch(changeStyle({styles, index}))
   }
@@ -97,7 +94,6 @@ export class FormBuilderFacade {
    * @param fields FormField[]
    * @param userId number
    */
-
   showSaveDialog(fields: FormField[], userId: number) {
     this.store.dispatch(showSaveDialog({fields, userId}));
   }
@@ -108,9 +104,12 @@ export class FormBuilderFacade {
    * @param fields FormField[]
    * @param userId Number
    */
-
   saveForm(formName: string, fields: FormField[], userId: number) {
     this.store.dispatch(saveForm({formName, fields, userId}));
+  }
+
+  unsubscribe() {
+    this.notifyToUnsubscribe$.next(null);
   }
 
 }

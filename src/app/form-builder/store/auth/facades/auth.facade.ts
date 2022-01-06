@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {select, Store} from "@ngrx/store";
 import {AuthState, User} from "../../../../helpers/models/model";
 import {logIn, register, setToken, setUserId, signOut} from "../actions/auth.action";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {checkAuth, getUserId} from "../selectors/auth.selector";
 import {clearFieldState} from "../../form-builder/actions/form-builder.action";
 
@@ -10,6 +10,9 @@ import {clearFieldState} from "../../form-builder/actions/form-builder.action";
   providedIn: 'root'
 })
 export class AuthFacade {
+
+  private notifyToUnsubscribe$: Subject<null> = new Subject<null>();
+  readonly notifyToUnsubscribe: Observable<null> = this.notifyToUnsubscribe$.asObservable();
 
   isAuthenticated$: Observable<boolean> = this.store.pipe(select(checkAuth));
   userId$: Observable<number> = this.store.pipe(select(getUserId));
@@ -53,5 +56,9 @@ export class AuthFacade {
    */
   setUserId(userId: number) {
     this.store.dispatch(setUserId({userId}))
+  }
+
+  unsubscribe() {
+    this.notifyToUnsubscribe$.next(null);
   }
 }

@@ -18,5 +18,10 @@
       width: 100%;
     }
   }
+}
 
+@media (max-width: 1200px) {
+  .style-list-wrapper {
+    padding: 2rem 0;
+  }
 }

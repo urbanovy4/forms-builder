@@ -3,7 +3,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {FormField} from "../../../../helpers/models/model";
+import {AvailableStyles, FormField} from "../../../../helpers/models/model";
 import {Observable} from "rxjs";
 import {CdkPortal, TemplatePortal} from "@angular/cdk/portal";
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
@@ -13,7 +13,7 @@ import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builde
 @Component({
   selector: 'app-form-builder',
   templateUrl: './form-builder.component.html',
-  styleUrls: ['./form-builder.component.scss']
+  styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent implements OnInit {
 
@@ -23,6 +23,8 @@ export class FormBuilderComponent implements OnInit {
   isAuthenticated$: Observable<boolean>;
   fields$: Observable<FormField[]>;
   userId$: Observable<number>;
+  selectedField$: Observable<FormField>;
+  selectedFieldIndex$: Observable<number>;
 
   constructor(
     private fieldsTemplateFacade: FieldsTemplateFacade,
@@ -37,6 +39,8 @@ export class FormBuilderComponent implements OnInit {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
     this.userId$ = this.authFacade.userId$;
     this.fields$ = this.formBuilderFacade.fields$;
+    this.selectedField$ = this.formBuilderFacade.selectedField$;
+    this.selectedFieldIndex$ = this.formBuilderFacade.selectedFieldIndex$;
     this.fieldsTemplateFacade.getDefaultFields();
   }
 
@@ -51,6 +55,10 @@ export class FormBuilderComponent implements OnInit {
 
   openSaveWindow(fields, userId) {
     this.formBuilderFacade.showSaveDialog(fields, userId);
+  }
+
+  changeStyle(event: { styles: AvailableStyles, index: number }) {
+    this.formBuilderFacade.changeStyle(event.styles, event.index);
   }
 
 }

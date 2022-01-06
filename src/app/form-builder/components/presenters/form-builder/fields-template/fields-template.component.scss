@@ -1,6 +1,5 @@
 .item {
   display: flex;
-  cursor: move;
   justify-content: space-between;
   background-color: #3F51B5;
   color: white;
@@ -18,3 +17,6 @@
   }
 }
 
+.cdk-drop-list-dragging {
+  cursor: move;
+}

@@ -2,8 +2,12 @@
   width: 100%;
 }
 
-.save-styles {
+.save-styles-btn {
   display: flex;
   justify-content: center;
-  margin-top: .5rem;
+  margin-top: 2rem;
+
+  button {
+    width: 20%;
+  }
 }

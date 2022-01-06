@@ -23,11 +23,11 @@ export class StylesListLayoutComponent {
 
   initForm() {
     this.stylesForm = new FormGroup({
-      width: new FormControl('', [Validators.min(200), Validators.max(700)]),
-      height: new FormControl('', [Validators.min(20), Validators.max(150)]),
+      width: new FormControl(null, [Validators.min(200), Validators.max(700)]),
+      height: new FormControl(null, [Validators.min(20), Validators.max(150)]),
       borderStyle: new FormControl(''),
-      fontSize: new FormControl('', [Validators.min(12), Validators.max(42)]),
-      fontWeight: new FormControl('', [Validators.min(100), Validators.max(900)]),
+      fontSize: new FormControl(null, [Validators.min(12), Validators.max(42)]),
+      fontWeight: new FormControl(null, [Validators.min(100), Validators.max(900)]),
       color: new FormControl(''),
       placeholder: new FormControl('', [Validators.maxLength(40)]),
       required: new FormControl(false),
@@ -35,6 +35,7 @@ export class StylesListLayoutComponent {
   }
 
   onSubmit() {
+    this.updateFieldValue();
     this.activeStyles.emit({styles: this.stylesForm.value, index: this.index});
   }
 
@@ -44,6 +45,23 @@ export class StylesListLayoutComponent {
 
   isButton() {
     return this.selectedField.type === 'button';
+  }
+
+  // unableForm(): boolean {
+  //   for (const control in this.stylesForm.controls) {
+  //     if (this.stylesForm.controls[control].invalid) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
+
+  private updateFieldValue() {
+    for (const field in this.stylesForm.value) {
+      if (typeof this.stylesForm.value[field] === 'number' && field !== 'fontWeight') {
+        this.stylesForm.value[field] = this.stylesForm.value[field] + 'px';
+      }
+    }
   }
 
 }

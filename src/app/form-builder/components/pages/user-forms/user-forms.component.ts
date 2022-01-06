@@ -1,8 +1,9 @@
-import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
 import {Form} from "../../../../helpers/models/model";
 import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
 import {AuthFacade} from "../../../store/auth/facades/auth.facade";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-user-forms',
@@ -11,7 +12,6 @@ import {AuthFacade} from "../../../store/auth/facades/auth.facade";
 })
 export class UserFormsComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription = new Subscription();
   forms$: Observable<Form[]>;
   loading$: Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
@@ -22,26 +22,28 @@ export class UserFormsComponent implements OnInit, OnDestroy {
     private authFacade: AuthFacade
   ) {
     this.setAuthUserData();
+  }
+
+  ngOnInit(): void {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
     this.forms$ = this.userFormsFacade.forms$;
     this.loading$ = this.userFormsFacade.loading$;
     this.userId$ = this.authFacade.userId$;
-  }
-
-  ngOnInit(): void {
     this.getForms();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.authFacade.unsubscribe();
   }
 
   private getForms() {
-    this.subscription.add(
-      this.userId$.subscribe(id => {
+    this.userId$
+      .pipe(
+        takeUntil(this.authFacade.notifyToUnsubscribe)
+      )
+      .subscribe(id => {
         this.userFormsFacade.getForms(id);
-      })
-    );
+      });
   }
 
   selectForm(selectedForm: Form) {

@@ -1,16 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {FormField} from "../../../../../helpers/models/model";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
 import {Utils} from "../../../../../helpers/utils/utils";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-form-edit-area',
   templateUrl: './form-edit-area.component.html',
   styleUrls: ['./form-edit-area.component.scss', '../form-builder.component.scss']
 })
-export class FormEditAreaComponent implements OnInit {
+export class FormEditAreaComponent implements OnInit, OnDestroy {
 
   @Input() fieldsLength: number = 0;
 
@@ -26,9 +27,14 @@ export class FormEditAreaComponent implements OnInit {
   ngOnInit() {
     this.formFieldList$ = this.formBuilderFacade.fields$;
     this.selectedField$ = this.formBuilderFacade.selectedField$;
+    this.getFieldsValue();
   }
 
-  onDrop(event: CdkDragDrop<FormField[]>) {
+  ngOnDestroy() {
+    this.formBuilderFacade.unsubscribe();
+  }
+
+  onDrop(event: CdkDragDrop<any[]>) {
     this.dragItem(event);
   }
 
@@ -66,7 +72,16 @@ export class FormEditAreaComponent implements OnInit {
   }
 
   removeField(fields: FormField[]) {
-    const formFields = [...fields];
-    this.formBuilderFacade.removeField(formFields);
+    this.formBuilderFacade.removeField(fields);
+  }
+
+  private getFieldsValue() {
+    this.formFieldList$
+      .pipe(
+        takeUntil(this.formBuilderFacade.notifyToUnsubscribe)
+      )
+      .subscribe((fields: FormField[]) => {
+        this.formFieldList = Utils.copy(fields);
+      });
   }
 }
