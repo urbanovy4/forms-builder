@@ -1,48 +1,66 @@
 <h2 mat-dialog-title>Preview: {{data.formName}}</h2>
-<form class="form">
-  <div class="field"
-       *ngFor="let field of data.fields; let i = index"
-       [ngSwitch]="field.type"
-  >
-    <div *ngSwitchCase="'text'">
+<form class="form" [formGroup]="form" (ngSubmit)="fakeSubmit()">
+  <form formArrayName="text">
+    <div class="field" *ngFor="let field of getFormControls('text'); let i = index">
       <label>{{field.availableStyles.placeholder || 'Text'}}</label>
-      <input type="text" class="form-control" [ngStyle]="field.availableStyles"
-             [required]="field.availableStyles.required" [placeholder]="field.availableStyles.placeholder || 'Text'">
+      <input
+        type="text" class="form-control"
+        [ngStyle]="field.availableStyles"
+        [required]="field.availableStyles.required"
+        [formControlName]="i">
     </div>
-    <div *ngSwitchCase="'textarea'">
+  </form>
+  <form formArrayName="textarea">
+    <div class="field" *ngFor="let field of getFormControls('textarea'); let i = index">
       <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>
-      <textarea class="form-control"
-                [ngStyle]="field.availableStyles"
-                [style.color]="field.availableStyles.color.rgba"
-                [required]="field.availableStyles.required"
-                [placeholder]="field.availableStyles.placeholder">
+      <textarea
+        class="form-control"
+        [formControlName]="i"
+        [ngStyle]="field.availableStyles"
+        [style.color]="field.availableStyles.color.rgba"
+        [required]="field.availableStyles.required"
+        [placeholder]="field.availableStyles.placeholder">
       </textarea>
     </div>
-    <div *ngSwitchCase="'button'">
-      <button type="button" class="btn btn-primary"
-              [ngStyle]="field.availableStyles"
-              [style.color]="field.availableStyles.color.rgba">
+  </form>
+  <form formArrayName="button">
+    <div class="field" *ngFor="let field of getFormControls('button'); let i = index">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [ngStyle]="field.availableStyles"
+        [style.color]="field.availableStyles.color.rgba">
         {{field.availableStyles.placeholder || 'Button'}}
       </button>
     </div>
-    <div *ngSwitchCase="'checkbox'">
-      <input class="form-check-input" type="checkbox" [required]="field.availableStyles.required">
+  </form>
+  <form formArrayName="checkbox">
+    <div class="field" *ngFor="let field of getFormControls('checkbox'); let i = index">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [formControlName]="i"
+        [required]="field.availableStyles.required">
       <label class="form-check-label">
         {{field.label || 'Test label'}}
       </label>
     </div>
-    <div *ngSwitchCase="'select'">
+  </form>
+  <form formArrayName="select">
+    <div class="field" *ngFor="let field of getFormControls('select'); let i = index">
       <label>Select list:</label>
-      <select class="form-control"
-              [ngStyle]="field.availableStyles"
-              [style.color]="field.availableStyles.color.rgba">
+      <select
+        class="form-control"
+        [formControlName]="i"
+        [ngStyle]="field.availableStyles"
+        [style.color]="field.availableStyles.color.rgba">
         <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
       </select>
     </div>
-  </div>
+  </form>
 </form>
 <mat-dialog-actions align="end">
   <button class="close" type="button" mat-button mat-dialog-close>

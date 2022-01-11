@@ -9,7 +9,6 @@ export interface State {
   error: string
 }
 
-
 export const initialState: State = {
   selectedField: null,
   selectedFieldIndex: null,

@@ -14,7 +14,7 @@ import {UserFormsStoreModule} from "./store/user-forms/user-forms-store.module";
     AuthStoreModule,
     UserFormsStoreModule,
     FormBuilderRoutingModule
-  ],
+  ]
 })
 export class FormBuilderModule {
 }

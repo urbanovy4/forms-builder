@@ -17,7 +17,7 @@ export class FormEditAreaLayoutComponent {
   }
 
   @Output() selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
-  @Output() changeFormList: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
+  @Output() deleteField: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
 
   selectedField(field: FormField, index: number) {
     this.selectField.emit({field, index});
@@ -25,7 +25,7 @@ export class FormEditAreaLayoutComponent {
 
   removeField(index: number) {
     this.formFieldList.splice(index, 1);
-    this.changeFormList.emit(this.formFieldList);
+    this.deleteField.emit(this.formFieldList);
   }
 
 }

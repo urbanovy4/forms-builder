@@ -6,6 +6,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
 import {FormField} from "../../../../../helpers/models/model";
 import {ContainerModel, DragDropEventFactory} from "../../../../../helpers/factory/drag-drop-event.factory";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {BehaviorSubject, of} from "rxjs";
 
 describe('FormEditAreaComponent', () => {
   let component: FormEditAreaComponent;
@@ -24,7 +25,9 @@ describe('FormEditAreaComponent', () => {
             'removeField',
             'moveField',
             'addField'
-          ])
+          ], {
+            'fields$': new BehaviorSubject<FormField[]>([])
+          })
         }
       ],
       schemas: [NO_ERRORS_SCHEMA]

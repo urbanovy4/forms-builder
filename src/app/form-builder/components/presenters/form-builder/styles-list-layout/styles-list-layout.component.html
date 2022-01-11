@@ -30,7 +30,7 @@
     </div>
     <div *ngIf="!isCheckbox()">
       <mat-form-field class="field">
-        <input matInput [ngxMatColorPicker]="picker" formControlName="color">
+        <input matInput [ngxMatColorPicker]="picker" placeholder="Color" formControlName="color">
         <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
         <ngx-mat-color-picker #picker></ngx-mat-color-picker>
       </mat-form-field>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="save-styles-btn">
-      <button mat-raised-button type="submit" color="primary" [disabled]="stylesForm.invalid">Save</button>
+      <button mat-raised-button type="submit" color="primary" [disabled]="stylesForm.invalid">Change styles</button>
     </div>
   </form>
 </div>

@@ -11,8 +11,13 @@
       <app-fields-list [defaultFields]="defaultFields$ | ngrxPush"></app-fields-list>
       <div class="save-btn" *ngrxLet="fields$ as fields">
         <div *ngrxLet="userId$ as userId">
-          <button *ngIf="fields.length" (click)="openSaveWindow(fields, userId)" mat-fab color="primary">
-            <mat-icon>bookmark</mat-icon>
+          <button
+            id="save-form-btn"
+            mat-raised-button
+            color="primary"
+            [ngClass]="{'active': fields.length}"
+            (click)="openSaveWindow(fields, userId)">
+            Save
           </button>
         </div>
       </div>

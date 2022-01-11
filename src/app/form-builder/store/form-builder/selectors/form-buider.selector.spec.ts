@@ -13,8 +13,8 @@ describe('FormBuilderSelector', () => {
       }
     };
 
-    expect(FormBuilderSelectors.fields(state)).toEqual(state.formBuilder.fields);
-    expect(FormBuilderSelectors.selectedField(state)).toEqual(state.formBuilder.selectedField);
+    expect(FormBuilderSelectors.getAllFields(state)).toEqual(state.formBuilder.fields);
+    expect(FormBuilderSelectors.getSelectedField(state)).toEqual(state.formBuilder.selectedField);
     expect(FormBuilderSelectors.selectedFieldIndex(state)).toEqual(state.formBuilder.selectedFieldIndex);
   });
 });

@@ -40,9 +40,9 @@ describe('FormEditAreaLayoutComponent', () => {
   it('should call removeField', () => {
     const index: number = 1;
     const fieldList: FormField[] = [];
-    spyOn(component.changeFormList, 'emit');
+    spyOn(component.deleteField, 'emit');
     component.fieldList = fieldList;
     component.removeField(index);
-    expect(component.changeFormList.emit).toHaveBeenCalledWith(fieldList);
+    expect(component.deleteField.emit).toHaveBeenCalledWith(fieldList);
   });
 });

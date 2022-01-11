@@ -24,6 +24,7 @@ export class AuthFacade {
 
   /**
    * Login
+   * @param user
    */
   login(user: User) {
     this.store.dispatch(logIn({user}))
@@ -31,6 +32,7 @@ export class AuthFacade {
 
   /**
    * Register
+   * @param user
    */
   register(user: User) {
     this.store.dispatch(register({user}))
@@ -46,6 +48,7 @@ export class AuthFacade {
 
   /**
    * Set token
+   * @param accessToken
    */
   setToken(accessToken: string) {
     this.store.dispatch(setToken({accessToken}));
@@ -53,6 +56,7 @@ export class AuthFacade {
 
   /**
    * Set user id
+   * @param userId
    */
   setUserId(userId: number) {
     this.store.dispatch(setUserId({userId}))

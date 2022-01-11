@@ -3,7 +3,8 @@ import {select, Store} from "@ngrx/store";
 import {State} from "../states/form-builder.state";
 import {
   addField,
-  changeStyle, clearFormBuilderState,
+  changeStyle,
+  clearFormBuilderState,
   deselectField,
   moveFieldInArray,
   removeField,
@@ -13,7 +14,7 @@ import {
 } from "../actions/form-builder.action";
 import {AvailableStyles, FormField} from "../../../../helpers/models/model";
 import {Observable, Subject} from "rxjs";
-import {fields, selectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
+import {getAllFields, getSelectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
 
 @Injectable({
   providedIn: "root"
@@ -23,8 +24,8 @@ export class FormBuilderFacade {
   private notifyToUnsubscribe$: Subject<null> = new Subject<null>();
   readonly notifyToUnsubscribe: Observable<null> = this.notifyToUnsubscribe$.asObservable();
 
-  fields$: Observable<FormField[]> = this.store.pipe(select(fields));
-  selectedField$: Observable<FormField> = this.store.pipe(select(selectedField));
+  fields$: Observable<FormField[]> = this.store.pipe(select(getAllFields));
+  selectedField$: Observable<any> = this.store.pipe(select(getSelectedField));
   selectedFieldIndex$: Observable<number> = this.store.pipe(select(selectedFieldIndex));
 
   constructor(

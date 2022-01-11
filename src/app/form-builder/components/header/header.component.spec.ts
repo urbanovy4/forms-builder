@@ -3,6 +3,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
 import {AuthFacade} from "../../store/auth/facades/auth.facade";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {of} from "rxjs";
+import {FormField} from "../../../helpers/models/model";
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

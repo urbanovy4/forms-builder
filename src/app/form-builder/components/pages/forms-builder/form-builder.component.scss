@@ -27,6 +27,15 @@
       .save-btn {
         div {
           text-align: center;
+
+          #save-form-btn {
+            opacity: 0;
+
+            &.active {
+              opacity: 1;
+              transition: opacity .5s ease;
+            }
+          }
         }
       }
     }

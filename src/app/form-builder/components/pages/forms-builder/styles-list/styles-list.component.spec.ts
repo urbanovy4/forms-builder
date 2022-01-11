@@ -29,24 +29,20 @@ describe('StylesListComponent', () => {
     formBuilderFacade = TestBed.inject(FormBuilderFacade);
   });
 
-  beforeEach(() => {
-
-  });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should init fields', () => {
-    component.ngOnInit();
-  });
-
-  it('should call changeStyle', () => {
-    const event: {styles: AvailableStyles, index: number } = {
-      styles: {},
-      index: 1
-    };
-    component.changeStyle(event);
-    expect(formBuilderFacade.changeStyle).toHaveBeenCalled();
-  });
+  // it('should init fields', () => {
+  //   component.ngOnInit();
+  // });
+  //
+  // it('should call changeStyle', () => {
+  //   const event: {styles: AvailableStyles, index: number } = {
+  //     styles: {},
+  //     index: 1
+  //   };
+  //   component.changeStyle(event);
+  //   expect(formBuilderFacade.changeStyle).toHaveBeenCalled();
+  // });
 });

@@ -5,7 +5,7 @@
 >
   <app-form-edit-area-layout
     (selectField)="selectField($event)"
-    (changeFormList)="removeField($event)"
+    (deleteField)="removeField($event)"
     [formFieldList]="formFieldList$ | ngrxPush">
   </app-form-edit-area-layout>
 </div>
