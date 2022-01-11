@@ -12,15 +12,20 @@
     </div>
     <div class="col-10" *ngSwitchCase="'text'">
       <label>{{field.availableStyles.placeholder || 'Text'}}</label>
-      <input type="text" class="form-control" [ngStyle]="field.availableStyles"
-             [required]="field.availableStyles.required" [placeholder]="field.availableStyles.placeholder || 'Text'">
+      <input
+        type="text"
+        class="form-control"
+        [ngStyle]="field.availableStyles"
+        [required]="field.availableStyles.required"
+        [placeholder]="field.availableStyles.placeholder || 'Text'">
     </div>
     <div class="col-10" *ngSwitchCase="'textarea'">
       <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>
-      <textarea class="form-control" [ngStyle]="field.availableStyles"
-                [required]="field.availableStyles.required"
-                [placeholder]="field.availableStyles.placeholder">
-        </textarea>
+      <textarea
+        class="form-control"
+        [ngStyle]="field.availableStyles"
+        [required]="field.availableStyles.required"
+        [placeholder]="field.availableStyles.placeholder"></textarea>
     </div>
     <div class="col-10" *ngSwitchCase="'button'">
       <button type="button" class="btn btn-primary"
@@ -29,10 +34,12 @@
       </button>
     </div>
     <div class="col-10" *ngSwitchCase="'checkbox'">
-      <input class="form-check-input" type="checkbox">
-      <label class="form-check-label">
-        {{field.label || 'Test label'}}
-      </label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          {{field.label || 'Test label'}}
+        </label>
+      </div>
     </div>
     <div class="col-10" *ngSwitchCase="'select'">
       <label>Select list:</label>
