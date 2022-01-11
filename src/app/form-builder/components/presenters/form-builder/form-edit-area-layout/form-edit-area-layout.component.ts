@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {FormField} from "../../../../../helpers/models/model";
 
 @Component({
@@ -7,17 +7,16 @@ import {FormField} from "../../../../../helpers/models/model";
   styleUrls: ['./form-edit-area-layout.component.scss', '../../../pages/forms-builder/form-edit-area/form-edit-area.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormEditAreaLayoutComponent {
+export class FormEditAreaLayoutComponent implements OnChanges {
 
-  formFieldList: FormField[];
-
-  @Input('formFieldList')
-  set fieldList(fields) {
-    this.formFieldList = [...fields];
-  }
+  @Input('formFieldList') formFieldList: FormField[];
 
   @Output() selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
   @Output() deleteField: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.formFieldList = [...changes['formFieldList'].currentValue];
+  }
 
   selectedField(field: FormField, index: number) {
     this.selectField.emit({field, index});

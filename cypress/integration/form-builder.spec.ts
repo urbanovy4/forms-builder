@@ -1,17 +1,34 @@
 import {AvailableStyles, BorderStyles} from "../../src/app/helpers/models/model";
-import {generateRandomString} from "./register.spec";
 
 describe('FormBuilder', () => {
   let formName: string;
+  let email: string;
+  let password: string;
 
   before(() => {
     formName = 'Test Form ' + generateRandomString();
+    email = generateRandomString() + '@test.com';
+    password = 'TestPassword';
+  });
+
+  it('should register', () => {
+    cy.visit('/register');
+    cy.url().should('include', 'register');
+    cy.get('form').contains('Sign Up');
+    cy.get('[formControlName="email"]').type(email);
+    cy.get('[formControlName="password"]').type(password);
+    cy.get('#registerBtn').click();
+  });
+
+  it('should route to login page', () => {
+    cy.url().should('include', 'login');
+    cy.get('form').contains('Log in');
   });
 
   it('should login', () => {
     cy.visit('/login');
     cy.url().should('include', '/login');
-    cy.login('eee@eee', 'qwerty');
+    cy.login(email, password);
     cy.url().should('include', '/forms-builder');
   });
 
@@ -86,3 +103,13 @@ describe('FormBuilder', () => {
   });
 
 });
+
+export function generateRandomString(): string {
+  const chars: string = 'abcdefghijklmnopqrstuvwxyz1234567890';
+  let string: string = '';
+  for (let i = 0; i < 10; i++) {
+    string += chars[Math.floor(Math.random() * chars.length)];
+  }
+
+  return string;
+}

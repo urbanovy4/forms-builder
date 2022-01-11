@@ -47,6 +47,15 @@
   }
 }
 
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.field-list.cdk-drop-list-dragging .field:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
 .field:last-child {
   border: none;
 }
