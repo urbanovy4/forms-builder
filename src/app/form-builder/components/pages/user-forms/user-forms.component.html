@@ -1,0 +1,32 @@
+<app-header [isAuthenticated]="isAuthenticated$ | ngrxPush"></app-header>
+<div class="container">
+  <div class="form-wrapper">
+    <div *ngIf="!(loading$ | ngrxPush) else loader">
+      <div *ngIf="!((forms$ | ngrxPush).length > 0); else formsList">
+        <div>
+          <h2>There are no forms yet.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #formsList>
+  <mat-card>
+    <app-forms-list>
+      <app-forms-list-item
+        *ngFor="let form of forms$ | ngrxPush; let i = index"
+        [id]="'form-' + (i + 1)"
+        [form]="form"
+        (selectedForm)="selectForm($event)"
+        (remove)="removeForm($event)"
+        (edit)="editForm($event)"
+      ></app-forms-list-item>
+    </app-forms-list>
+  </mat-card>
+</ng-template>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+

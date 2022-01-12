@@ -1,0 +1,41 @@
+@import "~font-awesome";
+
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --border-color: #999;
+  --hover-color: rgba(0, 0, 0, .2);
+  --background-color: rgba(0, 0, 0, .4);
+  --icon-color: #8A888D;
+}
+
+.mat-list-item {
+  width: 70%;
+  height: 3rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+
+  .mat-ripple {
+    display: none;
+  }
+
+  .mat-list-text {
+    display: none;
+  }
+
+  .mat-list-item-content {
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between
+  }
+}
+
