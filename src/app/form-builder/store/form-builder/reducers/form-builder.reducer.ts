@@ -19,6 +19,7 @@ export const formBuilderReducer = createReducer(initialState,
   on(FormEditActions.selectField, (state, {field, index}) => {
     return {
       ...state,
+      fields: Utils.updateArray(state.fields, index, true),
       selectedField: field,
       selectedFieldIndex: index
     }
@@ -46,5 +47,11 @@ export const formBuilderReducer = createReducer(initialState,
       ...state,
       fields
     };
+  }),
+  on(FormEditActions.updateIndex, (state, {index}) => {
+    return {
+      ...state,
+      selectedFieldIndex: index
+    }
   })
 );

@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FormEditAreaLayoutComponent} from './form-edit-area-layout.component';
-import {AvailableStyles, FormField} from "../../../../../helpers/models/model";
+import {FormField} from "../../../../../helpers/models/model";
 import {NO_ERRORS_SCHEMA, SimpleChange, SimpleChanges} from "@angular/core";
 
 describe('FormEditAreaLayoutComponent', () => {
@@ -28,11 +28,12 @@ describe('FormEditAreaLayoutComponent', () => {
       label: 'Test',
       icon: 'fa fa-submit',
       id: 1,
-      availableStyles: {}
+      availableStyles: {},
+      selected: true
     };
     const index: number = 1;
     spyOn(component.selectField, 'emit');
-    component.selectedField(field, index);
+    component.emitSelectedField(field, index);
     expect(component.selectField.emit).toHaveBeenCalledWith({field, index});
   });
 

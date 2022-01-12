@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+  OnChanges,
+  SimpleChanges,
+  EventEmitter
+} from '@angular/core';
 import {FormField} from "../../../../../helpers/models/model";
 
 @Component({
@@ -13,18 +21,31 @@ export class FormEditAreaLayoutComponent implements OnChanges {
 
   @Output() selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
   @Output() deleteField: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
+  @Output() deletedFieldIndex: EventEmitter<number> = new EventEmitter<number>();
+  @Output() updatedIndex: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {
-    this.formFieldList = [...changes['formFieldList'].currentValue];
+    if (changes['formFieldList']) {
+      this.formFieldList = [...changes['formFieldList'].currentValue];
+    }
   }
 
-  selectedField(field: FormField, index: number) {
+  emitSelectedField(formField: FormField, index: number) {
+    const field = {...formField};
+    field.selected = true;
     this.selectField.emit({field, index});
   }
 
   removeField(index: number) {
     this.formFieldList.splice(index, 1);
     this.deleteField.emit(this.formFieldList);
+    this.deletedFieldIndex.emit(index);
+    this.updateIndex();
+  }
+
+  private updateIndex() {
+    const field = this.formFieldList.find((field) => field.selected === true);
+    this.updatedIndex.emit(this.formFieldList.indexOf(field));
   }
 
 }

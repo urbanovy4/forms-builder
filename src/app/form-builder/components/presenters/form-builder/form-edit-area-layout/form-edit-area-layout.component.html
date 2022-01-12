@@ -4,7 +4,7 @@
        [cdkDragData]="field"
        [ngSwitch]="field.type"
        [id]="'form-field-' + i"
-       (click)="selectedField(field, i)"
+       (click)="emitSelectedField(field, i)"
        cdkDrag>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>
     <div class="handle">

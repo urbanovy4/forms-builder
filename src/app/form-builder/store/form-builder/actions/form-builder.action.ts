@@ -60,3 +60,7 @@ export const showSaveDialog = createAction(
   props<{ fields: FormField[], userId: number }>()
 );
 
+export const updateIndex = createAction(
+  FormBuilderActions.UPDATE_INDEX,
+  props<{ index: number }>()
+);

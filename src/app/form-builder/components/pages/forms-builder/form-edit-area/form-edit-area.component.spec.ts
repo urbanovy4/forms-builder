@@ -6,7 +6,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
 import {FormField} from "../../../../../helpers/models/model";
 import {ContainerModel, DragDropEventFactory} from "../../../../../helpers/factory/drag-drop-event.factory";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {BehaviorSubject, of} from "rxjs";
+import {BehaviorSubject, Observable, of} from "rxjs";
 
 describe('FormEditAreaComponent', () => {
   let component: FormEditAreaComponent;
@@ -24,7 +24,8 @@ describe('FormEditAreaComponent', () => {
             'selectField',
             'removeField',
             'moveField',
-            'addField'
+            'addField',
+            'unsubscribe'
           ], {
             'fields$': new BehaviorSubject<FormField[]>([])
           })
@@ -42,6 +43,7 @@ describe('FormEditAreaComponent', () => {
 
   it('should create', () => {
     component.ngOnInit();
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 

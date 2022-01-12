@@ -10,11 +10,12 @@ import {
   removeField,
   saveForm,
   selectField,
-  showSaveDialog
+  showSaveDialog,
+  updateIndex
 } from "../actions/form-builder.action";
 import {AvailableStyles, FormField} from "../../../../helpers/models/model";
 import {Observable, Subject} from "rxjs";
-import {getAllFields, getSelectedField, selectedFieldIndex} from "../selectors/form-buider.selector";
+import {getAllFields, getSelectedField, getSelectedFieldIndex} from "../selectors/form-buider.selector";
 
 @Injectable({
   providedIn: "root"
@@ -26,7 +27,7 @@ export class FormBuilderFacade {
 
   fields$: Observable<FormField[]> = this.store.pipe(select(getAllFields));
   selectedField$: Observable<any> = this.store.pipe(select(getSelectedField));
-  selectedFieldIndex$: Observable<number> = this.store.pipe(select(selectedFieldIndex));
+  selectedFieldIndex$: Observable<number> = this.store.pipe(select(getSelectedFieldIndex));
 
   constructor(
     private store: Store<State>
@@ -73,11 +74,18 @@ export class FormBuilderFacade {
   }
 
   /**
+   * Update selected field index
+   * @param index Number
+   */
+  updateIndex(index: number) {
+    this.store.dispatch(updateIndex({index}));
+  }
+
+  /**
    * Remove field
    * @param fields FormField[]
    */
   removeField(fields: FormField[]) {
-    this.deselectField();
     this.store.dispatch(removeField({fields}))
   }
 

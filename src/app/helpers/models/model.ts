@@ -20,6 +20,7 @@ export interface FormField {
   icon: string;
   label: string;
   availableStyles: AvailableStyles;
+  selected?: boolean;
 }
 
 

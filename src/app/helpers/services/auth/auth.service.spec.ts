@@ -20,12 +20,12 @@ describe('AuthService', () => {
     });
     service = TestBed.inject(AuthService);
     httpMock = TestBed.inject(HttpTestingController);
-    // localStorage.setItem('token', 'Test token');
+    localStorage.setItem('token', 'Test token');
   });
 
   afterEach(() => {
     httpMock.verify();
-    // localStorage.clear();
+    localStorage.clear();
   });
 
   it('should be created', () => {
@@ -47,6 +47,18 @@ describe('AuthService', () => {
     const req = httpMock.expectOne('/login');
     expect(req.request.method).toEqual('POST');
     req.flush(response);
+  });
+
+  it('should set userId', () => {
+    const userId: number = 1;
+    service.setUserId(userId);
+    expect(+localStorage.getItem('userId')).toEqual(userId);
+  });
+
+  it('should set token', () => {
+    const token: string = 'Test token';
+    service.setToken(token);
+    expect(service.getToken()).toEqual(token);
   });
 
   it('should register with mock data', () => {
@@ -74,18 +86,6 @@ describe('AuthService', () => {
   it('should call signOut', () => {
     service.signOut();
     expect(service.getToken()).toEqual(null);
-  });
-
-  it('should set userId', () => {
-    const userId: number = 1;
-    service.setUserId(userId);
-    expect(+localStorage.getItem('userId')).toEqual(userId);
-  });
-
-  it('should set token', () => {
-    const token: string = 'Test token';
-    service.setToken(token);
-    expect(service.getToken()).toEqual(token);
   });
 
 });

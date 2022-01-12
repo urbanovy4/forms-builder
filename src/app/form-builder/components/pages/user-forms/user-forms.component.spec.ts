@@ -25,13 +25,14 @@ describe('UserFormsComponent', () => {
             'getForms',
             'showPreviewDialog',
             'showRemoveDialog',
-            'showEditDialog'
+            'showEditDialog',
+            'unsubscribe'
           ])
         },
         {
           provide: AuthFacade,
           useValue: jasmine.createSpyObj('AuthFacade',
-            ['setToken', 'setUserId'],
+            ['setToken', 'setUserId', 'unsubscribe'],
             {'userId$': new BehaviorSubject<number>(1)}
           )
         }

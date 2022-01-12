@@ -15,6 +15,6 @@ describe('FormBuilderSelector', () => {
 
     expect(FormBuilderSelectors.getAllFields(state)).toEqual(state.formBuilder.fields);
     expect(FormBuilderSelectors.getSelectedField(state)).toEqual(state.formBuilder.selectedField);
-    expect(FormBuilderSelectors.selectedFieldIndex(state)).toEqual(state.formBuilder.selectedFieldIndex);
+    expect(FormBuilderSelectors.getSelectedFieldIndex(state)).toEqual(state.formBuilder.selectedFieldIndex);
   });
 });

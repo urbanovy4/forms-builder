@@ -19,7 +19,7 @@ export const getSelectedField = createSelector(
   state => state.selectedField
 );
 
-export const selectedFieldIndex = createSelector(
+export const getSelectedFieldIndex = createSelector(
   featureSelector,
   state => state.selectedFieldIndex
 );
