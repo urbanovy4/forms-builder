@@ -1,0 +1,14 @@
+<div class="edit-area"
+     cdkDropList
+     [cdkDropListData]="formFieldList"
+     (cdkDropListDropped)="onDrop($event)"
+>
+  <app-form-edit-area-layout
+    [formFieldList]="formFieldList$ | ngrxPush"
+    (selectField)="selectField($event)"
+    (deleteField)="removeField($event)"
+    (deletedFieldIndex)="getRemovedFieldIndexValue($event)"
+    (updatedIndex)="updateIndex($event)"
+  >
+  </app-form-edit-area-layout>
+</div>
