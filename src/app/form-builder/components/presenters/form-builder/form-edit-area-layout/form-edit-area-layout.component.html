@@ -7,7 +7,7 @@
        (click)="emitSelectedField(field, i)"
        cdkDrag>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>
-    <div class="handle">
+    <div class="handle move">
       <i class="fa fa-ellipsis-v " cdkDragHandle></i>
     </div>
     <div class="col-10" *ngSwitchCase="'text'">
@@ -50,7 +50,7 @@
         <option>4</option>
       </select>
     </div>
-    <div class="remove-icon">
+    <div class="handle trash">
       <i class="fa fa-trash pull-right" (click)="removeField(i); $event.stopPropagation()"></i>
     </div>
   </div>

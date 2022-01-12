@@ -46,7 +46,7 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
         event.previousIndex,
         event.currentIndex
       );
-      this.moveField(event.container.data);
+      this.moveField(event.container.data, event.currentIndex);
     } else {
       copyArrayItem(
         event.previousContainer.data,
@@ -63,9 +63,10 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
     this.formBuilderFacade.addField(formField);
   }
 
-  private moveField(fields: FormField[]) {
+  private moveField(fields: FormField[], index: number) {
     const formFields = Utils.copy(fields);
     this.formBuilderFacade.moveField(formFields);
+    this.formBuilderFacade.updateIndex(index);
   }
 
   selectField({field, index}) {

@@ -29,17 +29,17 @@
   }
 
   .handle {
-    cursor: move;
     position: relative;
-    top: -.8rem;
+    top: -.4rem;
     left: -5px;
-  }
 
-  .fa-trash {
-    cursor: pointer;
-    position: relative;
-    top: -.8rem;
-    right: 0;
+    &.move {
+      cursor: move;
+    }
+
+    &.trash .fa-trash {
+      cursor: pointer;
+    }
   }
 
   &:hover {

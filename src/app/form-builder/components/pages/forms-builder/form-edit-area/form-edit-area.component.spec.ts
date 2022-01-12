@@ -25,7 +25,8 @@ describe('FormEditAreaComponent', () => {
             'removeField',
             'moveField',
             'addField',
-            'unsubscribe'
+            'unsubscribe',
+            'updateIndex'
           ], {
             'fields$': new BehaviorSubject<FormField[]>([])
           })
