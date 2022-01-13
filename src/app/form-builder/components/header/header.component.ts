@@ -10,14 +10,15 @@ import { AuthFacade } from '../../store/auth/facades/auth.facade';
 })
 export class HeaderComponent {
 
-  @Input() isAuthenticated: boolean = false;
+  @Input()
+  public isAuthenticated: boolean = false;
 
   constructor(
     private authFacade: AuthFacade
   ) {
   }
 
-  signOut() {
+  public signOut(): void {
     this.authFacade.signOut();
   }
 

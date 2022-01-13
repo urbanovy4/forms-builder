@@ -13,10 +13,10 @@ import { AuthFacade } from '../../../store/auth/facades/auth.facade';
 })
 export class UserFormsComponent implements OnInit, OnDestroy {
 
-  forms$: Observable<Form[]>;
-  loading$: Observable<boolean>;
-  isAuthenticated$: Observable<boolean>;
-  userId$: Observable<number>;
+  public forms$: Observable<Form[]>;
+  public loading$: Observable<boolean>;
+  public isAuthenticated$: Observable<boolean>;
+  public userId$: Observable<number>;
 
   constructor(
     private userFormsFacade: UserFormsFacade,
@@ -25,7 +25,7 @@ export class UserFormsComponent implements OnInit, OnDestroy {
     this.setAuthUserData();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
     this.forms$ = this.userFormsFacade.forms$;
     this.loading$ = this.userFormsFacade.loading$;
@@ -33,11 +33,11 @@ export class UserFormsComponent implements OnInit, OnDestroy {
     this.getForms();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.authFacade.unsubscribe();
   }
 
-  private getForms() {
+  private getForms(): void {
     this.userId$
       .pipe(
         takeUntil(this.authFacade.notifyToUnsubscribe)
@@ -47,19 +47,19 @@ export class UserFormsComponent implements OnInit, OnDestroy {
       });
   }
 
-  selectForm(selectedForm: Form) {
+  public selectForm(selectedForm: Form): void {
     this.userFormsFacade.showPreviewDialog(selectedForm);
   }
 
-  removeForm(formId: number) {
+  public removeForm(formId: number): void {
     this.userFormsFacade.showRemoveDialog(formId);
   }
 
-  editForm(form: Form) {
+  public editForm(form: Form): void {
     this.userFormsFacade.showEditDialog(form);
   }
 
-  private setAuthUserData() {
+  private setAuthUserData(): void {
     const potentialToken: string = localStorage.getItem('token');
     const potentialUserId: string = localStorage.getItem('userId');
     if (potentialToken) {

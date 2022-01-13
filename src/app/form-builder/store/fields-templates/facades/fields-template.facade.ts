@@ -11,7 +11,7 @@ import { getDefaultFields } from '../actions/fields-template.actions';
 })
 export class FieldsTemplateFacade {
 
-  defaultFields$: Observable<FormField[]> = this.store.pipe(select(defaultFields));
+  public defaultFields$: Observable<FormField[]> = this.store.pipe(select(defaultFields));
 
   constructor(
     private store: Store
@@ -21,7 +21,7 @@ export class FieldsTemplateFacade {
   /**
    * Get default fields
    */
-  getDefaultFields() {
+  public getDefaultFields(): void {
     this.store.dispatch(getDefaultFields());
   }
 }

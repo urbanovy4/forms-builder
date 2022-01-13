@@ -12,11 +12,11 @@ export class AuthGuard implements CanActivate {
   ) {
   }
 
-  canActivate(): boolean {
+  public canActivate(): boolean {
     return this.checkLogin();
   }
 
-  checkLogin(): boolean {
+  private checkLogin(): boolean {
     if (this.authService.loggedInState) {
       return true;
     }

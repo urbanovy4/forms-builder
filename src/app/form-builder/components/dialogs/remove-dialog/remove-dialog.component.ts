@@ -16,7 +16,7 @@ export class RemoveDialogComponent {
   ) {
   }
 
-  remove() {
+  public remove(): void {
     this.userFormsFacade.removeForm(this.data.formId);
   }
 

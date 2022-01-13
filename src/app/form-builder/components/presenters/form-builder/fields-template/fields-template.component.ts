@@ -10,9 +10,10 @@ import { FormField } from '../../../../../helpers/models/model';
 })
 export class FieldsTemplateComponent {
 
-  @Input('defaultFields') defaultFields: FormField[];
+  @Input('defaultFields')
+  public defaultFields: FormField[];
 
-  noReturnPredicate() {
+  public noReturnPredicate(): boolean {
     return false;
   }
 }

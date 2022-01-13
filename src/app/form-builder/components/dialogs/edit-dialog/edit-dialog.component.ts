@@ -12,7 +12,7 @@ import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.fa
 })
 export class EditDialogComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     private userFormFacade: UserFormsFacade,
@@ -20,16 +20,16 @@ export class EditDialogComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
-  edit() {
+  public edit(): void {
     const formName = this.form.get('formName').value;
     this.userFormFacade.editForm({...this.data.form, formName});
   }
 
-  private initForm() {
+  private initForm(): void {
     const {formName} = this.data.form;
     this.form = new FormGroup({
       formName: new FormControl(formName, [Validators.required])

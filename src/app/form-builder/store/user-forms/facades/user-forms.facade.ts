@@ -18,8 +18,8 @@ import {
 })
 export class UserFormsFacade {
 
-  forms$: Observable<Form[]> = this.store.pipe(select(forms));
-  loading$: Observable<boolean> = this.store.pipe(select(loading));
+  public forms$: Observable<Form[]> = this.store.pipe(select(forms));
+  public loading$: Observable<boolean> = this.store.pipe(select(loading));
 
   constructor(
     private store: Store
@@ -30,7 +30,7 @@ export class UserFormsFacade {
    * Get forms
    * @param userId
    */
-  getForms(userId: number) {
+  public getForms(userId: number): void {
     this.store.dispatch(getForms({userId}));
   }
 
@@ -38,7 +38,7 @@ export class UserFormsFacade {
    * Select form
    * @param selectedForm
    */
-  selectForm(selectedForm: Form) {
+  public selectForm(selectedForm: Form): void {
     this.store.dispatch(selectForm({selectedForm}));
   }
 
@@ -46,7 +46,7 @@ export class UserFormsFacade {
    * Edit form
    * @param form
    */
-  editForm(form: Form) {
+  public editForm(form: Form): void {
     this.store.dispatch(editForm({form}));
   }
 
@@ -54,7 +54,7 @@ export class UserFormsFacade {
    * Remove form
    * @param formId
    */
-  removeForm(formId: number) {
+  public removeForm(formId: number): void {
     this.store.dispatch(removeForm({formId}));
   }
 
@@ -62,7 +62,7 @@ export class UserFormsFacade {
    * Show preview dialog
    * @param form
    */
-  showPreviewDialog(form: Form) {
+  public showPreviewDialog(form: Form): void {
     this.store.dispatch(showPreviewDialog({form}));
   }
 
@@ -70,7 +70,7 @@ export class UserFormsFacade {
    * Show edit dialog
    * @param form
    */
-  showEditDialog(form: Form) {
+  public showEditDialog(form: Form): void {
     this.store.dispatch(showEditDialog({form}));
   }
 
@@ -78,7 +78,7 @@ export class UserFormsFacade {
    * Show remove dialog
    * @param formId
    */
-  showRemoveDialog(formId: number) {
+  public showRemoveDialog(formId: number): void {
     this.store.dispatch(showRemoveDialog({formId}));
   }
 }

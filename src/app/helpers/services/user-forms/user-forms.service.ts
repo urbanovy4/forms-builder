@@ -1,7 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Form } from '../../models/model';
+import { Form, FormField } from '../../models/model';
+import { Observable } from 'rxjs';
+
+type editFormsResponseDTO = {
+  id: number;
+  userId: number;
+  fields: FormField[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +20,20 @@ export class UserFormsService {
   ) {
   }
 
-  getForms(userId: number) {
-    return this.http.get(`${this.apiUrl}/660/saved-forms`, {
+  public getForms(userId: number): Observable<Form[]> {
+    return this.http.get<Form[]>(`${this.apiUrl}/660/saved-forms`, {
       params: {
         userId
       }
     });
   }
 
-  editForm(form: Form) {
-    return this.http.put(`${this.apiUrl}/660/saved-forms/${form.id}`, form);
+  public editForm(form: Form): Observable<editFormsResponseDTO> {
+    return this.http.put<editFormsResponseDTO>(`${this.apiUrl}/660/saved-forms/${form.id}`, form);
   }
 
-  removeForm(formId: number) {
-    return this.http.delete(`${this.apiUrl}/660/saved-forms/${formId}`);
+  public removeForm(formId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/660/saved-forms/${formId}`);
   }
 
 }

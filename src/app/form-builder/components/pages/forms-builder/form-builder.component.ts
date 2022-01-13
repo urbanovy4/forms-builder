@@ -14,14 +14,15 @@ import { FormBuilderFacade } from '../../../store/form-builder/facades/form-buil
 })
 export class FormBuilderComponent implements OnInit {
 
-  @ViewChild(CdkPortal, {static: true}) portal: TemplatePortal;
+  @ViewChild(CdkPortal, {static: true})
+  public  portal: TemplatePortal;
 
-  defaultFields$: Observable<FormField[]>;
-  isAuthenticated$: Observable<boolean>;
-  fields$: Observable<FormField[]>;
-  userId$: Observable<number>;
-  selectedField$: Observable<FormField>;
-  selectedFieldIndex$: Observable<number>;
+  public defaultFields$: Observable<FormField[]>;
+  public isAuthenticated$: Observable<boolean>;
+  public fields$: Observable<FormField[]>;
+  public userId$: Observable<number>;
+  public selectedField$: Observable<FormField>;
+  public selectedFieldIndex$: Observable<number>;
 
   constructor(
     private fieldsTemplateFacade: FieldsTemplateFacade,
@@ -31,7 +32,7 @@ export class FormBuilderComponent implements OnInit {
     this.setAuthUserData();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.defaultFields$ = this.fieldsTemplateFacade.defaultFields$;
     this.isAuthenticated$ = this.authFacade.isAuthenticated$;
     this.userId$ = this.authFacade.userId$;
@@ -41,7 +42,7 @@ export class FormBuilderComponent implements OnInit {
     this.fieldsTemplateFacade.getDefaultFields();
   }
 
-  private setAuthUserData() {
+  private setAuthUserData(): void {
     const potentialToken: string = localStorage.getItem('token');
     const potentialUserId: string = localStorage.getItem('userId');
     if (potentialToken) {
@@ -50,11 +51,11 @@ export class FormBuilderComponent implements OnInit {
     }
   }
 
-  openSaveWindow(fields, userId) {
+  public openSaveWindow(fields, userId): void {
     this.formBuilderFacade.showSaveDialog(fields, userId);
   }
 
-  changeStyle(event: { styles: AvailableStyles, index: number }) {
+  public changeStyle(event: { styles: AvailableStyles, index: number }): void {
     this.formBuilderFacade.changeStyle(event.styles, event.index);
   }
 

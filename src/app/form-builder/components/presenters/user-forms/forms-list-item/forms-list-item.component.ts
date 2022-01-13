@@ -10,9 +10,13 @@ import { Form } from '../../../../../helpers/models/model';
 })
 export class FormsListItemComponent {
 
-  @Input() form: Form;
-  @Output() selectedForm = new EventEmitter<Form>();
-  @Output() remove = new EventEmitter<number>();
-  @Output() edit = new EventEmitter<Form>();
+  @Input()
+  public form: Form;
+  @Output()
+  public selectedForm = new EventEmitter<Form>();
+  @Output()
+  public remove = new EventEmitter<number>();
+  @Output()
+  public edit = new EventEmitter<Form>();
 
 }

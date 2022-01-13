@@ -8,7 +8,7 @@ export interface ContainerModel<T> {
 
 export class DragDropEventFactory<T> {
 
-  createInContainerEvent(containerId: number, data: T[], fromIndex: number, toIndex: number): CdkDragDrop<any[]> {
+  public createInContainerEvent(containerId: number, data: T[], fromIndex: number, toIndex: number): CdkDragDrop<any[]> {
     const event = this.createEvent(fromIndex, toIndex);
     const container: any = {id: containerId, data: data};
     event.container = <CdkDropList<T[]>>container;
@@ -17,7 +17,7 @@ export class DragDropEventFactory<T> {
     return event;
   }
 
-  createCrossContainerEvent(from: ContainerModel<T>, to: ContainerModel<T>): CdkDragDrop<any[]> {
+  public createCrossContainerEvent(from: ContainerModel<T>, to: ContainerModel<T>): CdkDragDrop<any[]> {
     const event = this.createEvent(from.index, to.index);
     event.container = this.createContainer(to);
     event.previousContainer = this.createContainer(from);

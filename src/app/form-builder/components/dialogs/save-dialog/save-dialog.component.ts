@@ -12,7 +12,7 @@ import { FormField } from '../../../../helpers/models/model';
 })
 export class SaveDialogComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: { fields: FormField[], userId: number },
@@ -20,21 +20,21 @@ export class SaveDialogComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
-  save() {
+  public save(): void {
     const {fields, userId} = this.data;
     this.formBuilderFacade.saveForm(this.form.value.formName, fields, userId);
     this.clearFormBuilderState();
   }
 
-  private clearFormBuilderState() {
+  private clearFormBuilderState(): void {
     this.formBuilderFacade.clearFormBuilderState();
   }
 
-  private initForm() {
+  private initForm(): void {
     this.form = new FormGroup({
       formName: new FormControl('', [Validators.required])
     });

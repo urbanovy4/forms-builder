@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 
 import { FormField } from '../../models/model';
 
+type saveFormResponseDTO = {
+  userId: number,
+  fields: FormField[]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +20,11 @@ export class FormBuilderService {
   ) {
   }
 
-
-  getDefaultFields(): Observable<FormField[]> {
+  public getDefaultFields(): Observable<FormField[]> {
     return this.http.get<FormField[]>(`${this.apiUrl}/440/field-templates`);
   }
 
-  saveForm(fields: FormField[], userId: number, formName: string) {
-    return this.http.post(`${this.apiUrl}/660/saved-forms`, {userId, fields, formName});
+  public saveForm(fields: FormField[], userId: number, formName: string): Observable<saveFormResponseDTO> {
+    return this.http.post<saveFormResponseDTO>(`${this.apiUrl}/660/saved-forms`, {userId, fields, formName});
   }
 }

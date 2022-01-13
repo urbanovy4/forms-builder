@@ -15,8 +15,8 @@ export class AuthFacade {
   private notifyToUnsubscribe$: Subject<null> = new Subject<null>();
   readonly notifyToUnsubscribe: Observable<null> = this.notifyToUnsubscribe$.asObservable();
 
-  isAuthenticated$: Observable<boolean> = this.store.pipe(select(checkAuth));
-  userId$: Observable<number> = this.store.pipe(select(getUserId));
+  public isAuthenticated$: Observable<boolean> = this.store.pipe(select(checkAuth));
+  public userId$: Observable<number> = this.store.pipe(select(getUserId));
 
   constructor(
     private store: Store<AuthState>
@@ -27,7 +27,7 @@ export class AuthFacade {
    * Login
    * @param user
    */
-  login(user: User) {
+  public login(user: User): void {
     this.store.dispatch(logIn({user}))
   }
 
@@ -35,14 +35,14 @@ export class AuthFacade {
    * Register
    * @param user
    */
-  register(user: User) {
+  public register(user: User): void {
     this.store.dispatch(register({user}))
   }
 
   /**
    * SignOut
    */
-  signOut() {
+  public signOut(): void {
     this.store.dispatch(signOut());
     this.store.dispatch(clearFieldState());
   }
@@ -51,7 +51,7 @@ export class AuthFacade {
    * Set token
    * @param accessToken
    */
-  setToken(accessToken: string) {
+  public setToken(accessToken: string): void {
     this.store.dispatch(setToken({accessToken}));
   }
 
@@ -59,11 +59,14 @@ export class AuthFacade {
    * Set user id
    * @param userId
    */
-  setUserId(userId: number) {
+  public setUserId(userId: number): void {
     this.store.dispatch(setUserId({userId}))
   }
 
-  unsubscribe() {
+  /**
+   * Trigger unsubscribe
+   */
+  public unsubscribe(): void {
     this.notifyToUnsubscribe$.next(null);
   }
 }

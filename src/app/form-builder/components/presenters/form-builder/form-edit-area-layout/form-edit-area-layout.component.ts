@@ -18,35 +18,40 @@ import { FieldsType, FormField } from '../../../../../helpers/models/model';
 })
 export class FormEditAreaLayoutComponent implements OnChanges {
 
-  fieldsType = FieldsType;
+  public fieldsType = FieldsType;
 
-  @Input('formFieldList') formFieldList: FormField[];
+  @Input('formFieldList')
+  public formFieldList: FormField[];
 
-  @Output() selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
-  @Output() deleteField: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
-  @Output() deletedFieldIndex: EventEmitter<number> = new EventEmitter<number>();
-  @Output() updatedIndex: EventEmitter<number> = new EventEmitter<number>();
+  @Output()
+  public selectField: EventEmitter<{ field: FormField, index: number }> = new EventEmitter<{ field: FormField, index: number }>();
+  @Output()
+  public deleteField: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
+  @Output()
+  public deletedFieldIndex: EventEmitter<number> = new EventEmitter<number>();
+  @Output()
+  public updatedIndex: EventEmitter<number> = new EventEmitter<number>();
 
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['formFieldList']) {
       this.formFieldList = [...changes['formFieldList'].currentValue];
     }
   }
 
-  emitSelectedField(formField: FormField, index: number) {
+  public emitSelectedField(formField: FormField, index: number): void {
     const field = {...formField};
     field.selected = true;
     this.selectField.emit({field, index});
   }
 
-  removeField(index: number) {
+  public removeField(index: number): void {
     this.formFieldList.splice(index, 1);
     this.deleteField.emit(this.formFieldList);
     this.deletedFieldIndex.emit(index);
     this.updateIndex();
   }
 
-  private updateIndex() {
+  private updateIndex(): void {
     const field = this.formFieldList.find((field) => field.selected === true);
     this.updatedIndex.emit(this.formFieldList.indexOf(field));
   }

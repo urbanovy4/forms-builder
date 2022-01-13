@@ -11,12 +11,11 @@ import { FieldsType, Form } from '../../../../helpers/models/model';
 })
 export class PreviewDialogComponent {
 
-  fieldsType = FieldsType;
-  form: FormGroup;
+  public fieldsType = FieldsType;
+  public form: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Form
-  ) {
-  }
+  ) { }
 
 }

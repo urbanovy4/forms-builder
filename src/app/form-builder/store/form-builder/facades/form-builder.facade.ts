@@ -26,9 +26,9 @@ export class FormBuilderFacade {
   private notifyToUnsubscribe$: Subject<null> = new Subject<null>();
   readonly notifyToUnsubscribe: Observable<null> = this.notifyToUnsubscribe$.asObservable();
 
-  fields$: Observable<FormField[]> = this.store.pipe(select(getAllFields));
-  selectedField$: Observable<any> = this.store.pipe(select(getSelectedField));
-  selectedFieldIndex$: Observable<number> = this.store.pipe(select(getSelectedFieldIndex));
+  public fields$: Observable<FormField[]> = this.store.pipe(select(getAllFields));
+  public selectedField$: Observable<any> = this.store.pipe(select(getSelectedField));
+  public selectedFieldIndex$: Observable<number> = this.store.pipe(select(getSelectedFieldIndex));
 
   constructor(
     private store: Store<State>
@@ -38,14 +38,14 @@ export class FormBuilderFacade {
   /**
    * Deselect field
    */
-  deselectField() {
+  public deselectField(): void {
     this.store.dispatch(deselectField());
   }
 
   /**
    * Clear form builder state
    */
-  clearFormBuilderState() {
+  public clearFormBuilderState(): void {
     this.store.dispatch(clearFormBuilderState());
   }
 
@@ -53,7 +53,7 @@ export class FormBuilderFacade {
    * Add field
    * @param field Field
    */
-  addField(field: FormField) {
+  public addField(field: FormField): void {
     this.store.dispatch(addField({field}));
   }
 
@@ -61,7 +61,7 @@ export class FormBuilderFacade {
    * Move field
    * @param fields Field
    */
-  moveField(fields: FormField[]) {
+  public moveField(fields: FormField[]): void {
     this.store.dispatch(moveFieldInArray({fields}));
   }
 
@@ -70,7 +70,7 @@ export class FormBuilderFacade {
    * @param field FormField
    * @param index number
    */
-  selectField({field, index}) {
+  public selectField({field, index}): void {
     this.store.dispatch(selectField({field, index}))
   }
 
@@ -78,7 +78,7 @@ export class FormBuilderFacade {
    * Update selected field index
    * @param index Number
    */
-  updateIndex(index: number) {
+  public updateIndex(index: number): void {
     this.store.dispatch(updateIndex({index}));
   }
 
@@ -86,7 +86,7 @@ export class FormBuilderFacade {
    * Remove field
    * @param fields FormField[]
    */
-  removeField(fields: FormField[]) {
+  public removeField(fields: FormField[]): void {
     this.store.dispatch(removeField({fields}))
   }
 
@@ -95,7 +95,7 @@ export class FormBuilderFacade {
    * @param styles Styles
    * @param index number
    */
-  changeStyle(styles: AvailableStyles, index: number) {
+  public changeStyle(styles: AvailableStyles, index: number): void {
     this.store.dispatch(changeStyle({styles, index}))
   }
 
@@ -104,7 +104,7 @@ export class FormBuilderFacade {
    * @param fields FormField[]
    * @param userId number
    */
-  showSaveDialog(fields: FormField[], userId: number) {
+  public showSaveDialog(fields: FormField[], userId: number): void {
     this.store.dispatch(showSaveDialog({fields, userId}));
   }
 
@@ -114,11 +114,11 @@ export class FormBuilderFacade {
    * @param fields FormField[]
    * @param userId Number
    */
-  saveForm(formName: string, fields: FormField[], userId: number) {
+  public saveForm(formName: string, fields: FormField[], userId: number): void {
     this.store.dispatch(saveForm({formName, fields, userId}));
   }
 
-  unsubscribe() {
+  public unsubscribe(): void {
     this.notifyToUnsubscribe$.next(null);
   }
 

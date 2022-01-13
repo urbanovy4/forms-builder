@@ -14,29 +14,30 @@ import { Utils } from '../../../../../helpers/utils/utils';
 })
 export class FormEditAreaComponent implements OnInit, OnDestroy {
 
-  @Input() fieldsLength: number = 0;
+  @Input()
+  public fieldsLength: number = 0;
 
-  formFieldList$: Observable<FormField[]>;
-  formFieldList: FormField[] = [];
-  selectedFieldIndex$: Observable<number>;
-  removedFieldIndex$: Subject<number> = new Subject<number>();
+  public formFieldList$: Observable<FormField[]>;
+  public formFieldList: FormField[] = [];
+  public selectedFieldIndex$: Observable<number>;
+  public removedFieldIndex$: Subject<number> = new Subject<number>();
 
   constructor(
     private formBuilderFacade: FormBuilderFacade,
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.formFieldList$ = this.formBuilderFacade.fields$;
     this.selectedFieldIndex$ = this.formBuilderFacade.selectedFieldIndex$;
     this.getFieldsValue();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.formBuilderFacade.unsubscribe();
   }
 
-  onDrop(event: CdkDragDrop<any[]>) {
+  public onDrop(event: CdkDragDrop<any[]>): void {
     this.dragItem(event);
   }
 
@@ -59,35 +60,35 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
     }
   }
 
-  private addField(field: FormField) {
+  private addField(field: FormField): void {
     const formField = Utils.copy(field);
     this.formBuilderFacade.addField(formField);
   }
 
-  private moveField(fields: FormField[], index: number) {
+  private moveField(fields: FormField[], index: number): void {
     const formFields = Utils.copy(fields);
     this.formBuilderFacade.moveField(formFields);
     this.formBuilderFacade.updateIndex(index);
   }
 
-  selectField({field, index}) {
+  public selectField({field, index}): void {
     this.formBuilderFacade.selectField({field, index});
   }
 
-  updateIndex(index: number) {
+  public updateIndex(index: number): void {
     this.formBuilderFacade.updateIndex(index);
   }
 
-  removeField(fields: FormField[]) {
+  public removeField(fields: FormField[]): void {
     this.compareIndexes();
     this.formBuilderFacade.removeField(fields);
   }
 
-  getRemovedFieldIndexValue(index: number) {
+  public getRemovedFieldIndexValue(index: number): void {
     this.removedFieldIndex$.next(index);
   }
 
-  private compareIndexes() {
+  private compareIndexes(): void {
     merge(
       this.selectedFieldIndex$,
       this.removedFieldIndex$
@@ -99,13 +100,13 @@ export class FormEditAreaComponent implements OnInit, OnDestroy {
     });
   }
 
-  private checkToDeselect(selectedIndex: number, removedIndex: number) {
+  private checkToDeselect(selectedIndex: number, removedIndex: number): void {
     if (selectedIndex === removedIndex) {
       this.formBuilderFacade.deselectField();
     }
   }
 
-  private getFieldsValue() {
+  private getFieldsValue(): void {
     this.formFieldList$
       .pipe(
         takeUntil(this.formBuilderFacade.notifyToUnsubscribe)

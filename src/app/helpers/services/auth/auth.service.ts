@@ -21,15 +21,15 @@ export class AuthService {
     this.loggedInState = JSON.parse(localStorage.getItem('loginState'));
   }
 
-  get loggedInState() {
+  public get loggedInState(): boolean {
     return this.loggedIn;
   }
 
-  set loggedInState(state: boolean) {
+  public set loggedInState(state: boolean) {
     this.loggedIn = state;
   }
 
-  login(user: User): Observable<{ accessToken: string, userId: number }> {
+  public login(user: User): Observable<{ accessToken: string, userId: number }> {
     return this.http.post<UserResponse>(`${this.apiUrl}/login`, user)
       .pipe(
         map(res => {
@@ -41,25 +41,25 @@ export class AuthService {
       );
   }
 
-  register(user: User): Observable<UserResponse> {
+  public register(user: User): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${this.apiUrl}/register`, user);
   }
 
-  signOut() {
+  public signOut(): void {
     this.token = null;
     this.loggedInState = false;
     localStorage.clear();
   }
 
-  getToken(): string {
+  public getToken(): string {
     return this.token;
   }
 
-  setUserId(userId: number) {
+  public setUserId(userId: number): void {
     localStorage.setItem('userId', userId + '');
   }
 
-  setToken(accessToken: string) {
+  public setToken(accessToken: string): void {
     this.token = accessToken;
     this.loggedInState = true;
     localStorage.setItem('token', accessToken);

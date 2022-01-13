@@ -10,21 +10,21 @@ import { AuthFacade } from '../../../../store/auth/facades/auth.facade';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  public loginForm: FormGroup;
 
   constructor(
     private authFacade: AuthFacade
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     this.authFacade.login({
       email: this.loginForm.value.email,
       password: this.loginForm.value.password

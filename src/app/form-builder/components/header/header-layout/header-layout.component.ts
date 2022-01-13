@@ -8,7 +8,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HeaderLayoutComponent {
 
-  @Input() isAuthenticated: boolean;
-  @Output() signOut = new EventEmitter();
+  @Input()
+  public isAuthenticated: boolean;
+  @Output()
+  public signOut = new EventEmitter();
 
 }

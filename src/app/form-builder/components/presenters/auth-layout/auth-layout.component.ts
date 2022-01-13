@@ -8,5 +8,6 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthLayoutComponent {
-  @Input('parentForm') form: FormGroup;
+  @Input('parentForm')
+  public form: FormGroup;
 }
