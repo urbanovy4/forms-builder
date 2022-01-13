@@ -1,12 +1,12 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { BehaviorSubject } from 'rxjs';
 
-import {FormEditAreaComponent} from './form-edit-area.component';
-import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
-import {ReactiveComponentModule} from "@ngrx/component";
-import {FormField} from "../../../../../helpers/models/model";
-import {ContainerModel, DragDropEventFactory} from "../../../../../helpers/factory/drag-drop-event.factory";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import { FormEditAreaComponent } from './form-edit-area.component';
+import { FormBuilderFacade } from '../../../../store/form-builder/facades/form-builder.facade';
+import { FormField } from '../../../../../helpers/models/model';
+import { ContainerModel, DragDropEventFactory } from '../../../../../helpers/factory/drag-drop-event.factory';
 
 describe('FormEditAreaComponent', () => {
   let component: FormEditAreaComponent;

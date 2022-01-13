@@ -1,8 +1,9 @@
-import {Injectable} from "@angular/core";
-import {select, Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Form} from "../../../../helpers/models/model";
-import {forms, loading} from "../selectors/user-forms.selector";
+import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Form } from '../../../../helpers/models/model';
+import { forms, loading } from '../selectors/user-forms.selector';
 import {
   editForm,
   getForms, removeForm,
@@ -10,10 +11,10 @@ import {
   showEditDialog,
   showPreviewDialog,
   showRemoveDialog
-} from "../actions/user-forms.action";
+} from '../actions/user-forms.action';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UserFormsFacade {
 

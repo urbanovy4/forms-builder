@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import {LoginComponent} from './login.component';
-import {AuthFacade} from "../../../../store/auth/facades/auth.facade";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { LoginComponent } from './login.component';
+import { AuthFacade } from '../../../../store/auth/facades/auth.facade';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

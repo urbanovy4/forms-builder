@@ -1,11 +1,11 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {EditDialogComponent} from './edit-dialog.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Form} from "../../../../helpers/models/model";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { EditDialogComponent } from './edit-dialog.component';
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
+import { Form } from '../../../../helpers/models/model';
 
 describe('EditDialogComponent', () => {
   let component: EditDialogComponent;

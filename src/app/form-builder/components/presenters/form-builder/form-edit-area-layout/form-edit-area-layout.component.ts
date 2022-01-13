@@ -7,7 +7,8 @@ import {
   SimpleChanges,
   EventEmitter
 } from '@angular/core';
-import {FormField} from "../../../../../helpers/models/model";
+
+import { FieldsType, FormField } from '../../../../../helpers/models/model';
 
 @Component({
   selector: 'app-form-edit-area-layout',
@@ -16,6 +17,8 @@ import {FormField} from "../../../../../helpers/models/model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormEditAreaLayoutComponent implements OnChanges {
+
+  fieldsType = FieldsType;
 
   @Input('formFieldList') formFieldList: FormField[];
 

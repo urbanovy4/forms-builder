@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import {StylesListLayoutComponent} from './styles-list-layout.component';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { StylesListLayoutComponent } from './styles-list-layout.component';
 
 describe('StylesListLayoutComponent', () => {
   let component: StylesListLayoutComponent;

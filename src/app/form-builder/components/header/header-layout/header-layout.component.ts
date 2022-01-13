@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-layout',
@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
   styleUrls: ['./header-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderLayoutComponent  {
+export class HeaderLayoutComponent {
 
   @Input() isAuthenticated: boolean;
   @Output() signOut = new EventEmitter();

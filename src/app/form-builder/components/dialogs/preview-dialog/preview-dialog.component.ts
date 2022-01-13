@@ -1,7 +1,8 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Form} from "../../../../helpers/models/model";
-import {FormGroup} from "@angular/forms";
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup } from '@angular/forms';
+
+import { FieldsType, Form } from '../../../../helpers/models/model';
 
 @Component({
   selector: 'app-preview-dialog',
@@ -10,6 +11,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class PreviewDialogComponent {
 
+  fieldsType = FieldsType;
   form: FormGroup;
 
   constructor(

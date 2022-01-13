@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import {FieldsTemplateComponent} from './fields-template.component';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { FieldsTemplateComponent } from './fields-template.component';
 
 describe('FieldsListComponent', () => {
   let component: FieldsTemplateComponent;

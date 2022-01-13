@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Form} from "../../../../../helpers/models/model";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Form } from '../../../../../helpers/models/model';
 
 @Component({
   selector: 'app-forms-list-item',

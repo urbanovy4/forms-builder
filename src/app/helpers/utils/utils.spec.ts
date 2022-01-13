@@ -1,5 +1,5 @@
-import {Utils} from "./utils";
-import {AvailableStyles, FormField} from "../models/model";
+import { Utils } from './utils';
+import { AvailableStyles, FormField } from '../models/model';
 
 describe('Utils', () => {
   it('should call copy', () => {

@@ -1,8 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Form} from "../../../../helpers/models/model";
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { Form } from '../../../../helpers/models/model';
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
 
 @Component({
   selector: 'app-edit-dialog',

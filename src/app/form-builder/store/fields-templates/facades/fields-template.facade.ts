@@ -1,9 +1,10 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {FormField} from "../../../../helpers/models/model";
-import {select, Store} from "@ngrx/store";
-import {defaultFields} from "../selectors/fields-template.selector";
-import {getDefaultFields} from "../actions/fields-template.actions";
+import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { FormField } from '../../../../helpers/models/model';
+import { defaultFields } from '../selectors/fields-template.selector';
+import { getDefaultFields } from '../actions/fields-template.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class FieldsTemplateFacade {
     private store: Store
   ) {
   }
-  
+
   /**
    * Get default fields
    */

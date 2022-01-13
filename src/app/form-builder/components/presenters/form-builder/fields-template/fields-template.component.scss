@@ -1,11 +1,13 @@
+@import "variables";
+
 .item {
-  background-color: #3F51B5;
-  color: white;
+  background-color: $main-color;
+  color: $white-color;
   margin: 1rem 0;
   border-radius: 3px;
 
   &:hover {
-    box-shadow: 1px 1px 4px var(--border-color);
+    box-shadow: 1px 1px 4px $border-color;
   }
 }
 

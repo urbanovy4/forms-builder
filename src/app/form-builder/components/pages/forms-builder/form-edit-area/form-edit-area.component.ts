@@ -1,10 +1,11 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
-import {FormField} from "../../../../../helpers/models/model";
-import {merge, Observable, Subject} from "rxjs";
-import {FormBuilderFacade} from "../../../../store/form-builder/facades/form-builder.facade";
-import {Utils} from "../../../../../helpers/utils/utils";
-import {bufferCount, take, takeUntil} from "rxjs/operators";
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
+import { merge, Observable, Subject } from 'rxjs';
+import { bufferCount, take, takeUntil } from 'rxjs/operators';
+
+import { FormField } from '../../../../../helpers/models/model';
+import { FormBuilderFacade } from '../../../../store/form-builder/facades/form-builder.facade';
+import { Utils } from '../../../../../helpers/utils/utils';
 
 @Component({
   selector: 'app-form-edit-area',

@@ -1,10 +1,11 @@
-import {Store} from "@ngrx/store";
-import {State} from "../states/auth.state";
-import {AuthFacade} from "./auth.facade";
-import {TestBed, waitForAsync} from "@angular/core/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {provideMockStore} from "@ngrx/store/testing";
-import {User} from "../../../../helpers/models/model";
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { State } from '../states/auth.state';
+import { AuthFacade } from './auth.facade';
+import { User } from '../../../../helpers/models/model';
 import * as AuthActions from './../actions/auth.action'
 
 describe('AuthFacade', () => {

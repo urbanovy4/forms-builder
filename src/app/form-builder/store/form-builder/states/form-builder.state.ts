@@ -1,4 +1,4 @@
-import {FormField} from "../../../../helpers/models/model";
+import { FormField } from '../../../../helpers/models/model';
 
 export const featureName = 'formBuilder';
 

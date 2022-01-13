@@ -1,5 +1,6 @@
-import {createAction, props} from "@ngrx/store";
-import {FormField} from "../../../../helpers/models/model";
+import { createAction, props } from '@ngrx/store';
+
+import { FormField } from '../../../../helpers/models/model';
 
 export enum DefaultFieldAction {
   GET_DEFAULT_FIELDS = '[FIELDS] Get Default Fields',

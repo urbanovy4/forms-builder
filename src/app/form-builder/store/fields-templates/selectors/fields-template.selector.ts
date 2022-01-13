@@ -1,5 +1,6 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {State, fieldTemplatesFeatureName, adapter} from "../states/fields-template.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { State, fieldTemplatesFeatureName, adapter } from '../states/fields-template.state';
 
 /**
  * Field templates selectors

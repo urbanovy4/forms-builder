@@ -1,8 +1,8 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {AuthService} from './auth.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {User, UserResponse} from "../../models/model";
+import { AuthService } from './auth.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { User, UserResponse } from '../../models/model';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -10,13 +10,9 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
-        {
-          provide: 'API_URL',
-          useValue: ''
-        }
-      ]
+      imports: [HttpClientTestingModule], providers: [{
+        provide: 'API_URL', useValue: ''
+      }]
     });
     service = TestBed.inject(AuthService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -34,12 +30,10 @@ describe('AuthService', () => {
 
   it('should login with mock data', () => {
     const user: User = {
-      email: 'test@test.com',
-      password: 'testpassword'
+      email: 'test@test.com', password: 'testpassword'
     };
     const response = {
-      accessToken: 'test',
-      userId: 1
+      accessToken: 'test', userId: 1
     }
     service.login(user).subscribe(res => {
       expect(res).toBe(response);
@@ -63,15 +57,12 @@ describe('AuthService', () => {
 
   it('should register with mock data', () => {
     const user: User = {
-      email: 'test@test.com',
-      password: 'testpassword'
+      email: 'test@test.com', password: 'testpassword'
     };
 
     const response: UserResponse = {
-      accessToken: 'Test token',
-      user: {
-        email: 'test@test.com',
-        id: 1
+      accessToken: 'Test token', user: {
+        email: 'test@test.com', id: 1
       }
     };
 

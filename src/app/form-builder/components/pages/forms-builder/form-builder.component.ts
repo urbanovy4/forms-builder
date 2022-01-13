@@ -1,14 +1,11 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import {AvailableStyles, FormField} from "../../../../helpers/models/model";
-import {Observable} from "rxjs";
-import {CdkPortal, TemplatePortal} from "@angular/cdk/portal";
-import {AuthFacade} from "../../../store/auth/facades/auth.facade";
-import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
-import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CdkPortal, TemplatePortal } from '@angular/cdk/portal';
+import { Observable } from 'rxjs';
+
+import { AvailableStyles, FormField } from '../../../../helpers/models/model';
+import { AuthFacade } from '../../../store/auth/facades/auth.facade';
+import { FieldsTemplateFacade } from '../../../store/fields-templates/facades/fields-template.facade';
+import { FormBuilderFacade } from '../../../store/form-builder/facades/form-builder.facade';
 
 @Component({
   selector: 'app-form-builder',

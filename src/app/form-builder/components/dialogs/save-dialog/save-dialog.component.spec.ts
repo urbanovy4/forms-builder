@@ -1,11 +1,11 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {SaveDialogComponent} from './save-dialog.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {FormField} from "../../../../helpers/models/model";
-import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { SaveDialogComponent } from './save-dialog.component';
+import { FormField } from '../../../../helpers/models/model';
+import { FormBuilderFacade } from '../../../store/form-builder/facades/form-builder.facade';
 
 describe('SaveDialogComponent', () => {
   let component: SaveDialogComponent;

@@ -1,13 +1,14 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+import { FormBuilderService } from '../../../../helpers/services/form-builder/form-builder.service';
+import { SaveDialogComponent } from '../../../components/dialogs/save-dialog/save-dialog.component';
 import * as FormBuilderActions from '../actions/form-builder.action';
-import {catchError, map, switchMap, tap} from "rxjs/operators";
-import {HttpErrorResponse} from "@angular/common/http";
-import {of} from "rxjs";
-import {FormBuilderService} from "../../../../helpers/services/form-builder/form-builder.service";
-import {SaveDialogComponent} from "../../../components/dialogs/save-dialog/save-dialog.component";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
 export class FormBuilderEffect {

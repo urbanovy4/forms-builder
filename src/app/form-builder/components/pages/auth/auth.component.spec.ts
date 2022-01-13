@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import {AuthComponent} from './auth.component';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { AuthComponent } from './auth.component';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;

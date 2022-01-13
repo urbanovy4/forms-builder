@@ -1,6 +1,9 @@
-import {Injectable} from "@angular/core";
-import {select, Store} from "@ngrx/store";
-import {State} from "../states/form-builder.state";
+import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+
+import { State } from '../states/form-builder.state';
+import { AvailableStyles, FormField } from '../../../../helpers/models/model';
 import {
   addField,
   changeStyle,
@@ -12,13 +15,11 @@ import {
   selectField,
   showSaveDialog,
   updateIndex
-} from "../actions/form-builder.action";
-import {AvailableStyles, FormField} from "../../../../helpers/models/model";
-import {Observable, Subject} from "rxjs";
-import {getAllFields, getSelectedField, getSelectedFieldIndex} from "../selectors/form-buider.selector";
+} from '../actions/form-builder.action';
+import { getAllFields, getSelectedField, getSelectedFieldIndex } from '../selectors/form-buider.selector';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class FormBuilderFacade {
 

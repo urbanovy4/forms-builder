@@ -1,6 +1,6 @@
-import {adapter, featureName, initialState, State as UserFormsState} from "../states/user-forms.state";
+import { adapter, featureName, initialState, State as UserFormsState } from '../states/user-forms.state';
+import { Form } from '../../../../helpers/models/model';
 import * as UserFormsSelectors from './user-forms.selector';
-import {Form} from "../../../../helpers/models/model";
 
 interface State {
   [featureName]: UserFormsState

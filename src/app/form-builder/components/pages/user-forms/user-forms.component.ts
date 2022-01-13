@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Form} from "../../../../helpers/models/model";
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {AuthFacade} from "../../../store/auth/facades/auth.facade";
-import {takeUntil} from "rxjs/operators";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import { Form } from '../../../../helpers/models/model';
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
+import { AuthFacade } from '../../../store/auth/facades/auth.facade';
 
 @Component({
   selector: 'app-user-forms',

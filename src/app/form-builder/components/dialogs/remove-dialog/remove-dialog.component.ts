@@ -1,9 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../store/states/app.state";
-import {removeForm} from "../../../store/user-forms/actions/user-forms.action";
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
 
 @Component({
   selector: 'app-remove-form-dialog',

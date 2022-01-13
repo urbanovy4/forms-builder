@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-forms-list',
@@ -6,4 +6,5 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   styleUrls: ['./forms-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormsListComponent {}
+export class FormsListComponent {
+}

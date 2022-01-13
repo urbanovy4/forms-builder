@@ -1,16 +1,17 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
+import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, delay, map, switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+import { Form } from '../../../../helpers/models/model';
+import { UserFormsService } from '../../../../helpers/services/user-forms/user-forms.service';
+import { RemoveDialogComponent } from '../../../components/dialogs/remove-dialog/remove-dialog.component';
+import { EditDialogComponent } from '../../../components/dialogs/edit-dialog/edit-dialog.component';
+import { PreviewDialogComponent } from '../../../components/dialogs/preview-dialog/preview-dialog.component';
 import * as UserFormsActions from '../actions/user-forms.action';
-import {catchError, delay, map, switchMap, tap} from "rxjs/operators";
-import {Form} from "../../../../helpers/models/model";
-import {HttpErrorResponse} from "@angular/common/http";
-import {of} from "rxjs";
-import {UserFormsService} from "../../../../helpers/services/user-forms/user-forms.service";
-import {RemoveDialogComponent} from "../../../components/dialogs/remove-dialog/remove-dialog.component";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {EditDialogComponent} from "../../../components/dialogs/edit-dialog/edit-dialog.component";
-import {PreviewDialogComponent} from "../../../components/dialogs/preview-dialog/preview-dialog.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
 export class UserFormEffect {

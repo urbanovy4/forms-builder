@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {AvailableStyles, BorderStyles, FormField} from "../../../../../helpers/models/model";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { AvailableStyles, BorderStyles, FormField } from '../../../../../helpers/models/model';
 
 @Component({
   selector: 'app-styles-list-layout',

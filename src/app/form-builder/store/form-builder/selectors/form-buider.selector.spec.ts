@@ -1,4 +1,4 @@
-import {featureName, initialState, State as FormBuilderState} from "./../states/form-builder.state";
+import { featureName, initialState, State as FormBuilderState } from './../states/form-builder.state';
 import * as FormBuilderSelectors from './form-buider.selector';
 
 interface State {

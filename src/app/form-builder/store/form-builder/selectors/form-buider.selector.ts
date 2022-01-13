@@ -1,5 +1,6 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {featureName, State} from "../states/form-builder.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { featureName, State } from '../states/form-builder.state';
 
 /**
  * Form builder selector

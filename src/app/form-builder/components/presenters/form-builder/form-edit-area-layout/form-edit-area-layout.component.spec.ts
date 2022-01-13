@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NO_ERRORS_SCHEMA, SimpleChange, SimpleChanges} from "@angular/core";
 
 import {FormEditAreaLayoutComponent} from './form-edit-area-layout.component';
 import {FormField} from "../../../../../helpers/models/model";
-import {NO_ERRORS_SCHEMA, SimpleChange, SimpleChanges} from "@angular/core";
 
 describe('FormEditAreaLayoutComponent', () => {
   let component: FormEditAreaLayoutComponent;
