@@ -1,0 +1,53 @@
+@import "variables";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .router-group {
+    margin: 0 .5rem;
+    padding: .5rem;
+    font-size: $font-size + 4px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+.mat-icon-button {
+  width: 100%;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 2rem;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+
+  .btn {
+    border-radius: 3px;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+.active {
+  background-color: $background-color;
+  font-weight: 600;
+}
+
+@media (max-width: 615px) {
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    padding: 0 1rem 0 0;
+  }
+  .router-group {
+    font-size: $font-size !important;
+  }
+}

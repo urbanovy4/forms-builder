@@ -1,0 +1,16 @@
+@import "variables";
+
+.item {
+  background-color: $main-color;
+  color: $white-color;
+  margin: 1rem 0;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: 1px 1px 4px $border-color;
+  }
+}
+
+.cdk-drop-list-dragging {
+  cursor: move;
+}
