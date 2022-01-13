@@ -1,6 +1,7 @@
-import {createAction, props} from "@ngrx/store";
-import {DialogActions, FormActions} from "../../form-builder/actions/actions.model";
-import {Form} from "../../../../helpers/models/model";
+import { createAction, props } from '@ngrx/store';
+
+import { DialogActions, FormActions } from '../../form-builder/actions/actions.model';
+import { Form } from '../../../../helpers/models/model';
 
 export const getForms = createAction(
   FormActions.GET_FORMS,

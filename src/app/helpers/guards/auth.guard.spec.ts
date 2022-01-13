@@ -1,12 +1,12 @@
-import {waitForAsync, TestBed} from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 
-import {AuthGuard} from './auth.guard';
-import {AuthService} from "../services/auth/auth.service";
-import {AuthFacade} from "../../form-builder/store/auth/facades/auth.facade";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {RouterTestingModule} from "@angular/router/testing";
-import {LoginComponent} from "../../form-builder/components/pages/auth/login/login.component";
-import {RegisterComponent} from "../../form-builder/components/pages/auth/register/register.component";
+import { AuthGuard } from './auth.guard';
+import { AuthService } from '../services/auth/auth.service';
+import { AuthFacade } from '../../form-builder/store/auth/facades/auth.facade';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../../form-builder/components/pages/auth/login/login.component';
+import { RegisterComponent } from '../../form-builder/components/pages/auth/register/register.component';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;

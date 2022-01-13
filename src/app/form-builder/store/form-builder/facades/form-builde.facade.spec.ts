@@ -1,11 +1,12 @@
-import {TestBed, waitForAsync} from "@angular/core/testing";
-import {Store} from "@ngrx/store";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {provideMockStore} from "@ngrx/store/testing";
-import {State} from "../states/form-builder.state";
-import {FormBuilderFacade} from "./form-builder.facade";
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { State } from '../states/form-builder.state';
+import { FormBuilderFacade } from './form-builder.facade';
+import { AvailableStyles, BorderStyles, FormField } from '../../../../helpers/models/model';
 import * as FormBuilderActions from './../actions/form-builder.action';
-import {AvailableStyles, BorderStyles, FormField} from "../../../../helpers/models/model";
 
 describe('FormBuilderFacade', () => {
   let store: Store<State>;

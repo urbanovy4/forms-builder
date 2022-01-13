@@ -75,3 +75,11 @@ export interface FormBuilderState {
 
 export interface AuthState extends UserResponse {
 }
+
+export enum FieldsType {
+  Text = 'text',
+  Textarea = 'textarea',
+  Button = 'button',
+  Checkbox = 'checkbox',
+  Select = 'select'
+}

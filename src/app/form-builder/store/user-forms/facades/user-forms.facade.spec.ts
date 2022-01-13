@@ -1,10 +1,11 @@
-import {Store} from "@ngrx/store";
-import {UserFormsFacade} from "./user-forms.facade";
-import {TestBed, waitForAsync} from "@angular/core/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {provideMockStore} from "@ngrx/store/testing";
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { Form } from '../../../../helpers/models/model';
+import { UserFormsFacade } from './user-forms.facade';
 import * as UserActions from './../actions/user-forms.action';
-import {Form} from "../../../../helpers/models/model";
 
 describe('UserFormsFacade', () => {
   let store: Store;

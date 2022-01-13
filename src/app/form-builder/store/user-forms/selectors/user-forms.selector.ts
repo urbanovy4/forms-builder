@@ -1,5 +1,6 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {adapter, State, featureName} from "../states/user-forms.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { adapter, State, featureName } from '../states/user-forms.state';
 
 export const userFormFeatureSelector = createFeatureSelector<State>(featureName);
 

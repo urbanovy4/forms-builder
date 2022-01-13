@@ -1,10 +1,11 @@
-import {Store} from "@ngrx/store";
-import {TestBed, waitForAsync} from "@angular/core/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {provideMockStore} from "@ngrx/store/testing";
-import {FieldsTemplateFacade} from "./fields-template.facade";
-import {State} from "../states/fields-template.state";
-import * as FieldsTemplateActions from "../actions/fields-template.actions";
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { FieldsTemplateFacade } from './fields-template.facade';
+import { State } from '../states/fields-template.state';
+import * as FieldsTemplateActions from '../actions/fields-template.actions';
 
 describe('FieldsTemplateFacade', () => {
   let store: Store<State>;

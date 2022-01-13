@@ -1,11 +1,11 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {PreviewDialogComponent} from './preview-dialog.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "../../../../material/material.module";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Form} from "../../../../helpers/models/model";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { PreviewDialogComponent } from './preview-dialog.component';
+import { MaterialModule } from '../../../../material/material.module';
+import { Form } from '../../../../helpers/models/model';
 
 describe('PreviewDialogComponent', () => {
   let component: PreviewDialogComponent;

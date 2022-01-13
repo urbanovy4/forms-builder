@@ -6,44 +6,57 @@
        [id]="'form-field-' + i"
        (click)="emitSelectedField(field, i)"
        cdkDrag>
+    <div></div>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>
     <div class="handle move">
       <i class="fa fa-ellipsis-v " cdkDragHandle></i>
     </div>
-    <div class="col-10" *ngSwitchCase="'text'">
+    <div class="col-10" *ngSwitchCase="fieldsType.Text">
       <label>{{field.availableStyles.placeholder || 'Text'}}</label>
       <input
         type="text"
         class="form-control"
+        (click)="$event.stopPropagation()"
         [ngStyle]="field.availableStyles"
         [required]="field.availableStyles.required"
         [placeholder]="field.availableStyles.placeholder || 'Text'">
     </div>
-    <div class="col-10" *ngSwitchCase="'textarea'">
+    <div class="col-10" *ngSwitchCase="fieldsType.Textarea">
       <label>{{field.availableStyles.placeholder || 'Textarea'}}</label>
       <textarea
         class="form-control"
+        (click)="$event.stopPropagation()"
         [ngStyle]="field.availableStyles"
         [required]="field.availableStyles.required"
         [placeholder]="field.availableStyles.placeholder"></textarea>
     </div>
-    <div class="col-10" *ngSwitchCase="'button'">
-      <button type="button" class="btn btn-primary"
-              [ngStyle]="field.availableStyles">
+    <div class="col-10" *ngSwitchCase="fieldsType.Button">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="$event.stopPropagation()"
+        [ngStyle]="field.availableStyles">
         {{field.availableStyles.placeholder || 'Button'}}
       </button>
     </div>
-    <div class="col-10" *ngSwitchCase="'checkbox'">
+    <div class="col-10" *ngSwitchCase="fieldsType.Checkbox">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          (click)="$event.stopPropagation()"
+        >
         <label class="form-check-label">
           {{field.label || 'Test label'}}
         </label>
       </div>
     </div>
-    <div class="col-10" *ngSwitchCase="'select'">
+    <div class="col-10" *ngSwitchCase="fieldsType.Select">
       <label>Select list:</label>
-      <select class="form-control" [ngStyle]="field.availableStyles">
+      <select
+        class="form-control"
+        (click)="$event.stopPropagation()"
+        [ngStyle]="field.availableStyles">
         <option>1</option>
         <option>2</option>
         <option>3</option>

@@ -1,12 +1,14 @@
-import {createReducer, on} from "@ngrx/store";
-import {adapter, initialState} from "../states/user-forms.state";
+import { createReducer, on } from '@ngrx/store';
+
+import { adapter, initialState } from '../states/user-forms.state';
 import {
   editFormFailure,
-  editFormSuccess, getForms,
+  editFormSuccess,
+  getForms,
   getFormsSuccess,
   removeFormFailure,
   removeFormSuccess
-} from "../actions/user-forms.action";
+} from '../actions/user-forms.action';
 
 export const userFormsReducer = createReducer(initialState,
   on(getForms, state => {

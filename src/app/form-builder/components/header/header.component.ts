@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {AuthFacade} from "../../store/auth/facades/auth.facade";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { AuthFacade } from '../../store/auth/facades/auth.facade';
 
 @Component({
   selector: 'app-header',

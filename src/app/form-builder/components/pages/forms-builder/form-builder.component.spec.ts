@@ -1,19 +1,18 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveComponentModule } from '@ngrx/component';
 
-import {FormBuilderComponent} from './form-builder.component';
-import {FormBuilderFacade} from "../../../store/form-builder/facades/form-builder.facade";
-import {AuthFacade} from "../../../store/auth/facades/auth.facade";
-import {FieldsTemplateFacade} from "../../../store/fields-templates/facades/fields-template.facade";
-import {ReactiveComponentModule} from "@ngrx/component";
-import {FormField} from "../../../../helpers/models/model";
-import {MaterialModule} from "../../../../material/material.module";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { FormBuilderComponent } from './form-builder.component';
+import { FormBuilderFacade } from '../../../store/form-builder/facades/form-builder.facade';
+import { AuthFacade } from '../../../store/auth/facades/auth.facade';
+import { FieldsTemplateFacade } from '../../../store/fields-templates/facades/fields-template.facade';
+import { FormField } from '../../../../helpers/models/model';
+import { MaterialModule } from '../../../../material/material.module';
 
 describe('FormBuilderComponent', () => {
   let component: FormBuilderComponent;
   let fixture: ComponentFixture<FormBuilderComponent>;
   let fbFacade: FormBuilderFacade;
-  let authFacade: AuthFacade;
   let templatesFacade: FieldsTemplateFacade;
 
   beforeEach(async () => {
@@ -42,7 +41,6 @@ describe('FormBuilderComponent', () => {
     component = fixture.componentInstance;
     fbFacade = TestBed.inject(FormBuilderFacade);
     templatesFacade = TestBed.inject(FieldsTemplateFacade);
-    // authFacade = TestBed.inject(AuthFacade);
     localStorage.setItem('token', 'TestToken');
   });
 

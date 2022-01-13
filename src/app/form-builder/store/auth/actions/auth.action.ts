@@ -1,5 +1,6 @@
-import {User} from "../../../../helpers/models/model";
-import {createAction, props} from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
+
+import { User } from '../../../../helpers/models/model';
 
 export enum AuthActionTypes {
   LOGIN = '[Auth] Login',

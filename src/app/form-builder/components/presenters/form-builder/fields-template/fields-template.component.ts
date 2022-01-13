@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {FormField} from "../../../../../helpers/models/model";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { FormField } from '../../../../../helpers/models/model';
 
 @Component({
   selector: 'app-fields-list',

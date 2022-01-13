@@ -1,5 +1,6 @@
-import {createEntityAdapter, EntityState} from "@ngrx/entity";
-import {Form} from "../../../../helpers/models/model";
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
+
+import { Form } from '../../../../helpers/models/model';
 
 export const featureName = 'userForms';
 

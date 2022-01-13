@@ -1,3 +1,5 @@
+@import "variables";
+
 .field-list {
   width: 300px;
   max-width: 100%;
@@ -10,17 +12,17 @@
 .field {
   width: 100%;
   padding: 14px 10px;
-  color: rgba(0, 0, 0, 0.87);
+  color: $dark-color;
   display: flex;
   box-sizing: border-box;
   background: white;
-  font-size: 14px;
+  font-size: $font-size;
 
   & .fa {
     width: 20px;
     height: 20px;
     text-align: center;
-    font-size: 15px;
+    font-size: $font-size;
     opacity: 0;
   }
 

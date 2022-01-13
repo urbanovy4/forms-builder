@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {RemoveDialogComponent} from './remove-dialog.component';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { RemoveDialogComponent } from './remove-dialog.component';
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
 
 describe('RemoveFormDialogComponent', () => {
   let component: RemoveDialogComponent;

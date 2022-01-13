@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthFacade} from "../../../../store/auth/facades/auth.facade";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthFacade } from '../../../../store/auth/facades/auth.facade';
 
 @Component({
   selector: 'app-register',

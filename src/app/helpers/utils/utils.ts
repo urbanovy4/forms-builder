@@ -1,4 +1,4 @@
-import {FormField} from "../models/model";
+import { FormField } from '../models/model';
 
 export class Utils {
   static copy<T>(arg: T): T {

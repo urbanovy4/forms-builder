@@ -1,10 +1,11 @@
-import {Injectable} from "@angular/core";
-import {select, Store} from "@ngrx/store";
-import {AuthState, User} from "../../../../helpers/models/model";
-import {logIn, register, setToken, setUserId, signOut} from "../actions/auth.action";
-import {Observable, Subject} from "rxjs";
-import {checkAuth, getUserId} from "../selectors/auth.selector";
-import {clearFieldState} from "../../form-builder/actions/form-builder.action";
+import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+
+import { AuthState, User } from '../../../../helpers/models/model';
+import { logIn, register, setToken, setUserId, signOut } from '../actions/auth.action';
+import { clearFieldState } from '../../form-builder/actions/form-builder.action';
+import { checkAuth, getUserId } from '../selectors/auth.selector';
 
 @Injectable({
   providedIn: 'root'

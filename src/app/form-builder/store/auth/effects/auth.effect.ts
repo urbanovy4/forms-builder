@@ -1,12 +1,13 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AuthService} from "../../../../helpers/services/auth/auth.service";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+
+import { AuthService } from '../../../../helpers/services/auth/auth.service';
+import { User } from '../../../../helpers/models/model';
 import * as AuthActions from './../actions/auth.action';
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {catchError, map, switchMap, tap} from "rxjs/operators";
-import {User} from "../../../../helpers/models/model";
-import {of} from "rxjs";
 
 @Injectable()
 export class AuthEffect {

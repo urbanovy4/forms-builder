@@ -1,5 +1,5 @@
-import {EnumToArrayPipe} from './enum-to-array.pipe';
-import {BorderStyles} from "../models/model";
+import { EnumToArrayPipe } from './enum-to-array.pipe';
+import { BorderStyles } from '../models/model';
 
 describe('EnumToArrayPipe', () => {
   let pipe: EnumToArrayPipe;

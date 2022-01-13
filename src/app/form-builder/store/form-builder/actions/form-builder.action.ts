@@ -1,7 +1,7 @@
-import {createAction, props} from "@ngrx/store";
-import {AvailableStyles, FormField} from "../../../../helpers/models/model";
+import { createAction, props } from '@ngrx/store';
 
-import {DialogActions, FormBuilderActions, ChangeStyleActions, FormActions} from './actions.model';
+import { AvailableStyles, FormField } from '../../../../helpers/models/model';
+import { DialogActions, FormBuilderActions, ChangeStyleActions, FormActions } from './actions.model';
 
 export const addField = createAction(
   FormBuilderActions.ADD_FIELD,

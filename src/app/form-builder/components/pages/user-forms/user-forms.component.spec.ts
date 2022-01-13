@@ -1,12 +1,12 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { BehaviorSubject } from 'rxjs';
 
-import {UserFormsComponent} from './user-forms.component';
-import {UserFormsFacade} from "../../../store/user-forms/facades/user-forms.facade";
-import {AuthFacade} from "../../../store/auth/facades/auth.facade";
-import {ReactiveComponentModule} from "@ngrx/component";
-import {Form} from "../../../../helpers/models/model";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
+import { UserFormsComponent } from './user-forms.component';
+import { UserFormsFacade } from '../../../store/user-forms/facades/user-forms.facade';
+import { AuthFacade } from '../../../store/auth/facades/auth.facade';
+import { Form } from '../../../../helpers/models/model';
 
 describe('UserFormsComponent', () => {
   let component: UserFormsComponent;
